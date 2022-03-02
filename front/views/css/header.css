@@ -74,6 +74,7 @@ div#header {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	padding: 1rem 0;
 }
 /*=============================================
 ESCRITORIO GRANDE (LG revisamos en 1366px en adelante)
