@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <?php
+        $socials = TemplateController::TemplateStyleController();
+        $social = $socials[1];
+    ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.', user-scalable=no">
     <meta name="title" content="Cervezas y más">
@@ -13,6 +17,7 @@
     <link rel="stylesheet" href="views/css/plugins/font-awesome.min.css">
     <link rel="stylesheet" href="views/css/plantilla.css">
     <link rel="stylesheet" href="views/css/header.css">
+    <link rel="icon" type="image/jpg" href="../back/<?php echo $socials[0][0]['favicon'] ?>"/>
 
     <script src="views/js/plugins/jquery.min.js"></script>
     <script src="views/js/plugins/bootstrap.min.js"></script>
@@ -26,31 +31,20 @@
             <!-- SOCIAL -->
             <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 social">
                 <ul>
-                    <li>
-                        <a href="http://facebook.com/" target="_blank">
-                            <i class="fa fa-facebook redSocial facebookColor" aria-hidden="true"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://youtube.com/" target="_blank">
-                            <i class="fa fa-youtube redSocial youtubeColor" aria-hidden="true"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://twitter.com/" target="_blank">
-                            <i class="fa fa-twitter redSocial twitterColor" aria-hidden="true"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://google.com/" target="_blank">
-                            <i class="fa fa-google-plus redSocial googleColor" aria-hidden="true"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://instagram.com/" target="_blank">
-                            <i class="fa fa-instagram redSocial instagramColor" aria-hidden="true"></i>
-                        </a>
-                    </li>
+                    <?php
+
+                    foreach ($social as $s)
+                        {
+                            echo "
+                            <li>
+                            <a href=".$s['url']." target='_blank'>
+                            <i class='fa ".$s['logo']." redSocial ".$s['class']."' aria-hidden='true'></i>
+                            </a>
+                            </li>
+                            ";
+                        }
+
+                    ?>
                 </ul>
             </div>
             <!--REGISTRO-->
@@ -70,7 +64,7 @@
             <!-- LOGO -->
             <div class="col-lg-3 col-md-3 col-sm-2 col-xs-12" id="logotipo">
                 <a href="#">
-                    <img src="../back/views/img/plantilla/logo.png" class="img-responsive">
+                    <img src="../back/<?php echo $socials[0][0]['logo'] ?>" class="img-responsive">
                 </a>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">
