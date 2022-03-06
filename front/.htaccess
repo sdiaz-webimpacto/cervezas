@@ -1,0 +1,11 @@
+# No view list content from folder
+
+Options All -Indexes
+
+# Urls Friends
+
+RewriteEngine On
+
+RewriteRule ^([-a-zA-Z0-9/]+)$ index.php?ruta=$1
+
+Header set Access-Control-Allow-Origin "*"

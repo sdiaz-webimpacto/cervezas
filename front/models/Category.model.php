@@ -10,6 +10,7 @@ class CategoryModel
         $stmt->execute();
         return $stmt->fetchAll();
         $stmt->close();
+        $stmt = null;
     }
 
     public function sub()
@@ -18,5 +19,17 @@ class CategoryModel
         $stmt->execute();
         return $stmt->fetchAll();
         $stmt->close();
+        $stmt = null;
+    }
+
+    public static function getUrl($value)
+    {
+        $stmt = Conn::connect()->prepare("SELECT url FROM category WHERE url = :url");
+        $stmt->bindParam(":url", $value, PDO::PARAM_STR);
+        $stmt->execute();
+        $vals = $stmt->fetchAll();
+        return $vals;
+        $stmt->close();
+        $stmt = null;
     }
 }

@@ -1,2 +1,2 @@
-<script src="views/js/header.js"></script>
-<script src="views/js/template.js"></script>
+<script src="<?php echo $path;?>front/views/js/header.js"></script>
+<script src="<?php echo $path;?>front/views/js/template.js"></script>

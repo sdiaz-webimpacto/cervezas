@@ -11,16 +11,21 @@
     <meta name="description" content="cervezas artesanales de todas las partes del mundo">
     <meta name="keyword" content="cerveza,artesanal,mundo">
 
+    <?php
+        $path = Path::getPath();
+    ?>
+
     <title>Cervezas y más</title>
 
-    <link rel="stylesheet" href="views/css/plugins/bootstrap.min.css">
-    <link rel="stylesheet" href="views/css/plugins/font-awesome.min.css">
-    <link rel="stylesheet" href="views/css/plantilla.css">
-    <link rel="stylesheet" href="views/css/header.css">
-    <link rel="icon" type="image/jpg" href="../back/<?php echo $socials[0][0]['favicon'] ?>"/>
+    <link rel="stylesheet" href="<?php echo $path;?>front/views/css/plugins/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo $path;?>front/views/css/plugins/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo $path;?>front/views/css/plantilla.css">
+    <link rel="stylesheet" href="<?php echo $path;?>front/views/css/header.css">
+    <link rel="icon" type="image/jpg" href="<?php echo $path;?>back/<?php echo $socials[0][0]['favicon'] ?>"/>
 
-    <script src="views/js/plugins/jquery.min.js"></script>
-    <script src="views/js/plugins/bootstrap.min.js"></script>
+    <script src="<?php echo $path;?>front/views/js/plugins/jquery.min.js"></script>
+    <script src="<?php echo $path;?>front/views/js/plugins/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -64,7 +69,7 @@
             <!-- LOGO -->
             <div class="col-lg-3 col-md-3 col-sm-2 col-xs-12" id="logotipo">
                 <a href="#">
-                    <img src="../back/<?php echo $socials[0][0]['logo'] ?>" class="img-responsive">
+                    <img src="<?php echo $path;?>back/<?php echo $socials[0][0]['logo'] ?>" class="img-responsive">
                 </a>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">
@@ -72,7 +77,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 backColor" id="btnCategorias">
                     <p clas="tBlack">CATEGORÍAS
                         <span class="pull-right">
-							<i class="fa fa-bars" aria-hidden="true"></i>
+                        <i class="fa fa-align-justify"></i>
 						</span>
                     </p>
                 </div>
