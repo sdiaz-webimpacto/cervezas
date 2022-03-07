@@ -1,0 +1,74 @@
+#slide{
+    position: relative;
+    margin: auto;
+    width: 100%;
+    overflow: hidden;
+    padding: 0;
+}
+#slide ul{
+    position: relative;
+    left: 0%;
+    margin: auto;
+    height: auto;
+    width: 100%;
+    clear: both;
+    display: table;
+}
+#slide ul li{
+    position: relative;
+    float: left;
+    width: 100%;
+}
+#slide ul li img{
+    width: 100%;
+}
+#slide .slideOption1 img{
+    position: absolute;
+    opacity: 1;
+    top: 2%;
+    right: 10%;
+    height: 98%;
+    width: auto;
+}
+#slide .slideOption1 .textSlide{
+    position: absolute;
+    width: 40%;
+    top: 20%;
+    left: 10%;
+}
+#slide .slideOption1 h1{
+    text-transform: uppercase;
+    /*font-size: 8rem;*/
+    font-family: 'Ubuntu Condensed', sans-serif;
+    opacity: 1;
+    top: -10px;
+}
+#slide .slideOption1 h2{
+    text-transform: uppercase;
+    /*font-size: 6rem;*/
+    font-family: 'Ubuntu Condensed', sans-serif;
+    opacity: 1;
+    top: -10px;
+}
+#slide .slideOption1 h3{
+    text-transform: uppercase;
+    /*font-size: 4rem;*/
+    font-family: 'Ubuntu Condensed', sans-serif;
+    opacity: 1;
+    top: -10px;
+}
+#slide .slideOptions button{
+    border:0px;
+    margin-top: 10px;
+    padding: 10px;
+    opacity: 1;
+    top: -10px;
+} 
+#slide .slideOptions button:hover{
+    background:black;
+    color: white;
+    border: 0px;
+} 
+#slide .slideOptions button span{
+    margin-left:.75rem;
+} 

@@ -19,6 +19,8 @@ FRIENDLY URLS
         } else {
             include "modules/error404.php";
         }
+    } else {
+        include "modules/slide.php";
     }
 
 /* 
