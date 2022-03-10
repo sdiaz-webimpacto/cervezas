@@ -2,8 +2,8 @@
 
 class Path
 {
-    public function getPath()
+    public static function getPath()
     {
-        return "http://localhost/cervezaS/cervezas/";
+        return "http://localhost/cervezas/";
     }
 }

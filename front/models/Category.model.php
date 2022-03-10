@@ -4,7 +4,7 @@ require_once "Conn.php";
 
 class CategoryModel
 {
-    public function main()
+    public static function main()
     {
         $stmt = Conn::connect()->prepare("SELECT name, id, url FROM category WHERE parent = 0");
         $stmt->execute();
@@ -13,7 +13,7 @@ class CategoryModel
         $stmt = null;
     }
 
-    public function sub()
+    public static function sub()
     {
         $stmt = Conn::connect()->prepare("SELECT name, parent, url FROM category WHERE parent != 0");
         $stmt->execute();
