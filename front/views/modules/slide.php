@@ -1,6 +1,6 @@
 <div class="container-fluid" id="slide">
     <div class="row">
-        <ul>
+        <ul class="slideShow" second="3">
 
             <li class="slideShow">
                 <img src="<?php echo $path;?>back/views/img/slider/slider1.jpg">
@@ -20,7 +20,7 @@
             <li class="slideShow">
                 <img src="<?php echo $path;?>back/views/img/slider/slider2.jpg">
                 <div class="slideOptions slideOption2">
-                    <img src="<?php echo $path;?>back/views/img/slider/producto.png" alt="" class="imgProduct" style="top:2%;left:10%;width:auto">
+                    <img src="<?php echo $path;?>back/views/img/slider/producto.png" alt="" class="imgProduct" style="top:2%;left:20%;width:auto">
                     <div class="textSlide" style="top:12%;left:55%;width:40%">
                         <h1 style="color:#ccc;">Title</h1>
                         <h2 style="color:#ccc;">Subtitle</h2>
