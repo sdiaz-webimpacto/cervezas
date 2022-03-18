@@ -39,6 +39,9 @@ header{
 .bWhite {
 	background: var(--main-color-white);
 }
+#carrito {
+	display: contents;
+}
 /*=============================================
 REDES SOCIALES
 =============================================*/
@@ -156,5 +159,8 @@ MOVIL (XS revisamos en 320px)
 	.error404 h1{
 		font-size:75px;
 		text-shadow:2px 2px 1px #dadada;
+	}
+	#carrito {
+		display: list-item;
 	}
 }
