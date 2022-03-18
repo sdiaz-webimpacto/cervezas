@@ -5,8 +5,6 @@ let stopCircle = false;
 
 const imgProduct = $('.imgProduct');
 const title1 = $('.textSlide');
-const title2 = $('.textSlide h2');
-const title3 = $('.textSlide h3');
 
 
 $('#pagination li').click(function(){
@@ -74,22 +72,6 @@ function animation(item)
         "opacity": 0
     },100);
     $(title1[item]).animate({
-        "top": 30 + "px",
-        "opacity": 1
-    },600);
-    $(title2[item]).animate({
-        "top": -10 + "%",
-        "opacity": 0
-    },100);
-    $(title2[item]).animate({
-        "top": 30 + "px",
-        "opacity": 1
-    },600);
-    $(title3[item]).animate({
-        "top": -10 + "%",
-        "opacity": 0
-    },100);
-    $(title3[item]).animate({
         "top": 30 + "px",
         "opacity": 1
     },600);
