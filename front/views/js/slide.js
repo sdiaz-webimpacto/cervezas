@@ -6,7 +6,10 @@ let stopCircle = false;
 const imgProduct = $('.imgProduct');
 const title1 = $('.textSlide');
 
-const arrows = $('.arrows');
+//const arrows = $('.arrows');
+
+$('#slide ul.slideShow').css({'width':itemList.length*100+'%'});
+$('#slide ul li.slideShow').css({'width':100/itemList.length+'%'});
 
 $('#pagination li').click(function(){
     item = $(this).attr("item") - 1;
@@ -61,19 +64,17 @@ function next()
 function animation(item)
 {
     $(imgProduct[item]).animate({
-        "left": -10 + "%",
-        "opacity": 0
-    },800);
-    $(imgProduct[item]).animate({
-        "left": 0 + "px",
-        "opacity": 1
-    },600);
-    $(title1[item]).animate({
         "top": -10 + "%",
         "opacity": 0
     },800);
-    $(title1[item]).animate({
-        "top": 30 + "px",
+    $(imgProduct[item]).animate({
+        "top": 0 + "px",
         "opacity": 1
-    },1000, "easeOutCubic");
+    },600);
+    $(title1[item]).animate({
+        "opacity": 0
+    }, 500);
+    $(title1[item]).animate({
+        "opacity": 1
+    }, 4000);
 }

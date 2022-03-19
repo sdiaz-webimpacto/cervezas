@@ -13,19 +13,20 @@
 
     <?php
         $path = Path::getPath();
+        $pathBack = Path::getPathBack();
     ?>
 
     <title>Cervezas y más</title>
 
-    <link rel="stylesheet" href="<?php echo $path;?>front/views/css/plugins/bootstrap.min.css">
-    <link rel="stylesheet" href="<?php echo $path;?>front/views/css/plugins/font-awesome.min.css">
-    <link rel="stylesheet" href="<?php echo $path;?>front/views/css/plantilla.css">
-    <link rel="stylesheet" href="<?php echo $path;?>front/views/css/header.css">
-    <link rel="stylesheet" href="<?php echo $path;?>front/views/css/slider.css">
-    <link rel="icon" type="image/jpg" href="<?php echo $path;?>back/<?php echo $socials[0][0]['favicon'] ?>"/>
+    <link rel="stylesheet" href="<?php echo $path;?>views/css/plugins/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo $path;?>views/css/plugins/font-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo $path;?>views/css/plantilla.css">
+    <link rel="stylesheet" href="<?php echo $path;?>views/css/header.css">
+    <link rel="stylesheet" href="<?php echo $path;?>views/css/slider.css">
+    <link rel="icon" type="image/jpg" href="<?php echo $pathBack;?><?php echo $socials[0][0]['favicon'] ?>"/>
 
-    <script src="<?php echo $path;?>front/views/js/plugins/jquery.min.js"></script>
-    <script src="<?php echo $path;?>front/views/js/plugins/bootstrap.min.js"></script>
+    <script src="<?php echo $path;?>views/js/plugins/jquery.min.js"></script>
+    <script src="<?php echo $path;?>views/js/plugins/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -68,8 +69,8 @@
         <div id ="header" class="row d-flex flex-sm-column flex-md-row">
             <!-- LOGO -->
             <div class="col-lg-3 col-md-3 col-sm-2 col-xs-12" id="logotipo">
-                <a href="<?php echo $path;?>front">
-                    <img src="<?php echo $path;?>back/<?php echo $socials[0][0]['logo'] ?>" class="img-responsive">
+                <a href="<?php echo $path;?>">
+                    <img src="<?php echo $pathBack;?><?php echo $socials[0][0]['logo'] ?>" class="img-responsive">
                 </a>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">

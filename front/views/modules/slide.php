@@ -2,57 +2,52 @@
     <div class="row">
         <ul class="slideShow" second="3">
 
-            <li class="slideShow">
-                <img src="<?php echo $path;?>back/views/img/slider/slider1.jpg">
-                <div class="slideOptions slideOption2">
-                    <img src="<?php echo $path;?>back/views/img/slider/producto.png" alt="" class="imgProduct" style="top:2%;left:0%;width:auto">
-                    <div class="textSlide" style="top:12%;right:10%;width:40%">
-                        <h1 style="color:#ccc;">Title</h1>
-                        <h2 style="color:#ccc;">Subtitle</h2>
-                        <h3 style="color:#ccc;">Comment for this product</h3>
-                        <a href="">
-                            <button class="btn btn-default backColor text-uppercase">Show Product <span class="fa fa-chevron-right"></span></button>
-                        </a>
-                    </div>
-                </div>
-            </li>
+            <?php
+            $slide = SlideController::viewSlide();
+            foreach($slide as $key => $sl)
+            {
+                $styleImg = json_decode($sl['styleImgProduct']);
+                $styleText = json_decode($sl['styleText']);
+                $h1 = json_decode($sl['titleH1']);
+                $h2 = json_decode($sl['titleH2']);
+                $h3 = json_decode($sl['titleH3']);
 
-            <li class="slideShow">
-                <img src="<?php echo $path;?>back/views/img/slider/slider2.jpg">
-                <div class="slideOptions slideOption2">
-                    <img src="<?php echo $path;?>back/views/img/slider/producto.png" alt="" class="imgProduct" style="top:2%;left:20%;width:auto">
-                    <div class="textSlide" style="top:12%;left:55%;width:40%">
-                        <h1 style="color:#ccc;">Title</h1>
-                        <h2 style="color:#ccc;">Subtitle</h2>
-                        <h3 style="color:#ccc;">Comment for this product</h3>
-                        <a href="">
-                            <button class="btn btn-default backColor text-uppercase">Show Product <span class="fa fa-chevron-right"></span></button>
-                        </a>
-                    </div>
-                </div>
-            </li>
+                echo '
+                    <li class="slideShow">
+                        <img src="'.$pathBack.$sl['imgBackground'].'">
+                    <div class="slideOptions '.$sl['type'].'">';
+                if($sl['imgProduct'] != '')
+                {
+                    echo '
+                        <img src="'.$pathBack.$sl['imgProduct'].'" class="imgProduct" 
+                        style="top:'.$styleImg->top.';left:'.$styleImg->left.';width:'.$styleImg->width.';right:'.$styleImg->right.'">
+                        ';
+                }
 
-            <li class="slideShow">
-                <img src="<?php echo $path;?>back/views/img/slider/slider3.jpg">
-                <div class="slideOptions slideOption2">
-                    <img src="<?php echo $path;?>back/views/img/slider/producto.png" alt="" class="imgProduct" style="top:2%;left:10%;width:auto">
-                    <div class="textSlide" style="top:12%;left:55%;width:auto">
-                        <h1 style="color:#ccc;">Title</h1>
-                        <h2 style="color:#ccc;">Subtitle</h2>
-                        <h3 style="color:#ccc;">Comment for this product</h3>
-                        <a href="">
-                            <button class="btn btn-default backColor text-uppercase">Show Product <span class="fa fa-chevron-right"></span></button>
-                        </a>
+                echo '
+                    <div class="textSlide" style="top:'.$styleText->top.';left:'.$styleText->left.';width:'.$styleText->width.';right:'.$styleText->right.'">
+                            <h1 style="color:'.$h1->color.';">'.$h1->text.'</h1>
+                            <h2 style="color:'.$h2->color.';">'.$h2->text.'</h2>
+                            <h3 style="color:'.$h3->color.';">'.$h3->text.'</h3>
+                            <a href="">
+                                '.$sl['button'].'
+                            </a>
+                        </div>
                     </div>
-                </div>
-            </li>
+                    </li>
+                ';
+            }
+            ?>
 
         </ul>
 
         <ul id="pagination">
-            <li item="1"><span class="fa fa-circle"></span></li>
-            <li item="2"><span class="fa fa-circle"></span></li>
-            <li item="3"><span class="fa fa-circle"></span></li>
+            <?php
+            for($i = 1; $i <= count($slide); $i++)
+            {
+                echo '<li item="'.$i.'"><span class="fa fa-circle"></span></li>';
+            }
+            ?>
         </ul>
 
         <!--<div class="arrows" id="back"><span class="fa fa-chevron-left"></span></div>
