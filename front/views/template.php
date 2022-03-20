@@ -21,6 +21,7 @@ FRIENDLY URLS
         }
     } else {
         include "modules/slide.php";
+        include "modules/hightlight.php";
     }
 
 /* 

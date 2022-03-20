@@ -1,0 +1,48 @@
+/**
+Banner
+ */
+.banner{
+    position: relative;
+    overflow: hidden;
+    height: 260px;
+}
+.banner .bannerText{
+    position:absolute;
+    font-family: 'Ubuntu Condensed', sans-serif;
+}
+.banner .leftText{
+    top:50px;
+    left: 50px;
+    text-align: left;
+}
+.banner .rightText{
+    top:50px;
+    right: 50px;
+    text-align: right;
+}
+.banner .centerText{
+    top:50px;
+    left: 50%;
+    width: 800px;
+    margin-left: -400px;
+    text-align: center;
+}
+.bannerText h1{
+    font-size: 2.5rem;
+    line-height: 25px;
+}
+.bannerText h3{
+    font-size: 1.5rem;
+    line-height: 15px;
+}
+.bannerText p{
+    font-size: 1.1rem;
+    line-height: 10px;
+}
+
+/*
+Products ahow
+ */
+.productBar .productShow span{
+    margin-left: .75rem;
+}

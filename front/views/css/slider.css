@@ -4,6 +4,7 @@
     width: 100%;
     overflow: hidden;
     padding: 0;
+    margin-bottom: 2rem;
 }
 #slide ul{
     position: relative;
