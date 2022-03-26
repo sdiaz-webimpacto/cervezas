@@ -47,7 +47,7 @@
             <hr>
         </div>
 
-        <ul class="grid grid0" style="display:none">
+        <ul class="grid grid0" style="display:">
             <li class="col-md-3 col-sm-6 col-xs-12">
                 <figure>
                     <a href="#" class="pixelProduct">
@@ -167,7 +167,7 @@
             </li>
         </ul>
 
-        <ul class="lis list0">
+        <ul class="list list0" style="display:none">
             <li class="col-xs-12">
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
                     <figure>
