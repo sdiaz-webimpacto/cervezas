@@ -88,9 +88,13 @@ Products ahow
     color:#999999;
     font-size: 1.1rem;
 }
-.pixelProduct img{
+.grid .pixelProduct img{
     width: 300px;
     height: 400px;
+}
+.list .pixelProduct img{
+    width: 150px;
+    height: 200px;
 }
 .oferta{
     text-decoration: line-through;
