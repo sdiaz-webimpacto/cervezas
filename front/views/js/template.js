@@ -1,3 +1,6 @@
+/**
+ * COLORS OF TEMPLATE
+ */
 $.ajax({
 	url:"ajax/template.ajax.php",
 	success:function(respuesta){
@@ -17,4 +20,28 @@ $.ajax({
 			'color': backcolorText
 		});
 	}
-})   
+})
+
+
+/**
+ * LIST OR GRID
+ */
+
+if($('.list').length >= 1)
+{
+	for(let i = 0; i < $('.list').length; i++)
+	{
+		$('#btnList'+i).click(function(){
+			$('.list'+i).show();
+			$('.grid'+i).hide();
+			$('#btnList'+i).addClass('backColor');
+			$('#btnGrid'+i).removeClass('backColor');
+		});
+		$('#btnGrid'+i).click(function(){
+			$('.list'+i).hide();
+			$('.grid'+i).show();
+			$('#btnGrid'+i).addClass('backColor');
+			$('#btnList'+i).removeClass('backColor');
+		});
+	}
+}

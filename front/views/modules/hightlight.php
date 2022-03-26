@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-xs-12 productShow">
                 <div class="btn-group pull-right">
-                    <button class="btn btn-default btnGrid" id="btnGrid0">
+                    <button class="btn btn-default btnGrid backColor" id="btnGrid0">
                         <i class="fa fa-th" aria-hidden="true"></i>
                         <span class="col-xs-0 pull-right"> GRID</span>
                     </button>
@@ -47,7 +47,7 @@
             <hr>
         </div>
 
-        <ul class="grid grid0" style="display:">
+        <ul class="grid grid0">
             <li class="col-md-3 col-sm-6 col-xs-12">
                 <figure>
                     <a href="#" class="pixelProduct">
@@ -167,7 +167,7 @@
             </li>
         </ul>
 
-        <ul class="list list0" style="display:none">
+        <ul class="list list0">
             <li class="col-xs-12">
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
                     <figure>
@@ -301,7 +301,7 @@
         <div class="row">
             <div class="col-xs-12 productShow">
                 <div class="btn-group pull-right">
-                    <button class="btn btn-default btnGrid" id="btnGrid1">
+                    <button class="btn btn-default btnGrid backColor" id="btnGrid1">
                         <i class="fa fa-th" aria-hidden="true"></i>
                         <span class="col-xs-0 pull-right"> GRID</span>
                     </button>
@@ -336,7 +336,7 @@
             <hr>
         </div>
 
-        <ul class="grid grid1" style="display:none">
+        <ul class="grid grid1">
             <li class="col-md-3 col-sm-6 col-xs-12">
                 <figure>
                     <a href="#" class="pixelProduct">
@@ -473,7 +473,7 @@
 
         </ul>
 
-        <ul class="list list1"  style="display:block">
+        <ul class="list list1">
             <li class="col-xs-12">
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
                     <figure>
@@ -612,7 +612,7 @@
         <div class="row">
             <div class="col-xs-12 productShow">
                 <div class="btn-group pull-right">
-                    <button class="btn btn-default btnGrid" id="btnGrid2">
+                    <button class="btn btn-default btnGrid backColor" id="btnGrid2">
                         <i class="fa fa-th" aria-hidden="true"></i>
                         <span class="col-xs-0 pull-right"> GRID</span>
                     </button>
@@ -646,7 +646,7 @@
             <hr>
         </div>
 
-        <ul class="grid grid2" style="display:none">
+        <ul class="grid grid2">
             <li class="col-md-3 col-sm-6 col-xs-12">
                 <figure>
                     <a href="#" class="pixelProduct">
@@ -830,7 +830,7 @@
 
         </ul>
 
-        <ul class="list list2"  style="display:block">
+        <ul class="list list2">
             <li class="col-xs-12">
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
                     <figure>

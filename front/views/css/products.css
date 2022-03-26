@@ -42,6 +42,9 @@ Banner
 /*
 Products ahow
  */
+ul.list{
+    display: none;
+}
 .productBar .productShow span{
     margin-left: .75rem;
 }
