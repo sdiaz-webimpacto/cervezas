@@ -1,4 +1,11 @@
 /**
+ * TOOLTIPS
+ */
+$(document).ready(function(){
+	$('[data-toggle="tooltip"]').tooltip();
+});
+
+/**
  * COLORS OF TEMPLATE
  */
 $.ajax({
@@ -45,3 +52,31 @@ if($('.list').length >= 1)
 		});
 	}
 }
+
+/**
+ * PARALLAX
+ */
+
+$(window).scroll(function(){
+	let scrollY = window.pageYOffset;
+
+	console.log($(".banner").offset().top+" | "+scrollY);
+		if(scrollY < ($(".banner").offset().top+250) && scrollY > 200)
+		{
+			$('.banner img').css({
+				"margin-top":(scrollY-200)/2+"px"
+			})
+		} else {
+			scrollY = 0;
+			$('.banner img').css({
+				"margin-top":"0px"
+			})
+		}
+
+})
+
+$.scrollUp({
+	scrollText:"",
+	scrollSpeed: 2000,
+	easing: "easeOutQuint"
+})

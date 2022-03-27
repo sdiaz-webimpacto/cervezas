@@ -120,6 +120,16 @@ ERROR 404
 	color:#333;
 }
 /*=============================================
+SCROLL UP
+=============================================*/
+#scrollUp{
+	bottom: 20px;
+	right: 20px;
+	height: 50px;
+	width: 50px;
+	background: url(../img/flecha.jpg);
+}
+/*=============================================
 ESCRITORIO GRANDE (LG revisamos en 1366px en adelante)
 =============================================*/
 @media (min-width:1200px){
