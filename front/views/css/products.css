@@ -162,13 +162,17 @@ ul.list{
     }
 }
 
-@media (max-width: 1199px) and (min-width: 992px)
+@media (max-width: 1200px) and (min-width: 992px)
 {
     .banner{
         height: 200px;
     }
     .banner .rightText, .banner .leftText, .banner .centerText{
         top:2.5rem;
+    }
+    .grid .pixelProduct img{
+        width: 200px;
+        height: 267px;
     }
 }
 

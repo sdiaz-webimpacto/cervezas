@@ -13,7 +13,11 @@ FRIENDLY URLS
     if(isset($_GET["ruta"]))
     {
         $paths = explode('/', $_GET['ruta']);
-        if(CategoryController::isCat($paths[0]))
+
+        if(CategoryController::isCat($paths[0]) ||
+            $paths[0] == 'free-articles' ||
+            $paths[0] == 'most-sales' ||
+            $paths[0] == 'most-view')
         {
             include "modules/products.php";
         } else {

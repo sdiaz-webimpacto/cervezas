@@ -1,3 +1,6 @@
+<!--
+BANNER
+-->
 <figure class="banner">
     <img src="<?php echo $pathBack;?>/views/img/banner/default.jpg" class="img-responsive" width="100%">
     <div class="bannerText rightText">
@@ -7,494 +10,166 @@
     </div>
 </figure>
 
-<div class="container-fluid well well-sm productBar">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 productShow">
-                <div class="btn-group pull-right">
-                    <button class="btn btn-default btnGrid backColor" id="btnGrid0">
-                        <i class="fa fa-th" aria-hidden="true"></i>
-                        <span class="col-xs-0 pull-right"> GRID</span>
-                    </button>
-                </div>
-                <div class="btn-group pull-right">
-                    <button class="btn btn-default btnList" id="btnList0">
-                        <i class="fa fa-list" aria-hidden="true"></i>
-                        <span class="col-xs-0 pull-right"> LIST</span>
-                    </button>
+<?php
+    $modules = array(
+            array('title' => 'Artículos gratuitos', 'url' => 'free-articles', 'value' => 'price', 'type' => 'ASC'),
+            array('title' => 'Lo más vendido', 'url' => 'most-sales', 'value' => 'sales', 'type' => 'DESC'),
+            array('title' => 'Lo más visto', 'url' => 'most-view', 'value' => 'views', 'type' => 'DESC')
+    );
+
+    for($i = 0; $i < count($modules); $i++)
+    {
+        echo '
+        <div class="container-fluid well well-sm productBar">
+            <div class="container">
+            <div class="row">
+                <div class="col-xs-12 productShow">
+                    <div class="btn-group pull-right">
+                        <button class="btn btn-default btnGrid backColor" id="btnGrid'.$i.'">
+                            <i class="fa fa-th" aria-hidden="true"></i>
+                            <span class="col-xs-0 pull-right"> GRID</span>
+                        </button>
+                    </div>
+                    <div class="btn-group pull-right">
+                        <button class="btn btn-default btnList" id="btnList'.$i.'">
+                            <i class="fa fa-list" aria-hidden="true"></i>
+                            <span class="col-xs-0 pull-right"> LIST</span>
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-
-<div class="container-fluid products">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 highLightTitle">
-                <div class="col-sm-6 col-xs-12">
-                    <h1><small>ARTÍCULOS GRATUITOS </small></h1>
-                </div>
-                <div class="col-sm-6 col-xs-12">
-                    <a href="free-articles">
-                        <button class="btn btn-default backColor pull-right">
-                            VER MÁS <span class="fa fa-chevron-right"></span>
-                        </button>
-                    </a>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-            <hr>
-        </div>
-
-        <ul class="grid grid0">
-            <li class="col-md-3 col-sm-6 col-xs-12">
-                <figure>
-                    <a href="#" class="pixelProduct">
-                        <img src="<?php echo $pathBack;?>views/img/productos/artesanas/artesanas1.jpg" class="img-responsive">
-                    </a>
-                </figure>
-                <h4>
-                    <small>
-                        <a href="#" class="pixelProduct">
-                            Domus<br><br>
-                        </a>
-                    </small>
-                </h4>
-                <div class="col-xs-6 price">
-                    <h2><small>GRATIS</small></h2>
-                </div>
-                <div class="col-xs-6 links">
-                    <div class="btn-group pull-right">
-                        <button type="button" class="btn btn-default btn-xs whishList" idProducto="470" data-toggle="tooltip" title="Agregar a mi lista de deseos">
-                            <i class="fa fa-heart" aria-hidden="true"></i>
-                        </button>
-                        <a href="#" class="pixelProduct">
-                            <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="Ver producto">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </button>
-                        </a>
-                    </div>
-                </div>
-            </li>
-            <li class="col-md-3 col-sm-6 col-xs-12">
-                <figure>
-                    <a href="#" class="pixelProduct">
-                        <img src="<?php echo $pathBack;?>views/img/productos/artesanas/artesanas2.jpg" class="img-responsive">
-                    </a>
-                </figure>
-                <h4>
-                    <small>
-                        <a href="#" class="pixelProduct">
-                            La Virgen<br><br>
-                        </a>
-                    </small>
-                </h4>
-                <div class="col-xs-6 price">
-                    <h2><small>GRATIS</small></h2>
-                </div>
-                <div class="col-xs-6 links">
-                    <div class="btn-group pull-right">
-                        <button type="button" class="btn btn-default btn-xs deseos" idProducto="470" data-toggle="tooltip" title="Agregar a mi lista de deseos">
-                            <i class="fa fa-heart" aria-hidden="true"></i>
-                        </button>
-                        <a href="#" class="pixelProduct">
-                            <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="Ver producto">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </button>
-                        </a>
-                    </div>
-                </div>
-            </li>
-            <li class="col-md-3 col-sm-6 col-xs-12">
-                <figure>
-                    <a href="#" class="pixelProduct">
-                        <img src="<?php echo $pathBack;?>views/img/productos/artesanas/artesanas3.webp" class="img-responsive">
-                    </a>
-                </figure>
-                <h4>
-                    <small>
-                        <a href="#" class="pixelProduct">
-                            Santa Clara<br><br>
-                        </a>
-                    </small>
-                </h4>
-                <div class="col-xs-6 price">
-                    <h2><small>GRATIS</small></h2>
-                </div>
-                <div class="col-xs-6 links">
-                    <div class="btn-group pull-right">
-                        <button type="button" class="btn btn-default btn-xs wishList" idProducto="470" data-toggle="tooltip" title="Agregar a mi lista de deseos">
-                            <i class="fa fa-heart" aria-hidden="true"></i>
-                        </button>
-                        <a href="#" class="pixelProduct">
-                            <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="Ver producto">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </button>
-                        </a>
-                    </div>
-                </div>
-            </li>
-            <li class="col-md-3 col-sm-6 col-xs-12">
-                <figure>
-                    <a href="#" class="pixelProduct">
-                        <img src="<?php echo $pathBack;?>views/img/productos/artesanas/artesanas4.webp" class="img-responsive">
-                    </a>
-                </figure>
-                <h4>
-                    <small>
-                        <a href="#" class="pixelProduct">
-                            DouGall`s<br>
-                            <span class="label label-warning fontSize">Nuevo</span>
-                        </a>
-                    </small>
-                </h4>
-                <div class="col-xs-6 price">
-                    <h2><small>GRATIS</small></h2>
-                </div>
-                <div class="col-xs-6 links">
-                    <div class="btn-group pull-right">
-                        <button type="button" class="btn btn-default btn-xs whishList" idProducto="470" data-toggle="tooltip" title="Agregar a mi lista de deseos">
-                            <i class="fa fa-heart" aria-hidden="true"></i>
-                        </button>
-                        <a href="#" class="pixelProduct">
-                            <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="Ver producto">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </button>
-                        </a>
-                    </div>
-                </div>
-            </li>
-        </ul>
-
-        <ul class="list list0">
-            <li class="col-xs-12">
-                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
-                    <figure>
-                        <a href="#" class="pixelProduct"><img src="<?php echo $pathBack;?>views/img/productos/artesanas/artesanas1.jpg" class="img-responsive"></a>
-                    </figure>
-                </div>
-                <div class="col-lg-10 col-md-7 col-sm-8 col-xs-12">
-                    <h1>
-                        <small>
-                            <a href="#" class="pixelProduct">Domus</a>
-                        </small>
-                    </h1>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate minus, consectetur beatae fugit odio iure repudiandae quia distinctio, id ducimus molestiae. Obcaecati, unde. Illo molestiae dolorum, saepe nisi enim iusto.</p>
-                    <h2><small>GRATIS</small></h2>
-                    <div class="btn-group pull-left links">
-                        <button type="button" class="btn btn-default btn-xs whishList"  idProducto="470" data-toggle="tooltip" title="Agregar a mi lista de deseos">
-                            <i class="fa fa-heart" aria-hidden="true"></i>
-                        </button>
-                        <a href="#" class="pixelProduct">
-                            <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="Ver producto">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </button>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-xs-12">
-                    <hr>
-                </div>
-            </li>
-
-            <li class="col-xs-12">
-                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
-                    <figure>
-                        <a href="#" class="pixelProduct"><img src="<?php echo $pathBack;?>views/img/productos/artesanas/artesanas2.jpg" class="img-responsive"></a>
-                    </figure>
-                </div>
-                <div class="col-lg-10 col-md-7 col-sm-8 col-xs-12">
-                    <h1>
-                        <small>
-                            <a href="#" class="pixelProduct">La Virgen</a>
-                        </small>
-                    </h1>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate minus, consectetur beatae fugit odio iure repudiandae quia distinctio, id ducimus molestiae. Obcaecati, unde. Illo molestiae dolorum, saepe nisi enim iusto.</p>
-                    <h2><small>GRATIS</small></h2>
-                    <div class="btn-group pull-left links">
-                        <button type="button" class="btn btn-default btn-xs whishList"  idProducto="470" data-toggle="tooltip" title="Agregar a mi lista de deseos">
-                            <i class="fa fa-heart" aria-hidden="true"></i>
-                        </button>
-                        <a href="#" class="pixelProduct">
-                            <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="Ver producto">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </button>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-xs-12">
-                    <hr>
-                </div>
-            </li>
-
-            <li class="col-xs-12">
-                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
-                    <figure>
-                        <a href="#" class="pixelProduct"><img src="<?php echo $pathBack;?>views/img/productos/artesanas/artesanas3.webp" class="img-responsive"></a>
-                    </figure>
-                </div>
-                <div class="col-lg-10 col-md-7 col-sm-8 col-xs-12">
-                    <h1>
-                        <small>
-                            <a href="#" class="pixelProduct">Santa Clara</a>
-                        </small>
-                    </h1>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate minus, consectetur beatae fugit odio iure repudiandae quia distinctio, id ducimus molestiae. Obcaecati, unde. Illo molestiae dolorum, saepe nisi enim iusto.</p>
-                    <h2><small>GRATIS</small></h2>
-                    <div class="btn-group pull-left links">
-                        <button type="button" class="btn btn-default btn-xs whishList"  idProducto="470" data-toggle="tooltip" title="Agregar a mi lista de deseos">
-                            <i class="fa fa-heart" aria-hidden="true"></i>
-                        </button>
-                        <a href="#" class="pixelProduct">
-                            <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="Ver producto">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </button>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-xs-12">
-                    <hr>
-                </div>
-            </li>
-
-            <li class="col-xs-12">
-                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
-                    <figure>
-                        <a href="#" class="pixelProduct"><img src="<?php echo $pathBack;?>views/img/productos/artesanas/artesanas4.webp" class="img-responsive"></a>
-                    </figure>
-                </div>
-                <div class="col-lg-10 col-md-7 col-sm-8 col-xs-12">
-                    <h1>
-                        <small>
-                            <a href="#" class="pixelProduct">DouGall`s</a>
-                        </small>
-                    </h1>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate minus, consectetur beatae fugit odio iure repudiandae quia distinctio, id ducimus molestiae. Obcaecati, unde. Illo molestiae dolorum, saepe nisi enim iusto.</p>
-                    <h2><small>GRATIS</small></h2>
-                    <div class="btn-group pull-left links">
-                        <button type="button" class="btn btn-default btn-xs whishList"  idProducto="470" data-toggle="tooltip" title="Agregar a mi lista de deseos">
-                            <i class="fa fa-heart" aria-hidden="true"></i>
-                        </button>
-                        <a href="#" class="pixelProduct">
-                            <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="Ver producto">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </button>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-xs-12">
-                    <hr>
-                </div>
-            </li>
-
-        </ul>
-
-    </div>
-
-</div>
-
-
-
-<div class="container-fluid well well-sm productBar">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 productShow">
-                <div class="btn-group pull-right">
-                    <button class="btn btn-default btnGrid backColor" id="btnGrid1">
-                        <i class="fa fa-th" aria-hidden="true"></i>
-                        <span class="col-xs-0 pull-right"> GRID</span>
-                    </button>
-                </div>
-                <div class="btn-group pull-right">
-                    <button class="btn btn-default btnList" id="btnList1">
-                        <i class="fa fa-list" aria-hidden="true"></i>
-                        <span class="col-xs-0 pull-right"> LIST</span>
-                    </button>
-                </div>
             </div>
         </div>
-    </div>
-</div>
-
-<div class="container-fluid products">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 highLightTitle">
-                <div class="col-sm-6 col-xs-12">
-                    <h1><small>ARTÍCULOS MÁS VENDIDOS </small></h1>
-                </div>
-                <div class="col-sm-6 col-xs-12">
-                    <a href="most-sales">
-                        <button class="btn btn-default backColor pull-right">
-                            VER MÁS <span class="fa fa-chevron-right"></span>
-                        </button>
-                    </a>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-            <hr>
-        </div>
-
-        <ul class="grid grid1">
-            <li class="col-md-3 col-sm-6 col-xs-12">
-                <figure>
-                    <a href="#" class="pixelProduct">
-                        <img src="<?php echo $pathBack;?>views/img/productos/ropa/ropa03.jpg" class="img-responsive">
-                    </a>
-                </figure>
-                <h4>
-                    <small>
-                        <a href="#" class="pixelProduct">
-                            Chouffe<br>
-                            <span class="label label-warning fontSize">Nuevo</span>
-                            <span class="label label-warning fontSize">40% off</span>
-                        </a>
-                    </small>
-                </h4>
-                <div class="col-xs-6 price">
-                    <h2>
-                        <small><strong class="oferta">29€</strong></small>
-                        <small>11€</small>
-                    </h2>
-                </div>
-                <div class="col-xs-6 links">
-                    <div class="btn-group pull-right">
-                        <button type="button" class="btn btn-default btn-xs whishList" idProducto="470" data-toggle="tooltip" title="Agregar a mi lista de deseos">
-                            <i class="fa fa-heart" aria-hidden="true"></i>
-                        </button>
-                        <a href="#" class="pixelProduct">
-                            <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="Ver producto">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </button>
-                        </a>
+        
+        <div class="container-fluid products">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 highLightTitle">
+                        <div class="col-sm-6 col-xs-12">
+                            <h1><small>'.$modules[$i]['title'].'</small></h1>
+                        </div>
+                        <div class="col-sm-6 col-xs-12">
+                            <a href="'.$modules[$i]['url'].'">
+                                <button class="btn btn-default backColor pull-right">
+                                    VER MÁS <span class="fa fa-chevron-right"></span>
+                                </button>
+                            </a>
+                        </div>
                     </div>
+                    <div class="clearfix"></div>
+                    <hr>
                 </div>
-            </li>
-            <li class="col-md-3 col-sm-6 col-xs-12">
-                <figure>
-                    <a href="#" class="pixelProduct">
-                        <img src="<?php echo $pathBack;?>views/img/productos/ropa/paulaner.png" class="img-responsive">
-                    </a>
-                </figure>
-                <h4>
-                    <small>
-                        <a href="#" class="pixelProduct">
-                            Paulaner<br>
-                            <span class="label label-warning fontSize">40% off</span>
-                        </a>
-                    </small>
-                </h4>
-                <div class="col-xs-6 price">
-                    <h2>
-                        <small><strong class="oferta">29€</strong></small>
-                        <small>11€</small>
-                    </h2>
-                </div>
-                <div class="col-xs-6 links">
-                    <div class="btn-group pull-right">
-                        <button type="button" class="btn btn-default btn-xs whishList" idProducto="470" data-toggle="tooltip" title="Agregar a mi lista de deseos">
-                            <i class="fa fa-heart" aria-hidden="true"></i>
-                        </button>
-                        <a href="#" class="pixelProduct">
-                            <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="Ver producto">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </button>
-                        </a>
-                    </div>
-                </div>
-            </li>
-            <li class="col-md-3 col-sm-6 col-xs-12">
-                <figure>
-                    <a href="#" class="pixelProduct">
-                        <img src="<?php echo $pathBack;?>views/img/productos/ropa/ropa02.jpg" class="img-responsive">
-                    </a>
-                </figure>
-                <h4>
-                    <small>
-                        <a href="#" class="pixelProduct">
-                            Quilmes<br>
-                            <span class="label label-warning fontSize">40% off</span>
-                        </a>
-                    </small>
-                </h4>
-                <div class="col-xs-6 price">
-                    <h2>
-                        <small><strong class="oferta">29€</strong></small>
-                        <small>11€</small>
-                    </h2>
-                </div>
-                <div class="col-xs-6 links">
-                    <div class="btn-group pull-right">
-                        <button type="button" class="btn btn-default btn-xs whishList" idProducto="470" data-toggle="tooltip" title="Agregar a mi lista de deseos">
-                            <i class="fa fa-heart" aria-hidden="true"></i>
-                        </button>
-                        <a href="#" class="pixelProduct">
-                            <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="Ver producto">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </button>
-                        </a>
-                    </div>
-                </div>
-            </li>
-            <li class="col-md-3 col-sm-6 col-xs-12">
-                <figure>
-                    <a href="#" class="pixelProduct">
-                        <img src="<?php echo $pathBack;?>views/img/productos/ropa/ropa06.jpg" class="img-responsive">
-                    </a>
-                </figure>
-                <h4>
-                    <small>
-                        <a href="#" class="pixelProduct">
-                            Peroni
-                            <br>
-                            <br>
-                        </a>
-                    </small>
-                </h4>
-                <div class="col-xs-6 price">
-                    <h2>
-                        <small>15€</small>
-                    </h2>
-                </div>
-                <div class="col-xs-6 links">
-                    <div class="btn-group pull-right">
-                        <button type="button" class="btn btn-default btn-xs whishList" idProducto="470" data-toggle="tooltip" title="Agregar a mi lista de deseos">
-                            <i class="fa fa-heart" aria-hidden="true"></i>
-                        </button>
-                        <a href="#" class="pixelProduct">
-                            <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="Ver producto">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </button>
-                        </a>
-                    </div>
-                </div>
-            </li>
+                <ul class="grid grid'.$i.'">';
 
-        </ul>
+                $productsGrid = ProductController::getProductsMost($modules[$i]['value'], $modules[$i]['type']);
+                foreach($productsGrid as $pr) {
+                    echo '
+                    <li class="col-md-3 col-sm-6 col-xs-12">
+                        <figure>
+                            <a href="'.$pr['url'].'" class="pixelProduct">
+                                <img src="' . $pathBack . $pr['cover'] . '" class="img-responsive">
+                            </a>
+                        </figure>
+                        <h4>
+                            <small>
+                                <a href="'.$pr['url'].'" class="pixelProduct">
+                                    ' . $pr['title'];
+                                    echo '<div class="col-12">';
+                    if($pr['new'] == 1){
+                                echo '<span class="label label-warning fontSize">Nuevo</span>';
+                    } else {
+                        echo '<span style="opacity:0">-</span>';
+                    }
 
-        <ul class="list list1">
-            <li class="col-xs-12">
+                    if($pr['offer_discount'] > 0){
+                        echo '<span class="label label-warning fontSize">'.$pr['offer_discount'].'%</span>';
+                    } else {
+                        echo '<span style="opacity:0">-</span>';
+                    }
+
+                                echo '</div></a>
+                            </small>
+                        </h4>
+                        <div class="col-xs-6 price">
+                        <h2>';
+                    if($pr['offer_price'] != 0)
+                    {
+                        echo '<small><strong class="oferta">'.$pr['price'].'</strong></small>
+                              <small>'.$pr['offer_price'].'</small>';
+                    } else {
+                        echo '<small > ';
+                        if ($pr['price'] <= 0) {
+                            echo "GRATIS";
+                        } else {
+                            echo $pr['price'] . "€";
+                        }
+                        echo ' </small >';
+                    }
+                    echo '</h2>
+                        </div>
+                        <div class="col-xs-6 links">
+                            <div class="btn-group pull-right">
+                                <button type="button" class="btn btn-default btn-xs whishList" idProducto="' . $pr['id'] . '" data-toggle="tooltip" title="Agregar a mi lista de deseos">
+                                    <i class="fa fa-heart" aria-hidden="true"></i>
+                                </button>
+                                <a href="#" class="pixelProduct">
+                                    <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="Ver producto">
+                                        <i class="fa fa-eye" aria-hidden="true"></i>
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </li>';
+                }
+
+                echo '</ul>
+                <ul class="list list'.$i.'">';
+
+                foreach($productsGrid as $pl) {
+                    echo '
+                    <li class="col-xs-12">
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
                     <figure>
-                        <a href="#" class="pixelProduct"><img src="<?php echo $pathBack;?>views/img/productos/ropa/ropa03.jpg" class="img-responsive"></a>
+                        <a href="'.$pl['url'].'" class="pixelProduct"><img src="'.$pathBack . $pl['cover'].'" class="img-responsive"></a>
                     </figure>
                 </div>
                 <div class="col-lg-10 col-md-7 col-sm-8 col-xs-12">
                     <h1>
                         <small>
-                            <a href="#" class="pixelProduct">Chouffe</a>
-                            <span class="label label-warning fontSize">Nuevo</span>
-                            <span class="label label-warning fontSize">40% off</span>
+                            <a href="'.$pl['url'].'" class="pixelProduct">'.$pl['title'];
+                    if($pr['new'] == 1){
+                        echo '<span class="label label-warning fontSize">Nuevo</span>';
+                    }
+
+                    if($pr['offer_discount'] > 0){
+                        echo '<span class="label label-warning fontSize">'.$pr['offer_discount'].'%</span>';
+                    }
+                            echo '</a>
                         </small>
                     </h1>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate minus, consectetur beatae fugit odio iure repudiandae quia distinctio, id ducimus molestiae. Obcaecati, unde. Illo molestiae dolorum, saepe nisi enim iusto.</p>
-                    <h2><small>GRATIS</small></h2>
+                    <p class="text-muted">'.$pl['short_description'].'</p>
+                    <h2>';
+
+                    if($pl['offer_price'] != 0)
+                    {
+                        echo '<small><strong class="oferta">'.$pl['price'].'</strong></small>
+                              <small>'.$pl['offer_price'].'</small>';
+                    } else {
+                        echo '<small > ';
+                        if ($pl['price'] <= 0) {
+                            echo "GRATIS";
+                        } else {
+                            echo $pl['price'] . "€";
+                        }
+                        echo ' </small >';
+                    }
+
+                    echo '</h2>
                     <div class="btn-group pull-left links">
-                        <button type="button" class="btn btn-default btn-xs whishList"  idProducto="470" data-toggle="tooltip" title="Agregar a mi lista de deseos">
+                        <button type="button" class="btn btn-default btn-xs whishList"  idProducto="'.$pl['id'].'" data-toggle="tooltip" title="Agregar a mi lista de deseos">
                             <i class="fa fa-heart" aria-hidden="true"></i>
                         </button>
-                        <a href="#" class="pixelProduct">
+                        <a href="'.$pl['url'].'" class="pixelProduct">
                             <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="Ver producto">
                                 <i class="fa fa-eye" aria-hidden="true"></i>
                             </button>
@@ -505,509 +180,11 @@
                     <hr>
                 </div>
             </li>
-
-            <li class="col-xs-12">
-                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
-                    <figure>
-                        <a href="#" class="pixelProduct"><img src="<?php echo $pathBack;?>views/img/productos/ropa/paulaner.png" class="img-responsive"></a>
-                    </figure>
-                </div>
-                <div class="col-lg-10 col-md-7 col-sm-8 col-xs-12">
-                    <h1>
-                        <small>
-                            <a href="#" class="pixelProduct">Paulaner</a>
-                            <span class="label label-warning fontSize">40% off</span>
-                        </small>
-                    </h1>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate minus, consectetur beatae fugit odio iure repudiandae quia distinctio, id ducimus molestiae. Obcaecati, unde. Illo molestiae dolorum, saepe nisi enim iusto.</p>
-                    <h2><small><strong class="oferta">29€</strong></small>
-                        <small>11€</small></h2>
-                    <div class="btn-group pull-left links">
-                        <button type="button" class="btn btn-default btn-xs whishList"  idProducto="470" data-toggle="tooltip" title="Agregar a mi lista de deseos">
-                            <i class="fa fa-heart" aria-hidden="true"></i>
-                        </button>
-                        <a href="#" class="pixelProduct">
-                            <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="Ver producto">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </button>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-xs-12">
-                    <hr>
-                </div>
-            </li>
-
-            <li class="col-xs-12">
-                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
-                    <figure>
-                        <a href="#" class="pixelProduct"><img src="<?php echo $pathBack;?>views/img/productos/ropa/ropa02.jpg" class="img-responsive"></a>
-                    </figure>
-                </div>
-                <div class="col-lg-10 col-md-7 col-sm-8 col-xs-12">
-                    <h1>
-                        <small>
-                            <a href="#" class="pixelProduct">Quilmes</a>
-                            <span class="label label-warning fontSize">40% off</span>
-                        </small>
-                    </h1>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate minus, consectetur beatae fugit odio iure repudiandae quia distinctio, id ducimus molestiae. Obcaecati, unde. Illo molestiae dolorum, saepe nisi enim iusto.</p>
-                    <h2><small><strong class="oferta">29€</strong></small>
-                        <small>11€</small></h2>
-                    <div class="btn-group pull-left links">
-                        <button type="button" class="btn btn-default btn-xs whishList"  idProducto="470" data-toggle="tooltip" title="Agregar a mi lista de deseos">
-                            <i class="fa fa-heart" aria-hidden="true"></i>
-                        </button>
-                        <a href="#" class="pixelProduct">
-                            <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="Ver producto">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </button>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-xs-12">
-                    <hr>
-                </div>
-            </li>
-
-            <li class="col-xs-12">
-                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
-                    <figure>
-                        <a href="#" class="pixelProduct"><img src="<?php echo $pathBack;?>views/img/productos/ropa/ropa06.jpg" class="img-responsive"></a>
-                    </figure>
-                </div>
-                <div class="col-lg-10 col-md-7 col-sm-8 col-xs-12">
-                    <h1>
-                        <small>
-                            <a href="#" class="pixelProduct">Peroni</a>
-                        </small>
-                    </h1>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate minus, consectetur beatae fugit odio iure repudiandae quia distinctio, id ducimus molestiae. Obcaecati, unde. Illo molestiae dolorum, saepe nisi enim iusto.</p>
-                    <h2><small>15€</small></h2>
-                    <div class="btn-group pull-left links">
-                        <button type="button" class="btn btn-default btn-xs whishList"  idProducto="470" data-toggle="tooltip" title="Agregar a mi lista de deseos">
-                            <i class="fa fa-heart" aria-hidden="true"></i>
-                        </button>
-                        <a href="#" class="pixelProduct">
-                            <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="Ver producto">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </button>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-xs-12">
-                    <hr>
-                </div>
-            </li>
-
-        </ul>
-
-    </div>
-
-</div>
-
-
-<div class="container-fluid well well-sm productBar">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 productShow">
-                <div class="btn-group pull-right">
-                    <button class="btn btn-default btnGrid backColor" id="btnGrid2">
-                        <i class="fa fa-th" aria-hidden="true"></i>
-                        <span class="col-xs-0 pull-right"> GRID</span>
-                    </button>
-                </div>
-                <div class="btn-group pull-right">
-                    <button class="btn btn-default btnList" id="btnList2">
-                        <i class="fa fa-list" aria-hidden="true"></i>
-                        <span class="col-xs-0 pull-right"> LIST</span>
-                    </button>
-                </div>
+                    ';
+                }
+            echo '</ul>
             </div>
         </div>
-    </div>
-</div>
-<div class="container-fluid products">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 highLightTitle">
-                <div class="col-sm-6 col-xs-12">
-                    <h1><small>ARTÍCULOS MÁS VISTOS </small></h1>
-                </div>
-                <div class="col-sm-6 col-xs-12">
-                    <a href="most-show">
-                        <button class="btn btn-default backColor pull-right">
-                            VER MÁS <span class="fa fa-chevron-right"></span>
-                        </button>
-                    </a>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-            <hr>
-        </div>
-
-        <ul class="grid grid2">
-            <li class="col-md-3 col-sm-6 col-xs-12">
-                <figure>
-                    <a href="#" class="pixelProduct">
-                        <img src="<?php echo $pathBack;?>views/img/productos/cursos/curso04.jpg" class="img-responsive">
-                    </a>
-                </figure>
-                <h4>
-                    <small>
-                        <a href="#" class="pixelProduct">
-                            Ambar negra<br>
-                            <span class="label label-warning fontSize">90% off</span>
-                        </a>
-                    </small>
-                </h4>
-                <div class="col-xs-6 price">
-                    <h2>
-                        <small><strong class="oferta">100€</strong></small>
-                        <small>10€</small>
-                    </h2>
-                </div>
-                <div class="col-xs-6 links">
-                    <div class="btn-group pull-right">
-                        <button type="button" class="btn btn-default btn-xs whishList" idProducto="470" data-toggle="tooltip" title="Agregar a mi lista de deseos">
-                            <i class="fa fa-heart" aria-hidden="true"></i>
-                        </button>
-                        <button type="button" class="btn btn-default btn-xs addToCart"
-                                idProducto="404"
-                                image="<?php echo $pathBack;?>views/img/productos/cursos/curso04.jpg"
-                                name="Ambar negra"
-                                price="10"
-                                type="virtual"
-                                weight="0"
-                                data-toggle="tooltip"
-                                title="Agregar al carrito"
-                        >
-                            <i class="fa fa-shopping-cart"></i>
-                        </button>
-                        <a href="#" class="pixelProduct">
-                            <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="Ver producto">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </button>
-                        </a>
-                    </div>
-                </div>
-            </li>
-            <li class="col-md-3 col-sm-6 col-xs-12">
-                <figure>
-                    <a href="#" class="pixelProduct">
-                        <img src="<?php echo $pathBack;?>views/img/productos/cursos/curso02.jpg" class="img-responsive">
-                    </a>
-                </figure>
-                <h4>
-                    <small>
-                        <a href="#" class="pixelProduct">
-                            Malquerida<br>
-                            <span class="label label-warning fontSize">90% off</span>
-                        </a>
-                    </small>
-                </h4>
-                <div class="col-xs-6 price">
-                    <h2>
-                        <small><strong class="oferta">100€</strong></small>
-                        <small>10€</small>
-                    </h2>
-                </div>
-                <div class="col-xs-6 links">
-                    <div class="btn-group pull-right">
-                        <button type="button" class="btn btn-default btn-xs whishList" idProducto="470" data-toggle="tooltip" title="Agregar a mi lista de deseos">
-                            <i class="fa fa-heart" aria-hidden="true"></i>
-                        </button>
-                        <button type="button" class="btn btn-default btn-xs addToCart"
-                                idProducto="404"
-                                image="<?php echo $pathBack;?>views/img/productos/cursos/curso02.jpg"
-                                name="Malquerida"
-                                price="10"
-                                type="virtual"
-                                weight="0"
-                                data-toggle="tooltip"
-                                title="Agregar al carrito"
-                        >
-                            <i class="fa fa-shopping-cart"></i>
-                        </button>
-                        <a href="#" class="pixelProduct">
-                            <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="Ver producto">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </button>
-                        </a>
-                    </div>
-                </div>
-            </li>
-            <li class="col-md-3 col-sm-6 col-xs-12">
-                <figure>
-                    <a href="#" class="pixelProduct">
-                        <img src="<?php echo $pathBack;?>views/img/productos/cursos/curso03.jpg" class="img-responsive">
-                    </a>
-                </figure>
-                <h4>
-                    <small>
-                        <a href="#" class="pixelProduct">
-                            Sapporo<br>
-                            <span class="label label-warning fontSize">90% off</span>
-                        </a>
-                    </small>
-                </h4>
-                <div class="col-xs-6 price">
-                    <h2>
-                        <small><strong class="oferta">100€</strong></small>
-                        <small>10€</small>
-                    </h2>
-                </div>
-                <div class="col-xs-6 links">
-                    <div class="btn-group pull-right">
-                        <button type="button" class="btn btn-default btn-xs whishList" idProducto="470" data-toggle="tooltip" title="Agregar a mi lista de deseos">
-                            <i class="fa fa-heart" aria-hidden="true"></i>
-                        </button>
-                        <button type="button" class="btn btn-default btn-xs addToCart"
-                                idProducto="404"
-                                image="<?php echo $pathBack;?>views/img/productos/cursos/curso03.jpg"
-                                name="Sapporo"
-                                price="10"
-                                type="virtual"
-                                weight="0"
-                                data-toggle="tooltip"
-                                title="Agregar al carrito"
-                        >
-                            <i class="fa fa-shopping-cart"></i>
-                        </button>
-                        <a href="#" class="pixelProduct">
-                            <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="Ver producto">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </button>
-                        </a>
-                    </div>
-                </div>
-            </li>
-            <li class="col-md-3 col-sm-6 col-xs-12">
-                <figure>
-                    <a href="#" class="pixelProduct">
-                        <img src="<?php echo $pathBack;?>views/img/productos/cursos/curso05.jpg" class="img-responsive">
-                    </a>
-                </figure>
-                <h4>
-                    <small>
-                        <a href="#" class="pixelProduct">
-                            Guiness original<br>
-                            <span class="label label-warning fontSize">90% off</span>
-                        </a>
-                    </small>
-                </h4>
-                <div class="col-xs-6 price">
-                    <h2>
-                        <small><strong class="oferta">100€</strong></small>
-                        <small>10€</small>
-                    </h2>
-                </div>
-                <div class="col-xs-6 links">
-                    <div class="btn-group pull-right">
-                        <button type="button" class="btn btn-default btn-xs whishList" idProducto="470" data-toggle="tooltip" title="Agregar a mi lista de deseos">
-                            <i class="fa fa-heart" aria-hidden="true"></i>
-                        </button>
-                        <button type="button" class="btn btn-default btn-xs addToCart"
-                                idProducto="404"
-                                image="<?php echo $pathBack;?>views/img/productos/cursos/curso05.jpg"
-                                name="Guiness original"
-                                price="10"
-                                type="virtual"
-                                weight="0"
-                                data-toggle="tooltip"
-                                title="Agregar al carrito"
-                        >
-                            <i class="fa fa-shopping-cart"></i>
-                        </button>
-                        <a href="#" class="pixelProduct">
-                            <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="Ver producto">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </button>
-                        </a>
-                    </div>
-                </div>
-            </li>
-
-        </ul>
-
-        <ul class="list list2">
-            <li class="col-xs-12">
-                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
-                    <figure>
-                        <a href="#" class="pixelProduct"><img src="<?php echo $pathBack;?>views/img/productos/cursos/curso04.jpg" class="img-responsive"></a>
-                    </figure>
-                </div>
-                <div class="col-lg-10 col-md-7 col-sm-8 col-xs-12">
-                    <h1>
-                        <small>
-                            <a href="#" class="pixelProduct">Ambar negra</a>
-                            <span class="label label-warning fontSize">90% off</span>
-                        </small>
-                    </h1>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate minus, consectetur beatae fugit odio iure repudiandae quia distinctio, id ducimus molestiae. Obcaecati, unde. Illo molestiae dolorum, saepe nisi enim iusto.</p>
-                    <h2>
-                        <small><strong class="oferta">100€</strong></small>
-                        <small>10€</small></h2>
-                    <div class="btn-group pull-left links">
-                        <button type="button" class="btn btn-default btn-xs whishList"  idProducto="470" data-toggle="tooltip" title="Agregar a mi lista de deseos">
-                            <i class="fa fa-heart" aria-hidden="true"></i>
-                        </button>
-                        <button type="button" class="btn btn-default btn-xs addToCart"
-                                idProducto="404"
-                                image="<?php echo $pathBack;?>views/img/productos/cursos/curso04.jpg"
-                                name="Ambar negra"
-                                price="10"
-                                type="virtual"
-                                weight="0"
-                                data-toggle="tooltip"
-                                title="Agregar al carrito"
-                        >
-                            <i class="fa fa-shopping-cart"></i>
-                        </button>
-                        <a href="#" class="pixelProduct">
-                            <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="Ver producto">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </button>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-xs-12">
-                    <hr>
-                </div>
-            </li>
-
-            <li class="col-xs-12">
-                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
-                    <figure>
-                        <a href="#" class="pixelProduct"><img src="<?php echo $pathBack;?>views/img/productos/cursos/curso02.jpg" class="img-responsive"></a>
-                    </figure>
-                </div>
-                <div class="col-lg-10 col-md-7 col-sm-8 col-xs-12">
-                    <h1>
-                        <small>
-                            <a href="#" class="pixelProduct">Malquerida</a>
-                            <span class="label label-warning fontSize">90% off</span>
-                        </small>
-                    </h1>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate minus, consectetur beatae fugit odio iure repudiandae quia distinctio, id ducimus molestiae. Obcaecati, unde. Illo molestiae dolorum, saepe nisi enim iusto.</p>
-                    <h2><small>GRATIS</small></h2>
-                    <div class="btn-group pull-left links">
-                        <button type="button" class="btn btn-default btn-xs whishList"  idProducto="470" data-toggle="tooltip" title="Agregar a mi lista de deseos">
-                            <i class="fa fa-heart" aria-hidden="true"></i>
-                        </button>
-                        <button type="button" class="btn btn-default btn-xs addToCart"
-                                idProducto="404"
-                                image="<?php echo $pathBack;?>views/img/productos/cursos/curso02.jpg"
-                                name="Malquerida"
-                                price="10"
-                                type="virtual"
-                                weight="0"
-                                data-toggle="tooltip"
-                                title="Agregar al carrito"
-                        >
-                            <i class="fa fa-shopping-cart"></i>
-                        </button>
-                        <a href="#" class="pixelProduct">
-                            <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="Ver producto">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </button>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-xs-12">
-                    <hr>
-                </div>
-            </li>
-
-            <li class="col-xs-12">
-                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
-                    <figure>
-                        <a href="#" class="pixelProduct"><img src="<?php echo $pathBack;?>views/img/productos/cursos/curso03.jpg" class="img-responsive"></a>
-                    </figure>
-                </div>
-                <div class="col-lg-10 col-md-7 col-sm-8 col-xs-12">
-                    <h1>
-                        <small>
-                            <a href="#" class="pixelProduct">Sapporo</a>
-                            <span class="label label-warning fontSize">90% off</span>
-                        </small>
-                    </h1>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate minus, consectetur beatae fugit odio iure repudiandae quia distinctio, id ducimus molestiae. Obcaecati, unde. Illo molestiae dolorum, saepe nisi enim iusto.</p>
-                    <h2><small>GRATIS</small></h2>
-                    <div class="btn-group pull-left links">
-                        <button type="button" class="btn btn-default btn-xs whishList"  idProducto="470" data-toggle="tooltip" title="Agregar a mi lista de deseos">
-                            <i class="fa fa-heart" aria-hidden="true"></i>
-                        </button>
-                        <button type="button" class="btn btn-default btn-xs addToCart"
-                                idProducto="404"
-                                image="<?php echo $pathBack;?>views/img/productos/cursos/curso03.jpg"
-                                name="Sapporo"
-                                price="10"
-                                type="virtual"
-                                weight="0"
-                                data-toggle="tooltip"
-                                title="Agregar al carrito"
-                        >
-                            <i class="fa fa-shopping-cart"></i>
-                        </button>
-                        <a href="#" class="pixelProduct">
-                            <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="Ver producto">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </button>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-xs-12">
-                    <hr>
-                </div>
-            </li>
-
-            <li class="col-xs-12">
-                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
-                    <figure>
-                        <a href="#" class="pixelProduct"><img src="<?php echo $pathBack;?>views/img/productos/cursos/curso05.jpg" class="img-responsive"></a>
-                    </figure>
-                </div>
-                <div class="col-lg-10 col-md-7 col-sm-8 col-xs-12">
-                    <h1>
-                        <small>
-                            <a href="#" class="pixelProduct">Guiness Original</a>
-                            <span class="label label-warning fontSize">90% off</span>
-                        </small>
-                    </h1>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate minus, consectetur beatae fugit odio iure repudiandae quia distinctio, id ducimus molestiae. Obcaecati, unde. Illo molestiae dolorum, saepe nisi enim iusto.</p>
-                    <h2><small>GRATIS</small></h2>
-                    <div class="btn-group pull-left links">
-                        <button type="button" class="btn btn-default btn-xs whishList"  idProducto="470" data-toggle="tooltip" title="Agregar a mi lista de deseos">
-                            <i class="fa fa-heart" aria-hidden="true"></i>
-                        </button>
-                        <button type="button" class="btn btn-default btn-xs addToCart"
-                                idProducto="404"
-                                image="<?php echo $pathBack;?>views/img/productos/cursos/curso05.jpg"
-                                name="Guiness original"
-                                price="10"
-                                type="virtual"
-                                weight="0"
-                                data-toggle="tooltip"
-                                title="Agregar al carrito"
-                        >
-                            <i class="fa fa-shopping-cart"></i>
-                        </button>
-                        <a href="#" class="pixelProduct">
-                            <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="Ver producto">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </button>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-xs-12">
-                    <hr>
-                </div>
-            </li>
-
-        </ul>
-
-    </div>
-
-</div>
-
+        ';
+    }
+?>
