@@ -112,7 +112,7 @@ BANNER
                                 <button type="button" class="btn btn-default btn-xs whishList" idProducto="' . $pr['id'] . '" data-toggle="tooltip" title="Agregar a mi lista de deseos">
                                     <i class="fa fa-heart" aria-hidden="true"></i>
                                 </button>
-                                <a href="#" class="pixelProduct">
+                                <a href="'.$pr['url'].'" class="pixelProduct">
                                     <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="Ver producto">
                                         <i class="fa fa-eye" aria-hidden="true"></i>
                                     </button>

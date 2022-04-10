@@ -20,6 +20,10 @@ FRIENDLY URLS
             $paths[0] == 'most-view')
         {
             include "modules/products.php";
+        }
+        elseif ($values = ProductController::isProd($paths[0]))
+        {
+            include "modules/productPage.php";
         } else {
             include "modules/error404.php";
         }

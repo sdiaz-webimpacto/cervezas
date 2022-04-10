@@ -11,4 +11,15 @@ class ProductModel
         $stmt->close();
         $stmt = null;
     }
+
+    public static function getUrl($value)
+    {
+        $stmt = Conn::connect()->prepare("SELECT id, url FROM product WHERE url = :url");
+        $stmt->bindParam(":url", $value, PDO::PARAM_STR);
+        $stmt->execute();
+        $vals = $stmt->fetch();
+        return $vals;
+        $stmt->close();
+        $stmt = null;
+    }
 }
