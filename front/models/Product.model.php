@@ -3,9 +3,9 @@
 
 class ProductModel
 {
-    public static function getProductsMost($value, $type)
+    public static function getProductsMost($value, $type, $init = 0, $limit = 4)
     {
-        $stmt = Conn::connect()->prepare("SELECT * FROM product ORDER BY $value $type LIMIT 4");
+        $stmt = Conn::connect()->prepare("SELECT * FROM product ORDER BY $value $type LIMIT $init, $limit");
         $stmt->execute();
         return $stmt->fetchAll();
         $stmt->close();

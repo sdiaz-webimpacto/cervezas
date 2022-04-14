@@ -1,1 +1,2 @@
-<h4>Productos</h4>
+<?php
+var_dump($path);

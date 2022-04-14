@@ -19,4 +19,15 @@ class CategoryController
             return false;
         }
     }
+
+    public static function getProductsInCategory($id_category, $order = 'id', $method = 'DESC', $init = 0, $limit = 12)
+    {
+        $response = CategoryModel::getProductsInCategory($id_category, $order, $method, $init, $limit);
+        if(count($response) >= 1)
+        {
+            return $response;
+        } else {
+            return "No hay ningún producto en esta categoria";
+        }
+    }
 }
