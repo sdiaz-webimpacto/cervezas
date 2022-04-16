@@ -49,6 +49,16 @@ header{
 .btn-default:hover{
 	border: 2px solid #000000;
 }
+.breadcrumb{
+	background: none;
+	text-transform: lowercase;
+	font-size: 1.5rem;
+	font-weight: 500;
+}
+.breadcrumb li a{
+	color: #777;
+}
+
 /*=============================================
 REDES SOCIALES
 =============================================*/

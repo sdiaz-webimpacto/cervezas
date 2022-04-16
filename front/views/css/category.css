@@ -1,0 +1,16 @@
+figure.categoryBanner h1{
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 4rem;
+}
+
+.article{
+    margin-bottom: 40px;
+}
+
+.productListDescription{
+    padding-top: 30px;
+    padding-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: 500;
+}

@@ -19,7 +19,7 @@ FRIENDLY URLS
             $paths[0] == 'most-sales' ||
             $paths[0] == 'most-view')
         {
-            include "modules/products.php";
+            include "modules/category.php";
         }
         elseif ($values = ProductController::isProd($paths[0]))
         {
