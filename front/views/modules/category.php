@@ -1,6 +1,6 @@
 <?php
 
-$productsPerPage = 2;
+$productsPerPage = 12;
 $id = CategoryController::getCategoryId($paths[0]);
 $cat = CategoryController::getCategory($id);
 $products = CategoryController::getProductsInCategory($id, 'id', 'DESC', '0', $productsPerPage);
