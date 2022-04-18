@@ -72,10 +72,9 @@ class CategoryModel
             SELECT a.* FROM product a 
             LEFT JOIN category_product b ON(a.id = b.id_product AND b.id_category = :id_category)
             WHERE b.id_category = :id_category
-            ORDER BY :order $method 
+            ORDER BY $order $method 
             LIMIT :init, :limit");
         $stmt->bindParam(":id_category", $id_category, PDO::PARAM_INT);
-        $stmt->bindParam(":order", $order, PDO::PARAM_STR);
         $stmt->bindParam(":init", $init, PDO::PARAM_INT);
         $stmt->bindParam(":limit", $limit, PDO::PARAM_INT);
         $stmt->execute();

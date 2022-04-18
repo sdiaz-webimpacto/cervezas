@@ -1,6 +1,15 @@
 <?php
 
-$productsPerPage = 2;
+if(!isset($paths[2]))
+{
+    $_SESSION['order'] = 'id';
+    $_SESSION['method'] = 'ASC';
+} else {
+    $_SESSION['order'] = $paths[2];
+    $_SESSION['method'] = $paths[3];
+}
+
+$productsPerPage = 12;
 $page = 1;
 if(isset($paths[1]))
 {
@@ -9,7 +18,7 @@ if(isset($paths[1]))
 $findCant = ($page - 1) * $productsPerPage;
 $id = CategoryController::getCategoryId($paths[0]);
 $cat = CategoryController::getCategory($id);
-$products = CategoryController::getProductsInCategory($id, 'id', 'DESC', $findCant, $productsPerPage);
+$products = CategoryController::getProductsInCategory($id, $_SESSION['order'], $_SESSION['method'], $findCant, $productsPerPage);
 $parentCat = false;
 $productList = CategoryController::getProductList($id, 'id', 'DESC');
 
@@ -55,8 +64,12 @@ if(!is_array($products))
                             ORDENAR POR <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Lo más reciente</a></li>
-                            <li><a href="#">Lo más antiguo</a></li>
+                            <li><a href="' . $path . $paths[0] . '/1/id/DESC' . '">Lo más reciente</a></li>
+                            <li><a href="' . $path . $paths[0] . '/1/id/ASC' . '">Lo más antiguo</a></li>
+                            <li><a href="' . $path . $paths[0] . '/1/price/DESC' . '">Precio más alto</a></li>
+                            <li><a href="' . $path . $paths[0] . '/1/price/ASC' . '">Precio más bajo</a></li>
+                            <li><a href="' . $path . $paths[0] . '/1/title/ASC' . '">Nombre A-Z</a></li>
+                            <li><a href="' . $path . $paths[0] . '/1/title/DESC' . '">Nombre Z-A</a></li>
                         </ul>
                     </div>
                 </div>            
@@ -242,7 +255,7 @@ if(!is_array($products))
          {
              echo '
              <li class="page-item '; if($i == $page) {echo 'active';} echo '">
-                <a class="page-link" href="'.$path.$paths[0].'/'.$i.'">'.$i.'</a>
+                <a class="page-link" href="'.$path.$paths[0].'/'.$i.'/'.$_SESSION['order'].'/'.$_SESSION['method'].'">'.$i.'</a>
              </li>
              ';
          }
@@ -256,7 +269,7 @@ if(!is_array($products))
             <a class="page-link" ';
          if($page !== 1)
          {
-             echo 'href="'  . $path . $paths[0] . '/' . ($page - 1) . '"';
+             echo 'href="'.$path.$paths[0].'/'.($page-1).'/'.$_SESSION['order'].'/'.$_SESSION['method'].'"';
          }
          echo 'aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
@@ -278,7 +291,7 @@ if(!is_array($products))
                  echo 'active';
              }
              echo '">
-                <a class="page-link" href="' . $path . $paths[0] . '/' . $i . '">' . $i . '</a>
+                <a class="page-link" href="'.$path.$paths[0].'/'.$i.'/'.$_SESSION['order'].'/'.$_SESSION['method'].'">' . $i . '</a>
              </li>
              ';
          }
@@ -291,7 +304,7 @@ if(!is_array($products))
             <a class="page-link" ';
          if($page !== $pages)
          {
-             echo 'href="'  . $path . $paths[0] . '/' . ($page + 1) . '"';
+             echo 'href="'.$path.$paths[0].'/'.($page+1).'/'.$_SESSION['order'].'/'.$_SESSION['method'].'"';
          }
          echo 'aria-label="Previous">
                 <span aria-hidden="true">&raquo;</span>
@@ -309,7 +322,7 @@ if(!is_array($products))
             <a class="page-link" ';
          if($page !== 1)
          {
-             echo 'href="'  . $path . $paths[0] . '/' . ($page - 1) . '"';
+             echo 'href="'.$path.$paths[0].'/'.($page-1).'/'.$_SESSION['order'].'/'.$_SESSION['method'].'"';
          }
          echo 'aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
@@ -333,7 +346,7 @@ if(!is_array($products))
                      echo 'active';
                  }
                  echo '">
-                <a class="page-link" href="' . $path . $paths[0] . '/' . $i . '">' . $i . '</a>
+                <a class="page-link" href="'.$path.$paths[0].'/'.$i.'/'.$_SESSION['order'].'/'.$_SESSION['method'].'">' . $i . '</a>
              </li>
              ';
              }
@@ -342,14 +355,14 @@ if(!is_array($products))
                 <a class="page-link" href="#">...</a>
              </li>
              <li class="page-item">
-                <a class="page-link" href="' . $path . $paths[0] . '/' .$pages.'">'.$pages.'</a>
+                <a class="page-link" href="'.$path.$paths[0].'/'.$pages.'/'.$_SESSION['order'].'/'.$_SESSION['method'].'">'.$pages.'</a>
              </li>
              ';
          } elseif ($page >= 5 && $page <= ($pages -4))
          {
             echo '
              <li class="page-item">
-                <a class="page-link" href="' . $path . $paths[0] . '/1">1</a>
+                <a class="page-link" href="'.$path.$paths[0].'/1/'.$_SESSION['order'].'/'.$_SESSION['method'].'">1</a>
              </li>
              <li class="page-item disabled">
                 <a class="page-link" href="#">...</a>
@@ -362,7 +375,7 @@ if(!is_array($products))
                      echo 'active';
                  }
                  echo '">
-                <a class="page-link" href="' . $path . $paths[0] . '/' . $i . '">' . $i . '</a>
+                <a class="page-link" href="'.$path.$paths[0].'/'.$i.'/'.$_SESSION['order'].'/'.$_SESSION['method'].'">' . $i . '</a>
              </li>
              ';
              }
@@ -371,13 +384,13 @@ if(!is_array($products))
                 <a class="page-link" href=#>...</a>
              </li>
              <li class="page-item">
-                <a class="page-link" href="'  . $path . $paths[0] . '/' .$pages.'">'.$pages.'</a>
+                <a class="page-link" href="'.$path.$paths[0].'/'.$pages.'/'.$_SESSION['order'].'/'.$_SESSION['method'].'">'.$pages.'</a>
              </li>
             ';
          } else {
              echo '
              <li class="page-item">
-                <a class="page-link" href="' . $path . $paths[0] . '/1">1</a>
+                <a class="page-link" href="'.$path.$paths[0].'/1/'.$_SESSION['order'].'/'.$_SESSION['method'].'">1</a>
              </li>
              <li class="page-item disabled">
                 <a class="page-link" href="#">...</a>
@@ -390,7 +403,7 @@ if(!is_array($products))
                      echo 'active';
                  }
                  echo '">
-                <a class="page-link" href="' . $path . $paths[0] . '/' . $i . '">' . $i . '</a>
+                <a class="page-link" href="'.$path.$paths[0].'/'.$i.'/'.$_SESSION['order'].'/'.$_SESSION['method'].'">' . $i . '</a>
              </li>
              ';
              }
@@ -405,7 +418,7 @@ if(!is_array($products))
             <a class="page-link" ';
          if($page != $pages)
          {
-             echo 'href="'  . $path . $paths[0] . '/' . ($page + 1) . '"';
+             echo 'href="'.$path.$paths[0].'/'.($page+1).'/'.$_SESSION['order'].'/'.$_SESSION['method'].'"';
          }
          echo 'aria-label="Previous">
                 <span aria-hidden="true">&raquo;</span>

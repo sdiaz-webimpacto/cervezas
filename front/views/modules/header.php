@@ -2,6 +2,8 @@
 <html lang="es">
 <head>
     <?php
+            session_start();
+
         $socials = TemplateController::TemplateStyleController();
         $social = $socials[1];
     ?>
