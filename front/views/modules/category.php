@@ -1,9 +1,15 @@
 <?php
 
-$productsPerPage = 12;
+$productsPerPage = 2;
+$page = 1;
+if(isset($paths[1]))
+{
+    $page = $paths[1];
+}
+$findCant = ($page - 1) * $productsPerPage;
 $id = CategoryController::getCategoryId($paths[0]);
 $cat = CategoryController::getCategory($id);
-$products = CategoryController::getProductsInCategory($id, 'id', 'DESC', '0', $productsPerPage);
+$products = CategoryController::getProductsInCategory($id, 'id', 'DESC', $findCant, $productsPerPage);
 $parentCat = false;
 $productList = CategoryController::getProductList($id, 'id', 'DESC');
 
@@ -69,8 +75,8 @@ if(!is_array($products))
                     </div>
                 </div>
             </div>
-            </div>
-        </div>';
+        </div>
+    </div>';
     /**
      * BREADCRUM
      */
@@ -93,6 +99,7 @@ if(!is_array($products))
 </div>
 ';
     echo '
+        <div class="container-fluid products">
         <div class="container">
         <ul class="grid grid0">';
         foreach($products as $pr) {
@@ -234,44 +241,173 @@ if(!is_array($products))
          for($i = 1; $i<= $pages; $i++)
          {
              echo '
-             <li class="page-item">
-                <a class="page-link" href="#">'.$i.'</a>
+             <li class="page-item '; if($i == $page) {echo 'active';} echo '">
+                <a class="page-link" href="'.$path.$paths[0].'/'.$i.'">'.$i.'</a>
              </li>
              ';
          }
-     } else {
+     } elseif ($pages > 4 && $pages <= 8) {
          echo '
-         <li class="page-item disabled">
-            <a class="page-link" href="#" aria-label="Previous">
+         <li class="page-item ';
+         if ($page == 1) {
+             echo 'disabled';
+         }
+         echo '">
+            <a class="page-link" ';
+         if($page !== 1)
+         {
+             echo 'href="'  . $path . $paths[0] . '/' . ($page - 1) . '"';
+         }
+         echo 'aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
             </a>
          </li>
          ';
 
-         for($i = 1; $i<= 4; $i++)
-         {
+         if ($page >= 3) {
+             $start = 2;
+             $end = $pages;
+         } else {
+             $start = 1;
+             $end = 4;
+         }
+         for ($i = $start; $i <= $end; $i++) {
              echo '
-             <li class="page-item">
-                <a class="page-link" href="#">'.$i.'</a>
+             <li class="page-item ';
+             if ($i == $page) {
+                 echo 'active';
+             }
+             echo '">
+                <a class="page-link" href="' . $path . $paths[0] . '/' . $i . '">' . $i . '</a>
              </li>
              ';
          }
-
-         if($pages >= 8)
+         echo '
+         <li class="page-item ';
+         if ($page == $pages) {
+             echo 'disabled';
+         }
+         echo '">
+            <a class="page-link" ';
+         if($page !== $pages)
          {
+             echo 'href="'  . $path . $paths[0] . '/' . ($page + 1) . '"';
+         }
+         echo 'aria-label="Previous">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+         </li>
+         ';
+
+     } else {
+         echo '
+         <li class="page-item ';
+         if ($page == 1) {
+             echo 'disabled';
+         }
+         echo '">
+            <a class="page-link" ';
+         if($page !== 1)
+         {
+             echo 'href="'  . $path . $paths[0] . '/' . ($page - 1) . '"';
+         }
+         echo 'aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+         </li>
+         ';
+
+         if($page <= 4)
+         {
+             if ($page >= 3) {
+                 $start = 2;
+                 $end = 5;
+             } else {
+                 $start = 1;
+                 $end = 4;
+             }
+             for ($i = $start; $i <= $end; $i++) {
+                 echo '
+             <li class="page-item ';
+                 if ($i == $page) {
+                     echo 'active';
+                 }
+                 echo '">
+                <a class="page-link" href="' . $path . $paths[0] . '/' . $i . '">' . $i . '</a>
+             </li>
+             ';
+             }
              echo '
              <li class="page-item disabled">
                 <a class="page-link" href="#">...</a>
              </li>
              <li class="page-item">
-                <a class="page-link" href="#">'.$pages.'</a>
+                <a class="page-link" href="' . $path . $paths[0] . '/' .$pages.'">'.$pages.'</a>
              </li>
              ';
+         } elseif ($page >= 5 && $page <= ($pages -4))
+         {
+            echo '
+             <li class="page-item">
+                <a class="page-link" href="' . $path . $paths[0] . '/1">1</a>
+             </li>
+             <li class="page-item disabled">
+                <a class="page-link" href="#">...</a>
+             </li>
+            ';
+             for ($i = ($page - 1); $i <= ($page + 1); $i++) {
+                 echo '
+             <li class="page-item ';
+                 if ($i == $page) {
+                     echo 'active';
+                 }
+                 echo '">
+                <a class="page-link" href="' . $path . $paths[0] . '/' . $i . '">' . $i . '</a>
+             </li>
+             ';
+             }
+             echo '
+             <li class="page-item disabled">
+                <a class="page-link" href=#>...</a>
+             </li>
+             <li class="page-item">
+                <a class="page-link" href="'  . $path . $paths[0] . '/' .$pages.'">'.$pages.'</a>
+             </li>
+            ';
+         } else {
+             echo '
+             <li class="page-item">
+                <a class="page-link" href="' . $path . $paths[0] . '/1">1</a>
+             </li>
+             <li class="page-item disabled">
+                <a class="page-link" href="#">...</a>
+             </li>
+            ';
+             for ($i = ($pages - 3); $i <= $pages; $i++) {
+                 echo '
+             <li class="page-item ';
+                 if ($i == $page) {
+                     echo 'active';
+                 }
+                 echo '">
+                <a class="page-link" href="' . $path . $paths[0] . '/' . $i . '">' . $i . '</a>
+             </li>
+             ';
+             }
          }
 
          echo '
-         <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
+         <li class="page-item ';
+         if ($page == $pages) {
+             echo 'disabled';
+         }
+         echo '">
+            <a class="page-link" ';
+         if($page != $pages)
+         {
+             echo 'href="'  . $path . $paths[0] . '/' . ($page + 1) . '"';
+         }
+         echo 'aria-label="Previous">
                 <span aria-hidden="true">&raquo;</span>
             </a>
          </li>
@@ -281,6 +417,7 @@ if(!is_array($products))
         echo '
             </ul>
           </nav>
+     </div>
      </div>
      ';
     }

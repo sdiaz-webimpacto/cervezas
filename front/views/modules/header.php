@@ -118,7 +118,7 @@
                 echo '
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
                 <h4>
-                    <a href="'.$main['url'].'" class="pixelCategorias">'.$main['name'].'</a>
+                    <a href="'.$path.$main['url'].'" class="pixelCategorias">'.$main['name'].'</a>
                 </h4>
                 <hr>
                 <ul>
@@ -127,7 +127,7 @@
                 {
                     if($sub['parent'] === $main['id'])
                     {
-                        echo '<li><a href="'.$sub['url'].'" class="pixelSubCategorias">'.$sub['name'].'</a></li>';
+                        echo '<li><a href="'.$path.$sub['url'].'" class="pixelSubCategorias">'.$sub['name'].'</a></li>';
                     }
                 }
                 echo '

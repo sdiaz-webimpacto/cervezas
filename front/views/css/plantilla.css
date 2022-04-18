@@ -58,6 +58,20 @@ header{
 .breadcrumb li a{
 	color: #777;
 }
+/*=============================================
+PAGINATOR
+=============================================*/
+.pagination li a{
+	color:var(--main-color-black);
+}
+.pagination li.disabled a{
+	color:#CCCCCC;
+}
+.pagination li.active a{
+	background:var(--main-color-base);
+	color:var(--main-color-white);
+}
+
 
 /*=============================================
 REDES SOCIALES
