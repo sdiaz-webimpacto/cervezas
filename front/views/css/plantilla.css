@@ -154,6 +154,41 @@ SCROLL UP
 	background: url(../img/flecha.jpg);
 }
 /*=============================================
+FINDER
+=============================================*/
+#finder{
+	display: none;
+	position: absolute;
+	z-index: 10;
+	background-color: var(--main-color-white);
+	width: 94%;
+	margin-left: 3%;
+	box-shadow: 1px 1px 1px 1px gray;
+}
+#finder .close{
+	width: 100%;
+}
+#finder figure{
+	display: flex;
+	justify-content: center;
+}
+#finder h4{
+	color: var(--main-color-black);
+}
+#finder figure a img
+{
+	width: 300px;
+	height: 400px;
+}
+@media (max-width: 767px)
+{
+	#finder figure a img
+	{
+		width: 100px;
+		height: 150px;
+	}
+}
+/*=============================================
 ESCRITORIO GRANDE (LG revisamos en 1366px en adelante)
 =============================================*/
 @media (min-width:1200px){

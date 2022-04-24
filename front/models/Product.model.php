@@ -1,5 +1,6 @@
 <?php
 
+require_once "Conn.php";
 
 class ProductModel
 {
@@ -18,6 +19,16 @@ class ProductModel
         $stmt->bindParam(":url", $value, PDO::PARAM_STR);
         $stmt->execute();
         $vals = $stmt->fetch();
+        return $vals;
+        $stmt->close();
+        $stmt = null;
+    }
+
+    public static function getFindProduct($string)
+    {
+        $stmt = Conn::connect()->prepare("SELECT * FROM product WHERE title LIKE '%$string%' OR description like '%$string%' OR short_description like '%$string%' OR detail LIKE '%$string%'");
+        $stmt->execute();
+        $vals = $stmt->fetchAll();
         return $vals;
         $stmt->close();
         $stmt = null;

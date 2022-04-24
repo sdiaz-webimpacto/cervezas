@@ -18,4 +18,10 @@ class ProductController
             return false;
         }
     }
+
+    public static function getFindProduct($string)
+    {
+        $response = ProductModel::getFindProduct($string);
+        return $response;
+    }
 }
