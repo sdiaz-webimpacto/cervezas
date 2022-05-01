@@ -33,4 +33,26 @@ class ProductModel
         $stmt->close();
         $stmt = null;
     }
+
+    public static function getProductId($url)
+    {
+        $stmt = Conn::connect()->prepare("SELECT id FROM product WHERE url = :url");
+        $stmt->bindParam(":url", $url, PDO::PARAM_STR);
+        $stmt->execute();
+        $vals = $stmt->fetch();
+        return $vals;
+        $stmt->close();
+        $stmt = null;
+    }
+
+    public static function getProduct($id)
+    {
+        $stmt = Conn::connect()->prepare("SELECT * FROM product WHERE id = :id");
+        $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $vals = $stmt->fetch();
+        return $vals;
+        $stmt->close();
+        $stmt = null;
+    }
 }

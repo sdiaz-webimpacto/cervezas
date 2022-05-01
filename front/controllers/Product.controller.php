@@ -24,4 +24,16 @@ class ProductController
         $response = ProductModel::getFindProduct($string);
         return $response;
     }
+
+    public static function getProductId($url)
+    {
+        $response = ProductModel::getProductId($url);
+        return $response;
+    }
+
+    public static function getProduct($id)
+    {
+        $response = ProductModel::getProduct($id);
+        return $response;
+    }
 }

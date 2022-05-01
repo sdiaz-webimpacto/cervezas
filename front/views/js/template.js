@@ -58,7 +58,9 @@ if($('.list').length >= 1)
  */
 
 $(window).scroll(function(){
-	let scrollY = window.pageYOffset;
+	if($(".banner").length > 0)
+	{
+		let scrollY = window.pageYOffset;
 
 		if(scrollY < ($(".banner").offset().top+250) && scrollY > 200)
 		{
@@ -71,7 +73,7 @@ $(window).scroll(function(){
 				"margin-top":"0px"
 			})
 		}
-
+	}
 })
 
 $.scrollUp({

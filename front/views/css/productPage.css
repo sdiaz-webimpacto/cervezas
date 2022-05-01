@@ -1,0 +1,19 @@
+.productPage figure.visor{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.productPage figure.visor img{
+    display: none;
+    cursor: crosshair;
+}
+
+.productPage figure.visor img:first-child{
+    display: block;
+}
+
+.productPage .flexslider .slides li img{
+    height: 100px;
+    width: auto;
+}

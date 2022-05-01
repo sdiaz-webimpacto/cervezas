@@ -22,11 +22,13 @@
 
     <link rel="stylesheet" href="<?php echo $path;?>views/css/plugins/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo $path;?>views/css/plugins/font-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo $path;?>views/css/plugins/flexslider.css">
     <link rel="stylesheet" href="<?php echo $path;?>views/css/plantilla.css">
     <link rel="stylesheet" href="<?php echo $path;?>views/css/header.css">
     <link rel="stylesheet" href="<?php echo $path;?>views/css/slider.css">
     <link rel="stylesheet" href="<?php echo $path;?>views/css/products.css">
     <link rel="stylesheet" href="<?php echo $path;?>views/css/category.css">
+    <link rel="stylesheet" href="<?php echo $path;?>views/css/productPage.css">
 
     <link rel="icon" type="image/jpg" href="<?php echo $pathBack;?><?php echo $socials[0][0]['favicon'] ?>"/>
 
