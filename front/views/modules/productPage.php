@@ -5,6 +5,8 @@ $imgs = explode(',', $product['multimedia']);
 $cat = CategoryController::getCategoryNameUrl($product['id_category']);
 $numImg = 2;
 $numSlider = 2;
+$today = date('Y-m-d');
+include_once "sections/moreInfoProduct.php";
 
 echo '
 <!-- BREADCRUMB -->
@@ -68,7 +70,45 @@ echo '
             </div>
             <!-- RIGHT COLUMN -->
             <div class="col-md-7 col-sm-6 col-xs-12 datasProduct">
-            
+                <div class="col-12">
+                    <div class="productTitleBlock">
+                        <h2 class="title text-uppercase">'.$product['title'].'</h2>
+                        <h6 class="reference">'.$product['reference'].'</h6>
+                    </div>
+                    <div class="productPriceBlock">
+                        <div class="sticksBlock">';
+$generalPrice = '';
+$finalPrice = $product['price'].' €';
+if($product['offer'] === 1)
+{
+    $generalPrice = $product['price'].' €';
+    $finalPrice = $product['offer_price'].' €';
+    echo '<span class="label label-warning fontSize">'.$product['offer_discount'].' %</span>';
+}
+if($product['new'] === 1)
+{
+    echo '<span class="label label-warning fontSize">Nuevo</span>';
+}
+ echo '                </div>
+                       <div class="prices">
+                           <div class="globalPrice">'.$generalPrice.'</div>
+                           <div class="finalPrice">'.$finalPrice.'</div>
+                       </div>
+                    </div>
+                    <div class="shortDescriptionBlock">
+                        <p class="shortDescription">'.$product['short_description'].'</p>
+                    </div>
+                    <div class="deliveryDateBlock">
+                        <div class="dateDelivery">
+                            <i class="fa fa-clock-o"></i>
+                            Compra ya y recibelo el dia '.date('d-m', strtotime($today.' + '.$product['delivery'].' days')).'
+                        </div>
+                    </div>
+                    <div class="row">';
+$info = new MoreInfoProduct();
+$info->getMoreInfo($product['description'],$product['detail']);
+echo '              </div>
+                </div>
             </div>
         </div>
     </div>

@@ -16,6 +16,11 @@ GLOBAL
 	text-decoration: none;
 	font-family: 'Ubuntu', sans-serif;
 }
+
+body{
+	color: var(--main-color-black);
+}
+
 ul, ol{
 	padding:0px;
 }
@@ -57,6 +62,23 @@ header{
 }
 .breadcrumb li a{
 	color: #777;
+}
+
+.fontSize{
+	margin-right: 5px;
+}
+
+.dropbox {
+	padding: 1rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid var(--main-color-black);
+}
+
+.card.card-body {
+	border-bottom: 1px solid var(--main-color-black);
+	padding: 0.5rem 1rem;
 }
 /*=============================================
 PAGINATOR

@@ -17,3 +17,32 @@
     height: 100px;
     width: auto;
 }
+
+.prices {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.globalPrice {
+    text-decoration: line-through;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.finalPrice {
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--main-color-base);
+}
+
+.shortDescription {
+    margin-top: 1rem;
+}
+
+.dateDelivery {
+    margin: 2rem 0;
+    font-weight: 500;
+    color: var(--main-color-black);
+}
+
