@@ -37,6 +37,10 @@ header{
 .topBar a{
 	color: var(--main-color-black);
 }
+.btn-primary {
+	color: var(--main-color-white);
+	background-color: var(--main-color-base);
+}
 .backColor, .backColor a{
 	background:var(--main-color-second);
 	color:var(--main-color-black);

@@ -40,9 +40,20 @@
     margin-top: 1rem;
 }
 
+#selectionsProduct {
+    margin: 2rem 0;
+}
+
 .dateDelivery {
     margin: 2rem 0;
     font-weight: 500;
     color: var(--main-color-black);
+}
+
+@media (max-width:991px)
+{
+    .addToCartButtons div {
+        margin: .5rem 0;
+    }
 }
 

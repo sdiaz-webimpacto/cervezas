@@ -7,6 +7,7 @@ $numImg = 2;
 $numSlider = 2;
 $today = date('Y-m-d');
 include_once "sections/moreInfoProduct.php";
+include_once "sections/addToCart.php";
 
 echo '
 <!-- BREADCRUMB -->
@@ -103,12 +104,13 @@ if($product['new'] === 1)
                             <i class="fa fa-clock-o"></i>
                             Compra ya y recibelo el dia '.date('d-m', strtotime($today.' + '.$product['delivery'].' days')).'
                         </div>
-                    </div>
-                    <div class="row">';
+                    </div>';
 $info = new MoreInfoProduct();
+$info->selectors($product['detail']);
+$cart = new AddToCart();
+$cart->printAddToCart();
 $info->getMoreInfo($product['description'],$product['detail']);
-echo '              </div>
-                </div>
+echo '          </div>
             </div>
         </div>
     </div>
