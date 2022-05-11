@@ -6,7 +6,8 @@ $cat = CategoryController::getCategoryNameUrl($product['id_category']);
 $numImg = 2;
 $numSlider = 2;
 $today = date('Y-m-d');
-include_once "sections/moreInfoProduct.php";
+include_once "sections/products/moreInfoProduct.php";
+include_once "sections/products/zoom.php";
 include_once "sections/addToCart.php";
 
 echo '
@@ -30,6 +31,12 @@ echo '
         <div class="row">
             <!-- LEFT COLUMN -->
             <div class="col-md-5 col-sm-6 col-xs-12 visorImg">
+            ';
+
+$zoom = new Zoom();
+$zoom->zoomImage();
+
+echo '
                 <figure class="visor">
                     <img class="img-thumbnail zoom" src="'.$pathBack.$product['cover'].'" alt="img-01">';
                     if($imgs[0] != '')
