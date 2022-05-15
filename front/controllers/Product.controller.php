@@ -2,9 +2,15 @@
 
 class ProductController
 {
-    public static function getProductsMost($value, $type)
+    public static function getProductsMost($value, $type, $init = 0, $limit = 4)
     {
-        $response = ProductModel::getProductsMost($value, $type);
+        $response = ProductModel::getProductsMost($value, $type, $init, $limit);
+        return $response;
+    }
+
+    public static function productsCarousel($id_product, $order, $method, $init, $limit)
+    {
+        $response = ProductModel::productsCarousel($id_product, $order, $method, $init, $limit);
         return $response;
     }
 

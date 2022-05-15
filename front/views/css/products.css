@@ -90,7 +90,7 @@ ul.list{
     color:#999999;
     font-size: 1.1rem;
 }
-.grid .pixelProduct img{
+.grid .pixelProduct img, .autoplay .pixelProduct img, .noSlide .pixelProduct img{
     width: 300px;
     height: auto;
 }
@@ -159,7 +159,7 @@ ul.list{
     .banner .rightText, .banner .leftText, .banner .centerText{
         top:1rem;
     }
-    .grid .pixelProduct img{
+    .grid .pixelProduct img, .autoplay .pixelProduct img, .noSlide .pixelProduct img{
         width: 300px;
         height: 400px;
     }
@@ -173,7 +173,7 @@ ul.list{
     .banner .rightText, .banner .leftText, .banner .centerText{
         top:2.5rem;
     }
-    .grid .pixelProduct img{
+    .grid .pixelProduct img, .autoplay .pixelProduct img, .noSlide .pixelProduct img{
         width: 200px;
         height: 267px;
     }
@@ -184,7 +184,7 @@ ul.list{
     .banner{
         height: 260px;
     }
-    .grid .pixelProduct img{
+    .grid .pixelProduct img, .autoplay .pixelProduct img, .noSlide .pixelProduct img{
         width: 300px;
         height: 400px;
     }

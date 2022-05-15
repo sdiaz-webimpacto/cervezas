@@ -84,6 +84,33 @@ header{
 	border-bottom: 1px solid var(--main-color-black);
 	padding: 0.5rem 1rem;
 }
+
+.slick-arrow {
+	position: absolute;
+	z-index: 3;
+	top: 50%;
+	width: 20px;
+	height: 20px;
+	color: transparent;
+	background: transparent;
+	border: none;
+	border-top: 2px solid rgba(0,0,0,.5);
+	border-left: 2px solid rgba(0,0,0,.5);
+	margin-top: -10px;
+}
+.slick-prev {
+	left: 15px;
+	transform: rotate(-45deg);
+}
+.slick-next {
+	right: 15px;
+	transform: rotate(135deg);
+}
+.noSlide {
+	display: flex;
+	justify-content: center;
+}
+
 /*=============================================
 PAGINATOR
 =============================================*/
@@ -97,7 +124,6 @@ PAGINATOR
 	background:var(--main-color-base);
 	color:var(--main-color-white);
 }
-
 
 /*=============================================
 REDES SOCIALES

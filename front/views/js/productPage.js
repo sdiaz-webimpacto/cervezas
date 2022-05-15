@@ -6,6 +6,8 @@ if($('.flexslider').length > 0)
         controlNav: true,
         animationLoop: false,
         slideshow: false,
+        minItems: 2,
+        maxItems: 5,
         itemWidth: 100,
         itemMargin: 5
     });
@@ -63,3 +65,25 @@ if($('.flexslider').length > 0)
     }
 
 }
+
+$('.autoplay').slick({
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    centerMode: true,
+    autoplaySpeed: 2000,
+    responsive: [
+        {
+            breakpoint: 768,
+            settings: {
+                slidesToShow: 3
+            }
+        },
+        {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 1
+            }
+        }
+    ]
+});

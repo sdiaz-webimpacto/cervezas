@@ -9,6 +9,7 @@ $today = date('Y-m-d');
 include_once "views/modules/sections/products/moreInfoProduct.php";
 include_once "views/modules/sections/products/zoom.php";
 include_once "views/modules/sections/addToCart.php";
+include_once "views/modules/sections/productLists/productsCarousel.php";
 
 echo '
 <!-- BREADCRUMB -->
@@ -121,7 +122,9 @@ $info->getMoreInfo($product['description'],$product['detail']);
 include ("plugins/comentsInProducts/views/view.php");
 echo '          </div>
             </div>
-        </div>
-    </div>
+        </div>';
+include ("plugins/relationatedProducts/views/view.php");
+//echo ProductsCarousel::printCarousel($product['id'],'id', 'ASC', 0, 10, "Relationated");
+echo '</div>
 </div>
 ';
