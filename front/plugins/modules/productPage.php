@@ -6,9 +6,9 @@ $cat = CategoryController::getCategoryNameUrl($product['id_category']);
 $numImg = 2;
 $numSlider = 2;
 $today = date('Y-m-d');
-include_once "sections/products/moreInfoProduct.php";
-include_once "sections/products/zoom.php";
-include_once "sections/addToCart.php";
+include_once "views/modules/sections/products/moreInfoProduct.php";
+include_once "views/modules/sections/products/zoom.php";
+include_once "views/modules/sections/addToCart.php";
 
 echo '
 <!-- BREADCRUMB -->
@@ -81,8 +81,9 @@ echo '
                 <div class="col-12">
                     <div class="productTitleBlock">
                         <h2 class="title text-uppercase">'.$product['title'].'</h2>
-                        <h6 class="reference">'.$product['reference'].'</h6>
-                    </div>
+                        <h6 class="reference">'.$product['reference'].'</h6>';
+                        include ("plugins/comentsInProducts/views/rating.php");
+echo '              </div>
                     <div class="productPriceBlock">
                         <div class="sticksBlock">';
 $generalPrice = '';
@@ -117,6 +118,7 @@ $info->selectors($product['detail']);
 $cart = new AddToCart();
 $cart->printAddToCart();
 $info->getMoreInfo($product['description'],$product['detail']);
+include ("plugins/comentsInProducts/views/view.php");
 echo '          </div>
             </div>
         </div>

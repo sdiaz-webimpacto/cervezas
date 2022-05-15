@@ -6,3 +6,6 @@
 <script src="<?php echo $path;?>views/js/slide.js"></script>
 <script src="<?php echo $path;?>views/js/find.js"></script>
 <script src="<?php echo $path;?>views/js/productPage.js"></script>
+<?php
+    include "plugins/pluginsJS.php";
+?>

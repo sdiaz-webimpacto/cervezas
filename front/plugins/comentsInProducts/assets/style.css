@@ -1,0 +1,25 @@
+.subBlockRow {
+    display: flex;
+    align-items: center;
+}
+.subBlockTitle {
+    font-size: 1.1 rem;
+    font-weight: 500;
+}
+.subBlockStars {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+.subBlockText {
+    opacity: .9;
+}
+.subBlockInfo {
+    opacity: .7;
+}
+.grayStar {
+    color: grey;
+}
+.goldStar {
+    color: gold;
+}

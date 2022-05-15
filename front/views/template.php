@@ -23,7 +23,12 @@ FRIENDLY URLS
         }
         elseif ($values = ProductController::isProd($paths[0]))
         {
-            include "modules/productPage.php";
+            if(file_exists("plugins/modules/productPage.php"))
+            {
+                include "plugins/modules/productPage.php";
+            } else {
+                include "modules/productPage.php";
+            }
         } else {
             include "modules/error404.php";
         }

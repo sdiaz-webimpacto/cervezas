@@ -29,6 +29,9 @@
     <link rel="stylesheet" href="<?php echo $path;?>views/css/products.css">
     <link rel="stylesheet" href="<?php echo $path;?>views/css/category.css">
     <link rel="stylesheet" href="<?php echo $path;?>views/css/productPage.css">
+    <?php
+        include "plugins/pluginsStyle.php";
+    ?>
 
     <link rel="icon" type="image/jpg" href="<?php echo $pathBack;?><?php echo $socials[0][0]['favicon'] ?>"/>
 
