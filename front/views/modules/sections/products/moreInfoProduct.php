@@ -51,11 +51,14 @@ class MoreInfoProduct
     {
         $objects = json_decode($detail);
         $selections = array();
-        foreach($objects as $key => $data)
+        if(!empty($objects))
         {
-            if(count($data) >= 2)
+            foreach($objects as $key => $data)
             {
-                $selections[$key] = $data;
+                if(count($data) >= 2)
+                {
+                    $selections[$key] = $data;
+                }
             }
         }
         if(count($selections) >= 1)

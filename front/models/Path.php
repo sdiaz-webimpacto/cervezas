@@ -4,11 +4,11 @@ class Path
 {
     public static function getPath()
     {
-        return "http://localhost/cervezaS/cervezas/front/";
+        return "http://localhost/cervezas/front/";
     }
 
     public static function getPathBack()
     {
-        return "http://localhost/cervezaS/cervezas/back/";
+        return "http://localhost/cervezas/back/";
     }
 }

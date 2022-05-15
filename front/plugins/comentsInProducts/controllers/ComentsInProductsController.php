@@ -51,31 +51,33 @@ class ComentsInProductsController
     public static function getRating($id_product)
     {
         $data = ComentsInProductsModel::getRating($id_product);
-        $valorations = $data['valorations'];
-        $rating =      round($data['rating'] / $valorations, 2);    
-
-        $stars = explode('.',$rating);
-        if(!empty($stars))
+        if(!empty($data['rating']))
         {
-            $goldStar = $stars[0];
-            if(isset($stars[1]))
+            $valorations = $data['valorations'];
+            $rating =      number_format(round($data['rating'] / $valorations, 2),2);
+
+            $stars = explode('.',$rating);
+            if(!empty($stars))
             {
-                $partialStar = $stars[1];
-                $grayStar = 5 - ($goldStar + 1);
-            } else {
-                $partialStar = null;
-                $grayStar = 5 - $goldStar;
+                $goldStar = $stars[0];
+                if(isset($stars[1]))
+                {
+                    $partialStar = $stars[1];
+                    $grayStar = 5 - ($goldStar + 1);
+                } else {
+                    $partialStar = null;
+                    $grayStar = 5 - $goldStar;
+                }
             }
-        }
 
-        $print = '';
-        for($i = 1; $i <= $goldStar; $i++)
-        {
-            $print .= "<i class='fa fa-star goldStar'></i>";
-        }
-        if(!empty($partialStar))
-        {
-            $print .= "<span style='                    
+            $print = '';
+            for($i = 1; $i <= $goldStar; $i++)
+            {
+                $print .= "<i class='fa fa-star goldStar'></i>";
+            }
+            if(!empty($partialStar))
+            {
+                $print .= "<span style='                    
             background:-moz-linear-gradient(to right, gold ".$partialStar."%,gray ".$partialStar."%); 
             background: -webkit-linear-gradient(to right, gold ".$partialStar."%,gray ".$partialStar."%); 
             background: linear-gradient(to right, gold ".$partialStar."%,gray ".$partialStar."%);
@@ -84,13 +86,15 @@ class ComentsInProductsController
             background-clip: text;
             -webkit-text-fill-color:transparent;
         '><i class='fa fa-star'></i></span>";
-        }
-        for($i = 1; $i <= $grayStar; $i++)
-        {
-            $print .= "<i class='fa fa-star grayStar'></i>";
-        }
-        $print .= "(".$valorations.")";
+            }
+            for($i = 1; $i <= $grayStar; $i++)
+            {
+                $print .= "<i class='fa fa-star grayStar'></i>";
+            }
+            $print .= "(".$valorations.")";
 
-        return $print;
+            return $print;
+        }
+        return '';
     }
 }
