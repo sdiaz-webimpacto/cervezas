@@ -112,6 +112,47 @@ header{
 }
 
 /*=============================================
+ESPECÍFICOS
+=============================================*/
+.borderR {
+	border-radius: 6px;
+}
+.borderTopR {
+	border-radius: 6px 6px 0 0;
+}
+.borderBottomR {
+	border-radius: 0 0 6px 6px;
+}
+.titleWhite {
+	color: var(--main-color-white);
+	text-align: center;
+	font-weight: 600;
+	font-size: 1.5em;
+}
+.titleBlack {
+	color: var(--main-color-black);
+	text-align: center;
+	font-weight: 600;
+	font-size: 1.5em;
+}
+.titleBase {
+	color: var(--main-color-base);
+	text-align: center;
+	font-weight: 600;
+	font-size: 1.5em;
+}
+.textInMidle {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1rem 2rem;
+	margin: 0;
+}
+.mr-1{
+	margin-right: 1rem;
+}
+
+/*=============================================
 PAGINATOR
 =============================================*/
 .pagination li a{
@@ -144,6 +185,11 @@ REDES SOCIALES
 .facebookColor{
 	color:white;
 	background:#46639f;
+}
+.facebook{
+	background: #46639f;
+	text-align: center;
+	color: #ffffff;
 }
 /*YOUTUBE*/
 .youtubeColor{
