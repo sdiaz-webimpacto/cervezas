@@ -28,9 +28,9 @@ $register->newCustomer();
                     </div>
                 </div>
                 <div class="form">
-                    <form method="post" class="mt-1">
+                    <form method="post" onsubmit="return customerRegister()" class="mt-1">
                         <hr>
-                        <div class="form-group">git
+                        <div class="form-group">
                             <div class="input-group">
                             <span class="input-group-addon">
                                 <i class="glyphicon glyphicon-user"></i>

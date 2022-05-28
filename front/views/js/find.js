@@ -29,11 +29,11 @@ if($('#buscador').length > 0)
                             for(let e = 0;e < array.length;e++)
                             {
                                 html += '<div class="article col-xs-6 col-md-4 col-lg-3">' +
-                                    '<figure><a href="'+array[0]['url_front']+array[e][4]+'" class="pixelProduct">'+
-                                    '<img src="'+array[0]['url_back']+array[e][10]+'" class="img-responsive" width="300px" height="400px">'+
+                                    '<figure><a href="'+array[0]['url_front']+array[e][3]+'" class="pixelProduct">'+
+                                    '<img src="'+array[0]['url_back']+array[e][9]+'" class="img-responsive" width="300px" height="400px">'+
                                     '</a>'+
                                     '</figure>' +
-                                    '<a href="'+array[0]['url_front']+array[e][4]+'" class="pixelProduct"><h4 class="text-center"><smal>'+
+                                    '<a href="'+array[0]['url_front']+array[e][3]+'" class="pixelProduct"><h4 class="text-center"><smal>'+
                                     array[e][5]+
                                     '</smal></h4></a>'+
                                     '</div>';

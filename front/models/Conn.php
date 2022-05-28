@@ -11,4 +11,34 @@ class Conn{
 						);
 		return $link;
 	}
+
+	public static function insert($table, $array)
+    {
+        $html = 'INSERT INTO '.$table.' (';
+        foreach ($array as $key => $item)
+        {
+            $html .= $key;
+            if($item != end($array))
+            {
+                $html .= ',';
+            }
+            $values[] = $item;
+        }
+        $html .= ') VALUES (';
+        foreach($values as $value)
+        {
+            $html .= "'".$value."'";
+            if($value != end($values))
+            {
+                $html .= ',';
+            }
+        }
+        $html .= ')';
+        $stmt = Conn::connect()->prepare($html);
+        $stmt->execute();
+        $vals = $stmt->fetch();
+        return $vals;
+        $stmt->close();
+        $stmt = null;
+    }
 }
