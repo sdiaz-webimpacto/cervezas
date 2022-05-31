@@ -147,6 +147,11 @@ GENÉRICOS
 	font-weight: 600;
 	font-size: 1.5em;
 }
+.textBase {
+	color: var(--main-color-base);
+	text-align: center;
+	font-size: 1.5em;
+}
 .textInMidle {
 	display: flex;
 	align-items: center;

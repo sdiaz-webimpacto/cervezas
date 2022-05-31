@@ -35,9 +35,37 @@ class Conn{
         }
         $html .= ')';
         $stmt = Conn::connect()->prepare($html);
-        $stmt->execute();
-        $vals = $stmt->fetch();
-        return $vals;
+        if($stmt->execute())
+        {
+            return "ok";
+        } else {
+            return "no";
+        }
+        $stmt->close();
+        $stmt = null;
+    }
+
+    public static function update($table, $array, $where)
+    {
+        $html = 'UPDATE '.$table.' SET ';
+        foreach ($array as $key => $item)
+        {
+            $html .= $key." = ".$item;
+            if($item != end($array))
+            {
+                $html .= ',';
+            }
+            $values[] = $item;
+        }
+        $html .= ' WHERE ';
+        $html .= $where;
+        $stmt = Conn::connect()->prepare($html);
+        if($stmt->execute())
+        {
+            return "ok";
+        } else {
+            return "no";
+        }
         $stmt->close();
         $stmt = null;
     }

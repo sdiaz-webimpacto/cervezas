@@ -12,6 +12,8 @@ require_once "models/Slide.model.php";
 require_once "models/Product.model.php";
 require_once "models/Customer.model.php";
 
+require_once "vendor/phpmailer/phpmailer/src/PHPMailer.php";
+require_once "vendor/autoload.php";
 require_once "models/Path.php";
 
 $plantilla = new TemplateController();

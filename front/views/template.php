@@ -21,6 +21,20 @@ FRIENDLY URLS
         {
             include "modules/category.php";
         }
+        elseif ($paths[0] == 'logout')
+        {
+            $customer = new CustomerController();
+            $customer->logout();
+        }
+        elseif ($paths[0] == 'myAccount')
+        {
+            if(file_exists("plugins/modules/myAccount.php"))
+            {
+                include "plugins/modules/myAccount.php";
+            } else {
+                include "modules/myAccount.php";
+            }
+        }
         elseif ($values = ProductController::isProd($paths[0]))
         {
             if(file_exists("plugins/modules/productPage.php"))
@@ -29,7 +43,8 @@ FRIENDLY URLS
             } else {
                 include "modules/productPage.php";
             }
-        } else {
+        }
+        else {
             include "modules/error404.php";
         }
     } else {
