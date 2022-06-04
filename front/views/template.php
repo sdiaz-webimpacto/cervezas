@@ -1,5 +1,19 @@
 <?php
 
+session_start();
+/**
+ * REDIRECTS
+ */
+if(isset($_GET["ruta"]))
+{
+    $urls = explode('/', $_GET['ruta']);
+    if ($urls[0] == 'logout')
+    {
+        $customer = new CustomerController();
+        $customer->logout();
+    }
+}
+
 /*
 HEADER
 */
@@ -20,11 +34,6 @@ FRIENDLY URLS
             $paths[0] == 'most-view')
         {
             include "modules/category.php";
-        }
-        elseif ($paths[0] == 'logout')
-        {
-            $customer = new CustomerController();
-            $customer->logout();
         }
         elseif ($paths[0] == 'myAccount')
         {

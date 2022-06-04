@@ -2,7 +2,7 @@
 $register = new CustomerController();
 $register->newCustomer();
 ?>
-<div class="modal fade" id="modalRegistro" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header backColor borderTopR">
@@ -72,7 +72,7 @@ $register->newCustomer();
                 <div class="alert alert-danger mt-1 mb-1 adviceMensages"></div>
             </div>
             <div class="modal-footer">
-                ¿Ya tienes cuenta? | <strong><a href="#modalLogin" data-dismiss="modal" data-toggle="modal">Acceder</a></strong>
+                ¿Ya tienes cuenta? | <strong><a href="#loginModal" data-dismiss="modal" data-toggle="modal">Acceder</a></strong>
             </div>
         </div>
     </div>

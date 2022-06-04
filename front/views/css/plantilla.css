@@ -178,10 +178,15 @@ GENÉRICOS
 	width: 100%;
 }
 /*=============================================
-ESPËCIFICOS
+ESPÉCIFICOS
 =============================================*/
-.adviceMensages {
+.adviceMensages, .loginMensages {
 	display: none;
+}
+li.user a {
+	position: absolute;
+	top: 24px;
+	margin-left: -25px;
 }
 
 /*=============================================

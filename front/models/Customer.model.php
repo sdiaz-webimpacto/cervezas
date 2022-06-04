@@ -16,7 +16,7 @@ class CustomerModel
         $stmt->bindParam(":email", $email, PDO::PARAM_STR);
         $stmt->execute();
         $vals = $stmt->fetch();
-        if(count($vals) >= 1)
+        if(!empty($vals) && count($vals) >= 1)
         {
             return true;
         } else {
@@ -32,7 +32,7 @@ class CustomerModel
         $stmt->bindParam(":id", $id, PDO::PARAM_INT);
         $stmt->execute();
         $vals = $stmt->fetch();
-        if(count($vals) >= 1)
+        if(!empty($vals) && count($vals) >= 1)
         {
             return $vals;
         } else {
@@ -54,7 +54,24 @@ class CustomerModel
         $stmt->bindParam(":token", $token, PDO::PARAM_STR);
         $stmt->execute();
         $vals = $stmt->fetch();
-        if(count($vals) >= 1)
+        if(!empty($vals) && count($vals) >= 1)
+        {
+            return $vals['id'];
+        } else {
+            return false;
+        }
+        $stmt->close();
+        $stmt = null;
+    }
+
+    public static function getCustomerId($email, $pass)
+    {
+        $stmt = Conn::connect()->prepare("SELECT id FROM customer WHERE email = :email AND password = :pass");
+        $stmt->bindParam(":email", $email, PDO::PARAM_STR);
+        $stmt->bindParam(":pass", $pass, PDO::PARAM_STR);
+        $stmt->execute();
+        $vals = $stmt->fetch();
+        if(!empty($vals) && count($vals) >= 1)
         {
             return $vals['id'];
         } else {

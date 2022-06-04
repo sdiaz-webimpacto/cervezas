@@ -1,13 +1,12 @@
+<?php
+
+$socials = TemplateController::TemplateStyleController();
+$social = $socials[1];
+require_once "views/modules/sections/customer/registerHeader.php";
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <?php
-            session_start();
-
-        $socials = TemplateController::TemplateStyleController();
-        $social = $socials[1];
-        require_once "views/modules/sections/customer/registerHeader.php";
-    ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.', user-scalable=no">
     <meta name="title" content="Cervezas y más">

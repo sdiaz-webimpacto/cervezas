@@ -2,7 +2,12 @@
 
 use PHPMailer\PHPMailer\PHPMailer;
 
-require_once 'tools/CustomerTools.php';
+if(file_exists('tools/CustomerTools.php'))
+{
+    require_once 'tools/CustomerTools.php';
+} else {
+    require_once '../tools/CustomerTools.php';
+}
 
 class CustomerController
 {
@@ -196,6 +201,64 @@ class CustomerController
         }
     }
 
+    public function auth()
+    {
+        $flag = false;
+        if(isset($_POST['loginEmail']))
+        {
+            $mail = $_POST['loginEmail'];
+            $pass = CustomerTools::encryptation($_POST['loginPass']);
+            $array = array('mail' => $mail,
+                'pass' => $pass);
+            $flag = true;
+            if(!preg_match('/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/', $mail))
+            {
+                echo '<script>
+                        swal({
+                        title: "¡Error!",
+                        text: "Error en email.",
+                        type: "error",
+                        confirmButtonText: "Cerrar",
+                        closeOnConfirm: false
+                        },
+                        function(isConfirm)
+                        {
+                            if(isConfirm)
+                            {
+                                history.back();
+                            }
+                        });
+                    </script>';
+                $flag = false;
+            }
+            if(!preg_match('/^[a-zA-Z0-9]*$/', $_POST['loginPass']))
+            {
+                echo '<script>
+                        swal({
+                        title: "¡Error!",
+                        text: "No se permiten caracteres especiales.",
+                        type: "error",
+                        confirmButtonText: "Cerrar",
+                        closeOnConfirm: false
+                        },
+                        function(isConfirm)
+                        {
+                            if(isConfirm)
+                            {
+                                history.back();
+                            }
+                        });
+                    </script>';
+                $flag = false;
+            }
+            if($flag)
+            {
+                $this->login(null,null,$array);
+                echo '<script>window.location.href = window.location.href;</script>';
+            }
+        }
+    }
+
     public static function confirmEmail($token)
     {
         $array = array('validation' => 1);
@@ -204,8 +267,12 @@ class CustomerController
         return $update;
     }
 
-    public function login($id = null, $token = null)
+    public function login($id = null, $token = null, $array = false)
     {
+        if($array && is_array($array))
+        {
+            $id = CustomerModel::getCustomerId($array['mail'],$array['pass']);
+        }
         if($id === null && $token !== null)
         {
             $object = new CustomerModel();
@@ -231,7 +298,9 @@ class CustomerController
 
     public function logout()
     {
+        $url = Path::getPath();
         session_destroy();
+        NavigationTools::redirect($url);
     }
 
     protected function getCustomeDatas($id)
