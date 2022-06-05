@@ -46,6 +46,7 @@ $auth->auth();
                                 <input type="password" class="form-control" id="loginPass" name="loginPass" placeholder="Contraseña">
                             </div>
                         </div>
+                        <div class="textInMidle"><a href="#passwordModal" data-dismiss="modal" data-toggle="modal">¿Has olvidao la conraseña?</a></div>
                         <input type="submit" id="login" class="btn btn-default btn-block backColor" value="ACCEDER">
                     </form>
                 </div>

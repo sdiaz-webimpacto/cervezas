@@ -303,9 +303,94 @@ class CustomerController
         NavigationTools::redirect($url);
     }
 
+    public function passwordQuery()
+    {
+        $flag = false;
+        if(isset($_POST['passwordEmail']))
+        {
+            $flag = true;
+            $mail = $_POST['passwordEmail'];
+            if(!preg_match('/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/', $mail)) {
+                echo '<script>
+                        swal({
+                        title: "¡Error!",
+                        text: "No es un formato correcto de email.",
+                        type: "error",
+                        confirmButtonText: "Cerrar",
+                        closeOnConfirm: false
+                        },
+                        function(isConfirm)
+                        {
+                            if(isConfirm)
+                            {
+                                window.location.href = window.location;
+                            }
+                        });
+                    </script>';
+                $flag = false;
+            }
+            $exist = CustomerModel::isCustomer($mail);
+            if($exist === false)
+            {
+                echo '<script>
+                        swal({
+                        title: "¡Error!",
+                        text: "No hay ningún usuario registrado con ese email.",
+                        type: "error",
+                        confirmButtonText: "Cerrar",
+                        closeOnConfirm: false
+                        },
+                        function(isConfirm)
+                        {
+                            if(isConfirm)
+                            {
+                                window.location.href = window.location;
+                            }
+                        });
+                    </script>';
+                $flag = false;
+            }
+            if($flag)
+            {
+                $sendMail = CustomerTools::sendMail('','','Cambio de contraseña',$mail, '<center>Envío de prueba</center>');
+                if($sendMail == 'ok')
+                {
+                    echo '<script>
+                        swal({
+                        title: "¡Enviado!",
+                        text: "Hemos enviado un email desde donde podrá recuperar su contraseña. No olvidé revisar en su bandeja de spam.",
+                        type: "success",
+                        confirmButtonText: "Cerrar",
+                        closeOnConfirm: false
+                        },
+                        function(isConfirm)
+                        {
+                            if(isConfirm)
+                            {
+                                window.location.href = window.location;
+                            }
+                        });
+                    </script>';
+                }
+            }
+        }
+    }
+
     protected function getCustomeDatas($id)
     {
         $datas = CustomerModel::getUser($id);
         return $datas;
+    }
+
+    public function customerFromToken($token)
+    {
+        $customer = new CustomerModel();
+        $id = $customer->tokenTransform($token);
+        if ($id === false)
+        {
+            return false;
+        } else {
+            return CustomerModel::getUser($id);
+        }
     }
 }

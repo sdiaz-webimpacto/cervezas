@@ -50,7 +50,7 @@ class Conn{
         $html = 'UPDATE '.$table.' SET ';
         foreach ($array as $key => $item)
         {
-            $html .= $key." = ".$item;
+            $html .= $key." = '".$item."'";
             if($item != end($array))
             {
                 $html .= ',';

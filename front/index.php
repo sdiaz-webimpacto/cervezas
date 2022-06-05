@@ -16,6 +16,8 @@ require_once "vendor/phpmailer/phpmailer/src/PHPMailer.php";
 require_once "vendor/autoload.php";
 require_once "models/Path.php";
 require_once "tools/NavigationTools.php";
+require_once "tools/CustomerTools.php";
+require_once "ajax/customer.ajax.php";
 
 $plantilla = new TemplateController();
 $plantilla->template();

@@ -174,13 +174,19 @@ GENÉRICOS
 .padBasic {
 	padding: .23rem .5rem;
 }
+.width25 {
+	width: 25%;
+}
+.width50 {
+	width: 50%;
+}
 .width100 {
 	width: 100%;
 }
 /*=============================================
 ESPÉCIFICOS
 =============================================*/
-.adviceMensages, .loginMensages {
+.adviceMensages, .loginMensages, .passwordMensages, .passQueryMensages {
 	display: none;
 }
 li.user a {

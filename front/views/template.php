@@ -35,13 +35,14 @@ FRIENDLY URLS
         {
             include "modules/category.php";
         }
-        elseif ($paths[0] == 'myAccount')
+        elseif ($paths[0] == 'myAccount'
+        || $paths[0] == 'changePassword')
         {
-            if(file_exists("plugins/modules/myAccount.php"))
+            if(file_exists("plugins/modules/".$paths[0].".php"))
             {
-                include "plugins/modules/myAccount.php";
+                include "plugins/modules/".$paths[0].".php";
             } else {
-                include "modules/myAccount.php";
+                include "modules/".$paths[0].".php";
             }
         }
         elseif ($values = ProductController::isProd($paths[0]))
