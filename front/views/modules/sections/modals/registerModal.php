@@ -12,21 +12,21 @@ $register->newCustomer();
                 </button>
             </div>
             <div class="modal-body">
-                <div class="col-xs-12 mb-1">
+                <!--<div class="col-xs-12 mb-1">
                     <div class="col-xs-12 col-sm-6 padBasic">
                         <button id="btnFacebook" class="facebook borderR width100">
                             <p class="textInMidle"><i class="fa fa-facebook mr-1"></i>
-                                Registro con Facebook
+                                Ingreso con Facebook
                             </p>
                         </button>
                     </div>
                     <div class="col-xs-12 col-sm-6 padBasic">
                         <button id="btnGoogle" class="google borderR width100">
                             <p class="textInMidle"><i class="fa fa-google mr-1"></i>
-                                Registro con Google</p>
+                                Ingreso con Google</p>
                         </button>
                     </div>
-                </div>
+                </div>-->
                 <div class="form">
                     <form method="post" onsubmit="return customerRegister()" class="mt-1">
                         <hr>

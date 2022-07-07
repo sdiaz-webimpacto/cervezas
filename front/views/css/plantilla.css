@@ -171,6 +171,18 @@ GENÉRICOS
 .ml-1{
 	margin-left: 1rem;
 }
+.mr-2{
+	margin-right: 2rem;
+}
+.mt-2{
+	margin-top: 2rem;
+}
+.mb-2{
+	margin-bottom: 2rem;
+}
+.ml-2{
+	margin-left: 2rem;
+}
 .padBasic {
 	padding: .23rem .5rem;
 }
