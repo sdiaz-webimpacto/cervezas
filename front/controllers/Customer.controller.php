@@ -376,7 +376,7 @@ class CustomerController
         }
     }
 
-    protected function getCustomeDatas($id)
+    public function getCustomeDatas($id)
     {
         $datas = CustomerModel::getUser($id);
         return $datas;
@@ -391,6 +391,51 @@ class CustomerController
             return false;
         } else {
             return CustomerModel::getUser($id);
+        }
+    }
+
+    public function updateUserDatas($id, $valuesToUpdate)
+    {
+        $values = array();
+        if(!empty($valuesToUpdate['name']))
+        {
+            $values['name'] = $valuesToUpdate['name'];
+        }
+        if(!empty($valuesToUpdate['surname']))
+        {
+            $values['surname'] = $valuesToUpdate['surname'];
+        }
+        if(!empty($valuesToUpdate['birthday']))
+        {
+            $values['birthday'] = $valuesToUpdate['birthday'];
+        }
+        if(!empty($valuesToUpdate['email']))
+        {
+            $values['email'] = $valuesToUpdate['email'];
+        }
+        if(!empty($valuesToUpdate['password']))
+        {
+            $values['password'] = CustomerTools::encryptation($valuesToUpdate['password']);
+        }
+        if(!empty($valuesToUpdate['phone']))
+        {
+            $values['phone'] = $valuesToUpdate['phone'];
+        }
+        if(!empty($valuesToUpdate['company']))
+        {
+            $values['company'] = $valuesToUpdate['company'];
+        }
+
+        if(!empty($values))
+        {
+            $values['date_update'] = date('Y-m-d H:i:s');
+            $query = Conn::update('customer', $values, 'id = '.$id);
+            if($query)
+            {
+                NavigationTools::redirect(Path::getPath().'myAccount');
+            }
+        } else {
+            return "error al procesar el formulario";
         }
     }
 }

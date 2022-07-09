@@ -4,7 +4,7 @@ class NavigationTools
 {
     public static function redirect($url)
     {
-        header('location: '.$url);
+        echo '<script>window.location.href = "'.$url.'";</script>';
     }
 }
 
