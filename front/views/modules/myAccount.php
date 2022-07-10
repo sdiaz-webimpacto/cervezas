@@ -49,8 +49,9 @@ if(isset($_SESSION['id']))
 
             <div class="tab-content">
                 <div id="pedidos" class="tab-pane fade in active">
-                    <h3>Mis pedidos</h3>
-                        <p>Some content.</p>
+                    ';
+    include_once 'sections/customer/userOrders.php';
+    echo '
                 </div>
                 <div id="datos" class="tab-pane fade">
                     ';
