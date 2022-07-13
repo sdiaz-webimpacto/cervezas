@@ -21,7 +21,7 @@ class ComentsInProductsController
                 $grayStar = 5 - $goldStar;
                 $print .=   "<div class='col-xs-12 subBlockRow'>
                                 <span class='col-xs-6 subBlockTitle'>
-                                    ".$coment['id_user']."
+                                    ".$coment['name']."
                                 </span>
                                 <span class='col-xs-6 subBlockStars'>";
                         
@@ -92,7 +92,48 @@ class ComentsInProductsController
                 $print .= "<i class='fa fa-star grayStar'></i>";
             }
             $print .= "(".$valorations.")";
-
+            $valorations = ComentsInProductsModel::existValoration($id_product,CustomerController::isLogged());
+            if($valorations['valorations'] >= 1)
+            {
+                $print .= "<div>Muchas gracias por su valoración sobre este producto.</div>";
+            }
+            if(CustomerController::isLogged() && $valorations['valorations'] === 0) {
+                $print .= "<small class='ml-1'>
+                    <button id='buttonOpenValorationModal' type='button' class='backColor' data-toggle='modal' data-target='#valorationModal' data-product-id='" . $id_product . "' data-customer-id='" . CustomerController::isLogged() . "'>
+                        Valorar
+                    </button>
+                </small>
+                <!-- Modal -->
+                <div class='modal fade' id='valorationModal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                    <div class='modal-dialog' role='document'>
+                        <div class='modal-content'>
+                            <div class='modal-header backColor'>
+                                <h5 class='textBase' id='exampleModalLabel'>Valora este producto
+                                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                    <span aria-hidden='true'>&times;</span>
+                                </button>
+                                </h5>
+                            </div>
+                            <div class='modal-body'>
+                                <h2 class='text-center'>
+                                    <i id='val-1' class='fa fa-star goldStar'></i>
+                                    <i id='val-2' class='fa fa-star goldStar'></i>
+                                    <i id='val-3' class='fa fa-star goldStar'></i>
+                                    <i id='val-4' class='fa fa-star goldStar'></i>
+                                    <i id='val-5' class='fa fa-star goldStar'></i>
+                                </h2>      
+                                <div class='text-center'>
+                                    <textarea id='textAreaValoration' placeholder='Dejanos tu comentario ;)' cols='40' rows='10'></textarea>       
+                                </div>                                           
+                            </div>
+                            <div class='modal-footer'>
+                                <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
+                                <button type='button' class='btn btn-primary sendValoration'>Enviar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>";
+            }
             return $print;
         }
         return '';
