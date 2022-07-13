@@ -1,0 +1,1 @@
+<script src="<?php echo $path;?>plugins/comentsInProducts/assets/style.js"></script>

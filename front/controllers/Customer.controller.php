@@ -11,6 +11,15 @@ if(file_exists('tools/CustomerTools.php'))
 
 class CustomerController
 {
+    public static function isLogged()
+    {
+        if(isset($_SESSION['id']))
+        {
+            return $_SESSION['id'];
+        } else {
+            return false;
+        }
+    }
     public function newCustomer()
     {
         date_default_timezone_set("Europe/Madrid");
