@@ -50,7 +50,7 @@ class ProductModel
         $stmt = Conn::connect()->prepare("SELECT * FROM product WHERE id = :id");
         $stmt->bindParam(":id", $id, PDO::PARAM_INT);
         $stmt->execute();
-        $vals = $stmt->fetch();
+        $vals = $stmt->fetch(PDO::FETCH_ASSOC);
         return $vals;
         $stmt->close();
         $stmt = null;

@@ -230,7 +230,7 @@ if(!is_array($products))
                     <!-- PLUGINS WISHLIST -->                   
                     <!-- Comentar para deshabilitar el plugins -->';
                     $template = new WishlistViews();
-                    $template->wishListProductPageDiv($pr['id']);
+                    $template->wishListProductPageDiv($pl['id']);
                     echo '
                     <!-- Comentar para deshabilitar el plugins FIN -->
                     <!-- PLUGINS WISHLIST END -->
