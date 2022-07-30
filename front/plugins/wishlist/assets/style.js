@@ -15,8 +15,9 @@ function ajaxWishList(element)
 {
     const user = $("#wishListButton").attr("iduser");
     const product = element;
+    const url = $("#wishListButton").attr("data-url");
     $.ajax({
-        url : 'plugins/wishlist/assets/ajax.php',
+        url : url+'plugins/wishlist/assets/ajax.php',
         data: {user: user,
                 product: product},
         type: 'POST',
