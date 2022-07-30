@@ -1,6 +1,7 @@
 <?php
 
 require_once 'plugins/wishlist/controllers/WihsList.controller.php';
+require_once 'models/Path.php';
 
 class WishlistViews
 {
@@ -24,7 +25,7 @@ class WishlistViews
         }
         echo '
             <button id="wishListButton" type="button" class="btn btn-default btn-xs whishList '.$addClass.'" idProducto="' . $id_product . '" 
-            data-toggle="tooltip" title="Agregar a mi lista de deseos" onclick="' . $onclick . '" '. $user .'>
+            data-toggle="tooltip" data-url="'.Path::getPath().'" title="Agregar a mi lista de deseos" onclick="' . $onclick . '" '. $user .'>
                 <i class="fa fa-heart" aria-hidden="true"></i>
             </button>';
     }
