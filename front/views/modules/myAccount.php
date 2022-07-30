@@ -41,10 +41,16 @@ if(isset($_SESSION['id']))
                 </li>
                 <li>
                     <a data-toggle="tab" href="#datos"><i class="fa fa-user"></i> Mis datos</a>
-                </li>
+                </li>';
+    if(file_exists("plugins/wishlist/controllers/WihsList.controller.php"))
+    {
+        echo '
                 <li>
                     <a data-toggle="tab" href="#favoritos"><i class="fa fa-star"></i> Mis favoritos</a>
                 </li>
+        ';
+    }
+    echo '
             </ul>
 
             <div class="tab-content">
@@ -57,11 +63,19 @@ if(isset($_SESSION['id']))
                     ';
     include_once 'sections/customer/userDatas.php';
     echo '
-                </div>
+                </div>';
+    if(file_exists("plugins/wishlist/controllers/WihsList.controller.php"))
+    {
+        echo '            
                 <div id="favoritos" class="tab-pane fade">
-                    <h3>Mis favoritos</h3>
-                    <p>Some content in menu 1.</p>
-                </div>
+                    ';
+        include_once 'plugins/wishlist/views/userWishList.php';
+        $wishlist = new userWishList();
+        $wishlist->getWishListProduct($_SESSION['id']);
+        echo '
+                </div>';
+    }
+    echo '
             </div>
         </div>
     </div>

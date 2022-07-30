@@ -18,8 +18,8 @@ class WishListController
     }
     public static function getAllWishListProduct($id_customer)
     {
-        $where = 'id_customer = '.$id_customer.' ORDER BY id_whish_list';
-        $product = Conn::select('wish_list', 'id_product', $where);
+        $where = 'id_customer = '.$id_customer.' ORDER BY id_wish_list';
+        $product = Conn::selectMulti('wish_list', 'id_product', $where);
         return $product;
     }
 }
