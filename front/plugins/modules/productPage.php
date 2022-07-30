@@ -10,6 +10,9 @@ include_once "views/modules/sections/products/moreInfoProduct.php";
 include_once "views/modules/sections/products/zoom.php";
 include_once "views/modules/sections/addToCart.php";
 include_once "views/modules/sections/productLists/productsCarousel.php";
+// PLUGIN WISHLIST CALLS
+include_once "plugins/wishlist/views/WishListViews.php";
+//PLUGIN WISHLIST CALLS END
 
 echo '
 <!-- BREADCRUMB -->
@@ -81,7 +84,19 @@ echo '
             <div class="col-md-7 col-sm-6 col-xs-12 datasProduct">
                 <div class="col-12">
                     <div class="productTitleBlock">
-                        <h2 class="title text-uppercase">'.$product['title'].'</h2>
+                    <!-- PLUGINS WISHLIST -->
+                    <!-- Descomentar para deshabilitar el plugins
+                    <h2 class="title text-uppercase">'.$product['title'].'</h2>
+                    -->
+                    <!-- Comentar para deshabilitar el plugins -->
+                    <div class="whislist-productPageDiv">';
+                    $template = new WishlistViews();
+                    $template->wishListProductPageDiv($product['id']);
+                    echo '
+                    <h2 class="title text-uppercase">'.$product['title'].'</h2>
+                    </div>
+                    <!-- Comentar para deshabilitar el plugins FIN -->
+                    <!-- PLUGINS WISHLIST END -->
                         <h6 class="reference">'.$product['reference'].'</h6>';
                         include ("plugins/comentsInProducts/views/rating.php");
 echo '              </div>

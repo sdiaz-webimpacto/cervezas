@@ -1,3 +1,10 @@
+<?php
+
+// PLUGIN WISHLIST CALLS
+include_once "plugins/wishlist/views/WishListViews.php";
+//PLUGIN WISHLIST CALLS END
+
+?>
 <!--
 BANNER
 -->
@@ -11,15 +18,15 @@ BANNER
 </figure>
 
 <?php
-    $modules = array(
-            array('title' => 'Artículos gratuitos', 'url' => 'free-articles', 'value' => 'price', 'type' => 'ASC'),
-            array('title' => 'Lo más vendido', 'url' => 'most-sales', 'value' => 'sales', 'type' => 'DESC'),
-            array('title' => 'Lo más visto', 'url' => 'most-view', 'value' => 'views', 'type' => 'DESC')
-    );
+$modules = array(
+    array('title' => 'Artículos gratuitos', 'url' => 'free-articles', 'value' => 'price', 'type' => 'ASC'),
+    array('title' => 'Lo más vendido', 'url' => 'most-sales', 'value' => 'sales', 'type' => 'DESC'),
+    array('title' => 'Lo más visto', 'url' => 'most-view', 'value' => 'views', 'type' => 'DESC')
+);
 
-    for($i = 0; $i < count($modules); $i++)
-    {
-        echo '
+for($i = 0; $i < count($modules); $i++)
+{
+    echo '
         <div class="container-fluid well well-sm productBar">
             <div class="container">
             <div class="row">
@@ -61,9 +68,9 @@ BANNER
                 </div>
                 <ul class="grid grid'.$i.'">';
 
-                $productsGrid = ProductController::getProductsMost($modules[$i]['value'], $modules[$i]['type']);
-                foreach($productsGrid as $pr) {
-                    echo '
+    $productsGrid = ProductController::getProductsMost($modules[$i]['value'], $modules[$i]['type']);
+    foreach($productsGrid as $pr) {
+        echo '
                     <li class="col-md-3 col-sm-6 col-xs-12">
                         <figure>
                             <a href="'.$pr['url'].'" class="pixelProduct">
@@ -74,41 +81,48 @@ BANNER
                             <small>
                                 <a href="'.$pr['url'].'" class="pixelProduct">
                                     ' . $pr['title'];
-                                    echo '<div class="col-12">';
-                    if($pr['new'] == 1){
-                                echo '<span class="label label-warning fontSize">Nuevo</span>';
-                    } else {
-                        echo '<span style="opacity:0">-</span>';
-                    }
+        echo '<div class="col-12">';
+        if($pr['new'] == 1){
+            echo '<span class="label label-warning fontSize">Nuevo</span>';
+        } else {
+            echo '<span style="opacity:0">-</span>';
+        }
 
-                    if($pr['offer_discount'] > 0){
-                        echo '<span class="label label-warning fontSize">'.$pr['offer_discount'].'%</span>';
-                    } else {
-                        echo '<span style="opacity:0">-</span>';
-                    }
+        if($pr['offer_discount'] > 0){
+            echo '<span class="label label-warning fontSize">'.$pr['offer_discount'].'%</span>';
+        } else {
+            echo '<span style="opacity:0">-</span>';
+        }
 
-                                echo '</div></a>
+        echo '</div></a>
                             </small>
                         </h4>
                         <div class="col-xs-6 price">
                         <h2>';
-                    if($pr['offer_price'] != 0)
-                    {
-                        echo '<small><strong class="oferta">'.$pr['price'].'</strong></small>
+        if($pr['offer_price'] != 0)
+        {
+            echo '<small><strong class="oferta">'.$pr['price'].'</strong></small>
                               <small>'.$pr['offer_price'].'</small>';
-                    } else {
-                        echo '<small > ';
-                        if ($pr['price'] <= 0) {
-                            echo "GRATIS";
-                        } else {
-                            echo $pr['price'] . "€";
-                        }
-                        echo ' </small >';
-                    }
-                    echo '</h2>
+        } else {
+            echo '<small > ';
+            if ($pr['price'] <= 0) {
+                echo "GRATIS";
+            } else {
+                echo $pr['price'] . "€";
+            }
+            echo ' </small >';
+        }
+        echo '</h2>
                         </div>
                         <div class="col-xs-6 links">
                             <div class="btn-group pull-right">
+                                <!-- PLUGINS WISHLIST -->                   
+                                <!-- Comentar para deshabilitar el plugins -->';
+                                $template = new WishlistViews();
+                                $template->wishListProductPageDiv($pr['id']);
+                                echo '
+                                <!-- Comentar para deshabilitar el plugins FIN -->
+                                <!-- PLUGINS WISHLIST END -->
                                 <a href="'.$pr['url'].'" class="pixelProduct">
                                     <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="Ver producto">
                                         <i class="fa fa-eye" aria-hidden="true"></i>
@@ -117,13 +131,13 @@ BANNER
                             </div>
                         </div>
                     </li>';
-                }
+    }
 
-                echo '</ul>
+    echo '</ul>
                 <ul class="list list'.$i.'">';
 
-                foreach($productsGrid as $pl) {
-                    echo '
+    foreach($productsGrid as $pl) {
+        echo '
                     <li class="col-xs-12">
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
                     <figure>
@@ -134,35 +148,42 @@ BANNER
                     <h1>
                         <small>
                             <a href="'.$pl['url'].'" class="pixelProduct">'.$pl['title'];
-                    if($pr['new'] == 1){
-                        echo '<span class="label label-warning fontSize">Nuevo</span>';
-                    }
+        if($pr['new'] == 1){
+            echo '<span class="label label-warning fontSize">Nuevo</span>';
+        }
 
-                    if($pr['offer_discount'] > 0){
-                        echo '<span class="label label-warning fontSize">'.$pr['offer_discount'].'%</span>';
-                    }
-                            echo '</a>
+        if($pr['offer_discount'] > 0){
+            echo '<span class="label label-warning fontSize">'.$pr['offer_discount'].'%</span>';
+        }
+        echo '</a>
                         </small>
                     </h1>
                     <p class="text-muted">'.$pl['short_description'].'</p>
                     <h2>';
 
-                    if($pl['offer_price'] != 0)
-                    {
-                        echo '<small><strong class="oferta">'.$pl['price'].'</strong></small>
+        if($pl['offer_price'] != 0)
+        {
+            echo '<small><strong class="oferta">'.$pl['price'].'</strong></small>
                               <small>'.$pl['offer_price'].'</small>';
-                    } else {
-                        echo '<small > ';
-                        if ($pl['price'] <= 0) {
-                            echo "GRATIS";
-                        } else {
-                            echo $pl['price'] . "€";
-                        }
-                        echo ' </small >';
-                    }
+        } else {
+            echo '<small > ';
+            if ($pl['price'] <= 0) {
+                echo "GRATIS";
+            } else {
+                echo $pl['price'] . "€";
+            }
+            echo ' </small >';
+        }
 
-                    echo '</h2>
+        echo '</h2>
                     <div class="btn-group pull-left links">
+                        <!-- PLUGINS WISHLIST -->                   
+                        <!-- Comentar para deshabilitar el plugins -->';
+                        $template = new WishlistViews();
+                        $template->wishListProductPageDiv($pl['id']);
+                        echo '
+                        <!-- Comentar para deshabilitar el plugins FIN -->
+                        <!-- PLUGINS WISHLIST END -->
                         <a href="'.$pl['url'].'" class="pixelProduct">
                             <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="Ver producto">
                                 <i class="fa fa-eye" aria-hidden="true"></i>
@@ -175,10 +196,10 @@ BANNER
                 </div>
             </li>
                     ';
-                }
-            echo '</ul>
+    }
+    echo '</ul>
             </div>
         </div>
         ';
-    }
+}
 ?>
