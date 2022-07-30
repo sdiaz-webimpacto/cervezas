@@ -69,4 +69,52 @@ class Conn{
         $stmt->close();
         $stmt = null;
     }
+
+    public static function select($table, $fields, $where, $order = '')
+    {
+        $html = 'SELECT '.$fields.' FROM '.$table;
+        $html .= ' WHERE ';
+        $html .= $where;
+        $html .= $order;
+        $stmt = Conn::connect()->prepare($html);
+        $stmt->execute();
+        $return = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return $return;
+
+        $stmt->close();
+        $stmt = null;
+    }
+
+    public static function selectMulti($table, $fields, $where, $order = '')
+    {
+        $html = 'SELECT '.$fields.' FROM '.$table;
+        $html .= ' WHERE ';
+        $html .= $where;
+        $html .= $order;
+        $stmt = Conn::connect()->prepare($html);
+        $stmt->execute();
+        $return = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $return;
+
+        $stmt->close();
+        $stmt = null;
+    }
+
+    public static function delete($table, $field, $id)
+    {
+        $html = 'DELETE FROM '.$table;
+        $html .= ' WHERE '.$field.' = '.$id;
+        $stmt = Conn::connect()->prepare($html);
+        if($stmt->execute())
+        {
+            return "ok";
+        } else {
+            return "no";
+        }
+
+        $stmt->close();
+        $stmt = null;
+    }
 }

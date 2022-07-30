@@ -33,7 +33,12 @@ FRIENDLY URLS
             $paths[0] == 'most-sales' ||
             $paths[0] == 'most-view')
         {
-            include "modules/category.php";
+            if(file_exists("plugins/modules/category.php"))
+            {
+                include "plugins/modules/category.php";
+            } else {
+                include "modules/category.php";
+            }
         }
         elseif ($paths[0] == 'myAccount'
         || $paths[0] == 'changePassword')
@@ -59,7 +64,12 @@ FRIENDLY URLS
         }
     } else {
         include "modules/slide.php";
-        include "modules/hightlight.php";
+        if(file_exists("plugins/modules/hightlight.php"))
+        {
+            include "plugins/modules/hightlight.php";
+        } else {
+            include "modules/hightlight.php";
+        }
     }
 
 /* 

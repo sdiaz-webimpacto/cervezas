@@ -1,0 +1,14 @@
+.whislist-productPageDiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.whislist-productPageDiv button{
+    order: 2;
+}
+.productInWishList, .productInWishList:hover, .productInWishList:active, .productInWishList:focus {
+    background-color: #ff1717;
+}
+.productInWishList i {
+    color: var(--main-color-white) !important;
+}

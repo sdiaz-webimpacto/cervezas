@@ -1,5 +1,9 @@
 <?php
 
+// PLUGIN WISHLIST CALLS
+include_once "plugins/wishlist/views/WishListViews.php";
+//PLUGIN WISHLIST CALLS END
+
 if(!isset($paths[2]))
 {
     $_SESSION['order'] = 'id';
@@ -115,8 +119,8 @@ if(!is_array($products))
         <div class="container-fluid products">
         <div class="container">
         <ul class="grid grid0">';
-        foreach($products as $pr) {
-            echo '
+    foreach($products as $pr) {
+        echo '
             <li class="col-md-3 col-sm-6 col-xs-12 article">
                 <figure>
                     <a href="'.$pr['url'].'" class="pixelProduct">
@@ -127,42 +131,50 @@ if(!is_array($products))
                 <small>
                     <a href="'.$pr['url'].'" class="pixelProduct">
                         ' . $pr['title'];
-                        echo '<div class="col-12">';
-                        if($pr['new'] == 1){
-                            echo '<span class="label label-warning fontSize">Nuevo</span>';
-                        } else {
-                            echo '<span style="opacity:0">-</span>';
-                        }
+        echo '<div class="col-12">';
+        if($pr['new'] == 1){
+            echo '<span class="label label-warning fontSize">Nuevo</span>';
+        } else {
+            echo '<span style="opacity:0">-</span>';
+        }
 
-                        if($pr['offer_discount'] > 0){
-                            echo '<span class="label label-warning fontSize">'.$pr['offer_discount'].'%</span>';
-                        } else {
-                            echo '<span style="opacity:0">-</span>';
-                        }
+        if($pr['offer_discount'] > 0){
+            echo '<span class="label label-warning fontSize">'.$pr['offer_discount'].'%</span>';
+        } else {
+            echo '<span style="opacity:0">-</span>';
+        }
 
-                        echo '</div>
+        echo '</div>
                     </a>
                 </small>
                 </h4>
                 <div class="col-xs-6 price">
                     <h2>';
-                    if($pr['offer_price'] != 0)
-                    {
-                        echo '<small><strong class="oferta">'.$pr['price'].'</strong></small>
+        if($pr['offer_price'] != 0)
+        {
+            echo '<small><strong class="oferta">'.$pr['price'].'</strong></small>
                         <small>'.$pr['offer_price'].'</small>';
-                    } else {
-                        echo '<small > ';
-                        if ($pr['price'] <= 0) {
-                            echo "GRATIS";
-                        } else {
-                            echo $pr['price'] . "€";
-                        }
-                        echo ' </small >';
-                    }
-                    echo '</h2>
+        } else {
+            echo '<small > ';
+            if ($pr['price'] <= 0) {
+                echo "GRATIS";
+            } else {
+                echo $pr['price'] . "€";
+            }
+            echo ' </small >';
+        }
+        echo '</h2>
                 </div>
                 <div class="col-xs-6 links">
                     <div class="btn-group pull-right">
+                    <!-- PLUGINS WISHLIST -->                   
+                    <!-- Comentar para deshabilitar el plugins -->';
+                    $template = new WishlistViews();
+                    $template->wishListProductPageDiv($pr['id']);
+                    echo '
+                    <!-- Comentar para deshabilitar el plugins FIN -->
+                    <!-- PLUGINS WISHLIST END -->
+                        <a href="'.$pr['url'].'" class="pixelProduct">
                             <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="Ver producto">
                                 <i class="fa fa-eye" aria-hidden="true"></i>
                             </button>
@@ -170,12 +182,12 @@ if(!is_array($products))
                     </div>
                 </div>
             </li>';
-        }
-        echo '</ul>
+    }
+    echo '</ul>
         <ul class="list list0">';
 
-        foreach($products as $pl) {
-            echo '
+    foreach($products as $pl) {
+        echo '
             <li class="col-xs-12">
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
                     <figure>
@@ -186,35 +198,42 @@ if(!is_array($products))
                     <h1>
                         <small>
                             <a href="'.$pl['url'].'" class="pixelProduct">'.$pl['title'];
-                if($pr['new'] == 1){
-                    echo '<span class="label label-warning fontSize">Nuevo</span>';
-                }
+        if($pr['new'] == 1){
+            echo '<span class="label label-warning fontSize">Nuevo</span>';
+        }
 
-                if($pr['offer_discount'] > 0){
-                    echo '<span class="label label-warning fontSize">'.$pr['offer_discount'].'%</span>';
-                }
-                echo '</a>
+        if($pr['offer_discount'] > 0){
+            echo '<span class="label label-warning fontSize">'.$pr['offer_discount'].'%</span>';
+        }
+        echo '</a>
                         </small>
                     </h1>
                     <p class="text-muted">'.$pl['short_description'].'</p>
                     <h2>';
 
-                if($pl['offer_price'] != 0)
-                {
-                    echo '<small><strong class="oferta">'.$pl['price'].'</strong></small>
+        if($pl['offer_price'] != 0)
+        {
+            echo '<small><strong class="oferta">'.$pl['price'].'</strong></small>
                          <small>'.$pl['offer_price'].'</small>';
-                } else {
-                    echo '<small > ';
-                    if ($pl['price'] <= 0) {
-                        echo "GRATIS";
-                    } else {
-                        echo $pl['price'] . "€";
-                    }
-                    echo ' </small >';
-                }
+        } else {
+            echo '<small > ';
+            if ($pl['price'] <= 0) {
+                echo "GRATIS";
+            } else {
+                echo $pl['price'] . "€";
+            }
+            echo ' </small >';
+        }
 
-                    echo '</h2>
+        echo '</h2>
                     <div class="btn-group pull-left links">
+                    <!-- PLUGINS WISHLIST -->                   
+                    <!-- Comentar para deshabilitar el plugins -->';
+                    $template = new WishlistViews();
+                    $template->wishListProductPageDiv($pr['id']);
+                    echo '
+                    <!-- Comentar para deshabilitar el plugins FIN -->
+                    <!-- PLUGINS WISHLIST END -->
                         <a href="'.$pl['url'].'" class="pixelProduct">
                             <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="Ver producto">
                                 <i class="fa fa-eye" aria-hidden="true"></i>
@@ -235,115 +254,115 @@ if(!is_array($products))
      */
     if(count($productList) > 0)
     {
-     $pages = ceil(count($productList) / $productsPerPage);
-     echo '
+        $pages = ceil(count($productList) / $productsPerPage);
+        echo '
      <div class="container text-center">
           <nav aria-label="Page navigation example">
             <ul class="pagination">
      ';
 
-     if($pages <= 4)
-     {
-         for($i = 1; $i<= $pages; $i++)
-         {
-             echo '
+        if($pages <= 4)
+        {
+            for($i = 1; $i<= $pages; $i++)
+            {
+                echo '
              <li class="page-item '; if($i == $page) {echo 'active';} echo '">
                 <a class="page-link" href="'.$path.$paths[0].'/'.$i.'/'.$_SESSION['order'].'/'.$_SESSION['method'].'">'.$i.'</a>
              </li>
              ';
-         }
-     } elseif ($pages > 4 && $pages <= 8) {
-         echo '
+            }
+        } elseif ($pages > 4 && $pages <= 8) {
+            echo '
          <li class="page-item ';
-         if ($page == 1) {
-             echo 'disabled';
-         }
-         echo '">
+            if ($page == 1) {
+                echo 'disabled';
+            }
+            echo '">
             <a class="page-link" ';
-         if($page !== 1)
-         {
-             echo 'href="'.$path.$paths[0].'/'.($page-1).'/'.$_SESSION['order'].'/'.$_SESSION['method'].'"';
-         }
-         echo 'aria-label="Previous">
+            if($page !== 1)
+            {
+                echo 'href="'.$path.$paths[0].'/'.($page-1).'/'.$_SESSION['order'].'/'.$_SESSION['method'].'"';
+            }
+            echo 'aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
             </a>
          </li>
          ';
 
-         if ($page >= 3) {
-             $start = 2;
-             $end = $pages;
-         } else {
-             $start = 1;
-             $end = 4;
-         }
-         for ($i = $start; $i <= $end; $i++) {
-             echo '
+            if ($page >= 3) {
+                $start = 2;
+                $end = $pages;
+            } else {
+                $start = 1;
+                $end = 4;
+            }
+            for ($i = $start; $i <= $end; $i++) {
+                echo '
              <li class="page-item ';
-             if ($i == $page) {
-                 echo 'active';
-             }
-             echo '">
+                if ($i == $page) {
+                    echo 'active';
+                }
+                echo '">
                 <a class="page-link" href="'.$path.$paths[0].'/'.$i.'/'.$_SESSION['order'].'/'.$_SESSION['method'].'">' . $i . '</a>
              </li>
              ';
-         }
-         echo '
+            }
+            echo '
          <li class="page-item ';
-         if ($page == $pages) {
-             echo 'disabled';
-         }
-         echo '">
+            if ($page == $pages) {
+                echo 'disabled';
+            }
+            echo '">
             <a class="page-link" ';
-         if($page !== $pages)
-         {
-             echo 'href="'.$path.$paths[0].'/'.($page+1).'/'.$_SESSION['order'].'/'.$_SESSION['method'].'"';
-         }
-         echo 'aria-label="Previous">
+            if($page !== $pages)
+            {
+                echo 'href="'.$path.$paths[0].'/'.($page+1).'/'.$_SESSION['order'].'/'.$_SESSION['method'].'"';
+            }
+            echo 'aria-label="Previous">
                 <span aria-hidden="true">&raquo;</span>
             </a>
          </li>
          ';
 
-     } else {
-         echo '
+        } else {
+            echo '
          <li class="page-item ';
-         if ($page == 1) {
-             echo 'disabled';
-         }
-         echo '">
+            if ($page == 1) {
+                echo 'disabled';
+            }
+            echo '">
             <a class="page-link" ';
-         if($page !== 1)
-         {
-             echo 'href="'.$path.$paths[0].'/'.($page-1).'/'.$_SESSION['order'].'/'.$_SESSION['method'].'"';
-         }
-         echo 'aria-label="Previous">
+            if($page !== 1)
+            {
+                echo 'href="'.$path.$paths[0].'/'.($page-1).'/'.$_SESSION['order'].'/'.$_SESSION['method'].'"';
+            }
+            echo 'aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
             </a>
          </li>
          ';
 
-         if($page <= 4)
-         {
-             if ($page >= 3) {
-                 $start = 2;
-                 $end = 5;
-             } else {
-                 $start = 1;
-                 $end = 4;
-             }
-             for ($i = $start; $i <= $end; $i++) {
-                 echo '
+            if($page <= 4)
+            {
+                if ($page >= 3) {
+                    $start = 2;
+                    $end = 5;
+                } else {
+                    $start = 1;
+                    $end = 4;
+                }
+                for ($i = $start; $i <= $end; $i++) {
+                    echo '
              <li class="page-item ';
-                 if ($i == $page) {
-                     echo 'active';
-                 }
-                 echo '">
+                    if ($i == $page) {
+                        echo 'active';
+                    }
+                    echo '">
                 <a class="page-link" href="'.$path.$paths[0].'/'.$i.'/'.$_SESSION['order'].'/'.$_SESSION['method'].'">' . $i . '</a>
              </li>
              ';
-             }
-             echo '
+                }
+                echo '
              <li class="page-item disabled">
                 <a class="page-link" href="#">...</a>
              </li>
@@ -351,9 +370,9 @@ if(!is_array($products))
                 <a class="page-link" href="'.$path.$paths[0].'/'.$pages.'/'.$_SESSION['order'].'/'.$_SESSION['method'].'">'.$pages.'</a>
              </li>
              ';
-         } elseif ($page >= 5 && $page <= ($pages -4))
-         {
-            echo '
+            } elseif ($page >= 5 && $page <= ($pages -4))
+            {
+                echo '
              <li class="page-item">
                 <a class="page-link" href="'.$path.$paths[0].'/1/'.$_SESSION['order'].'/'.$_SESSION['method'].'">1</a>
              </li>
@@ -361,18 +380,18 @@ if(!is_array($products))
                 <a class="page-link" href="#">...</a>
              </li>
             ';
-             for ($i = ($page - 1); $i <= ($page + 1); $i++) {
-                 echo '
+                for ($i = ($page - 1); $i <= ($page + 1); $i++) {
+                    echo '
              <li class="page-item ';
-                 if ($i == $page) {
-                     echo 'active';
-                 }
-                 echo '">
+                    if ($i == $page) {
+                        echo 'active';
+                    }
+                    echo '">
                 <a class="page-link" href="'.$path.$paths[0].'/'.$i.'/'.$_SESSION['order'].'/'.$_SESSION['method'].'">' . $i . '</a>
              </li>
              ';
-             }
-             echo '
+                }
+                echo '
              <li class="page-item disabled">
                 <a class="page-link" href=#>...</a>
              </li>
@@ -380,8 +399,8 @@ if(!is_array($products))
                 <a class="page-link" href="'.$path.$paths[0].'/'.$pages.'/'.$_SESSION['order'].'/'.$_SESSION['method'].'">'.$pages.'</a>
              </li>
             ';
-         } else {
-             echo '
+            } else {
+                echo '
              <li class="page-item">
                 <a class="page-link" href="'.$path.$paths[0].'/1/'.$_SESSION['order'].'/'.$_SESSION['method'].'">1</a>
              </li>
@@ -389,36 +408,36 @@ if(!is_array($products))
                 <a class="page-link" href="#">...</a>
              </li>
             ';
-             for ($i = ($pages - 3); $i <= $pages; $i++) {
-                 echo '
+                for ($i = ($pages - 3); $i <= $pages; $i++) {
+                    echo '
              <li class="page-item ';
-                 if ($i == $page) {
-                     echo 'active';
-                 }
-                 echo '">
+                    if ($i == $page) {
+                        echo 'active';
+                    }
+                    echo '">
                 <a class="page-link" href="'.$path.$paths[0].'/'.$i.'/'.$_SESSION['order'].'/'.$_SESSION['method'].'">' . $i . '</a>
              </li>
              ';
-             }
-         }
+                }
+            }
 
-         echo '
+            echo '
          <li class="page-item ';
-         if ($page == $pages) {
-             echo 'disabled';
-         }
-         echo '">
+            if ($page == $pages) {
+                echo 'disabled';
+            }
+            echo '">
             <a class="page-link" ';
-         if($page != $pages)
-         {
-             echo 'href="'.$path.$paths[0].'/'.($page+1).'/'.$_SESSION['order'].'/'.$_SESSION['method'].'"';
-         }
-         echo 'aria-label="Previous">
+            if($page != $pages)
+            {
+                echo 'href="'.$path.$paths[0].'/'.($page+1).'/'.$_SESSION['order'].'/'.$_SESSION['method'].'"';
+            }
+            echo 'aria-label="Previous">
                 <span aria-hidden="true">&raquo;</span>
             </a>
          </li>
          ';
-     }
+        }
 
         echo '
             </ul>
