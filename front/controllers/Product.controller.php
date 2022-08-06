@@ -17,7 +17,7 @@ class ProductController
     public static function isProd($url)
     {
         $response = ProductModel::getUrl($url);
-        if(count($response) >= 1)
+        if(!empty($response))
         {
             return $response;
         } else {

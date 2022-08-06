@@ -1,0 +1,25 @@
+.cartHeader {
+    display: flex;
+}
+.cartItem div {
+    display: flex; align-items: center;
+}
+
+@media (min-width: 768px) {
+    .cartBody {
+        padding-bottom: 0;
+    }
+    .cartItem {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    .deleteProductCart {
+        position: absolute;
+        z-index: 2;
+        top: 0;
+    }
+}

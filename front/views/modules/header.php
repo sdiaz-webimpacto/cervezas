@@ -31,6 +31,7 @@ require_once "views/modules/sections/customer/registerHeader.php";
     <link rel="stylesheet" href="<?php echo $path;?>views/css/products.css">
     <link rel="stylesheet" href="<?php echo $path;?>views/css/category.css">
     <link rel="stylesheet" href="<?php echo $path;?>views/css/productPage.css">
+    <link rel="stylesheet" href="<?php echo $path;?>views/css/cart.css">
     <?php
         include "plugins/pluginsStyle.php";
     ?>
@@ -110,7 +111,7 @@ require_once "views/modules/sections/customer/registerHeader.php";
             </div>
             <!-- CARRITO -->
             <div class="col-lg-3 col-md-3 col-sm-2 col-xs-12" id="carrito">
-                <a href="#">
+                <a href="<?php echo $path;?>cart">
                     <button class="btn btn-default pull-left backColor">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                     </button>
