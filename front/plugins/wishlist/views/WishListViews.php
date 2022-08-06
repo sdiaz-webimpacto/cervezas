@@ -22,6 +22,7 @@ class WishlistViews
         } else {
             $onclick = "redirectToLogin()";
             $user = '';
+            $addClass = '';
         }
         echo '
             <button id="wishListButton" type="button" class="btn btn-default btn-xs whishList '.$addClass.'" idProducto="' . $id_product . '" 

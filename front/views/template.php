@@ -41,7 +41,8 @@ FRIENDLY URLS
             }
         }
         elseif ($paths[0] == 'myAccount'
-        || $paths[0] == 'changePassword')
+        || $paths[0] == 'changePassword'
+        || $paths[0] == 'cart')
         {
             if(file_exists("plugins/modules/".$paths[0].".php"))
             {
@@ -52,11 +53,16 @@ FRIENDLY URLS
         }
         elseif ($values = ProductController::isProd($paths[0]))
         {
-            if(file_exists("plugins/modules/productPage.php"))
+            if($values != false)
             {
-                include "plugins/modules/productPage.php";
+                if(file_exists("plugins/modules/productPage.php"))
+                {
+                    include "plugins/modules/productPage.php";
+                } else {
+                    include "modules/productPage.php";
+                }
             } else {
-                include "modules/productPage.php";
+                include "modules/error404.php";
             }
         }
         else {

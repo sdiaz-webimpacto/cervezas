@@ -1,5 +1,7 @@
 <?php
 
+require_once dirname(__FILE__).'\sections\elements\breadcrum.php';
+
 if(!isset($paths[2]))
 {
     $_SESSION['order'] = 'id';
@@ -21,11 +23,13 @@ $cat = CategoryController::getCategory($id);
 $products = CategoryController::getProductsInCategory($id, $_SESSION['order'], $_SESSION['method'], $findCant, $productsPerPage);
 $parentCat = false;
 $productList = CategoryController::getProductList($id, 'id', 'DESC');
-
+$parent = false;
 if($cat['parent'] !== 0)
 {
     $parent = CategoryController::getCategoryNameUrl($cat['parent']);
 }
+
+$breadcrum = Breadcrum::printBreadcrum($path, $cat['name'], $parent);
 
 if($cat['banner'] ==! '')
 {
@@ -90,27 +94,11 @@ if(!is_array($products))
             </div>
         </div>
     </div>';
-    /**
-     * BREADCRUM
-     */
-    echo '
-<div class="container-fluid">
-    <div class="container">
-        <div class="row">
-            <ul class="breadcrumb backgroundBreadcrumb lead">
-                <li><a href="'.$path.'">INICIO</a></li>';
 
-    if(isset($parent))
-    {
-        echo '<li><a href="'.$parent['url'].'">'.$parent['name'].'</a></li>';
-    }
 
-    echo '<li class="active">'.$cat['name'].'</li>
-            </ul>
-        </div>
-    </div>
-</div>
-';
+    echo $breadcrum;
+
+
     echo '
         <div class="container-fluid products">
         <div class="container">
