@@ -3,6 +3,44 @@
 $socials = TemplateController::TemplateStyleController();
 $social = $socials[1];
 require_once "views/modules/sections/customer/registerHeader.php";
+
+// Cart options
+$cart = new CartController();
+$qtyInCart = 0;
+if($_SESSION && isset($_SESSION['id']))
+{
+    if(isset($_SESSION['id_cart']))
+    {
+        $showProductInGuestCart = $cart->getAllItemsCart($_SESSION['id_cart']);
+        if($showProductInGuestCart >= 1)
+        {
+            $cart->passGuestToCustomerCart($_SESSION['id_cart'], $_SESSION['id']);
+            unset($_SESSION['id_cart']);
+            $cart_id = $cart->getCart($_SESSION['id']);
+            $qtyInCart = $cart->getAllItemsCart($cart_id);
+        } else {
+            unset($_SESSION['id_cart']);
+            $cart_id = $cart->getCart($_SESSION['id']);
+            $qtyInCart = $cart->getAllItemsCart($cart_id);
+        }
+    } else {
+        $cart_id = $cart->getCart($_SESSION['id']);
+        $qtyInCart = $cart->getAllItemsCart($cart_id);
+    }
+
+} else {
+    $remoteIp = $_SERVER['REMOTE_ADDR'];
+    if($_SERVER['SERVER_NAME'] == 'localhost')
+    {
+    $remoteIp = '127.0.0.1';
+    }
+    $id_guest = GuestController::getGuest($remoteIp);
+    $cart_id = $cart->getCart(false, $id_guest['id']);
+    $qtyInCart = $cart->getAllItemsCart($cart_id);
+    $_SESSION['id_cart'] = $cart_id;
+}
+//End cart options
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -116,7 +154,9 @@ require_once "views/modules/sections/customer/registerHeader.php";
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                     </button>
                 </a>
-                <div class="bWhite">TU CESTA <span class="cantidadCesta">3</span> <br> USD $ <span class="sumaCesta">20</span></div>
+                <div class="itemsInCart">
+                    <?php echo $qtyInCart; ?>
+                </div>
             </div>
         </div>
         <!-- CATEGORÍAS -->
