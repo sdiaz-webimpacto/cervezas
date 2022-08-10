@@ -218,6 +218,16 @@ li.user a {
 	top: 24px;
 	margin-left: -25px;
 }
+.itemsInCart {
+	color: var(--main-color-white);
+	background-color: var(--main-color-black);
+	padding: 4px 7px;
+	border-radius: 50%;
+	font-size: 80%;
+	position: relative;
+	margin-left: -8px;
+	margin-top: -30px;
+}
 
 /*=============================================
 PAGINATOR
@@ -408,5 +418,12 @@ MOVIL (XS revisamos en 320px)
 	}
 	#carrito {
 		display: list-item;
+	}
+	.itemsInCart {
+		color: var(--main-color-white);
+		background-color: var(--main-color-black);
+		position: absolute;
+		margin-left: 35px;
+		margin-top: -7px;
 	}
 }
