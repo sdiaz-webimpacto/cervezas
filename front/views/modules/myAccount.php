@@ -1,5 +1,7 @@
 <?php
 
+$page = 'myaccount';
+
 if(!empty($paths[1]))
 {
     $data = CustomerController::confirmEmail($paths[1]);

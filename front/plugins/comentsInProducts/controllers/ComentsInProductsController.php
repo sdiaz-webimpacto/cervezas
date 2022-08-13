@@ -92,8 +92,11 @@ class ComentsInProductsController
                 $print .= "<i class='fa fa-star grayStar'></i>";
             }
             $print .= "(".$valorations.")";
-            $valorations = ComentsInProductsModel::existValoration($id_product,CustomerController::isLogged());
-            if($valorations['valorations'] >= 1)
+            if(isset($_SESSION['id']))
+            {
+                $valorations = ComentsInProductsModel::existValoration($id_product,CustomerController::isLogged());
+            }
+            if(isset($valorations['valorations']) && $valorations['valorations'] >= 1)
             {
                 $print .= "<div>Muchas gracias por su valoración sobre este producto.</div>";
             }

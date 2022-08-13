@@ -1,6 +1,9 @@
 <?php
 
 require_once dirname(__FILE__).'\sections\elements\breadcrum.php';
+include_once "sections/addToCart.php";
+
+$page = 'category';
 
 if(!isset($paths[2]))
 {
@@ -107,13 +110,13 @@ if(!is_array($products))
             echo '
             <li class="col-md-3 col-sm-6 col-xs-12 article">
                 <figure>
-                    <a href="'.$pr['url'].'" class="pixelProduct">
+                    <a href="'.$path.$pr['url'].'" class="pixelProduct">
                         <img src="' . $pathBack . $pr['cover'] . '" class="img-responsive">
                     </a>
                 </figure>
                 <h4>
                 <small>
-                    <a href="'.$pr['url'].'" class="pixelProduct">
+                    <a href="'.$path.$pr['url'].'" class="pixelProduct">
                         ' . $pr['title'];
                         echo '<div class="col-12">';
                         if($pr['new'] == 1){
@@ -131,7 +134,10 @@ if(!is_array($products))
                         echo '</div>
                     </a>
                 </small>
-                </h4>
+                </h4>';
+                $cart = new AddToCart();
+                $cart->printAddToCart($pr['id'], $cart_id, $page);
+                echo '
                 <div class="col-xs-6 price">
                     <h2>';
                     if($pr['offer_price'] != 0)
@@ -167,22 +173,26 @@ if(!is_array($products))
             <li class="col-xs-12">
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
                     <figure>
-                        <a href="'.$pl['url'].'" class="pixelProduct"><img src="'.$pathBack . $pl['cover'].'" class="img-responsive"></a>
+                        <a href="'.$path.$pl['url'].'" class="pixelProduct"><img src="'.$pathBack . $pl['cover'].'" class="img-responsive"></a>
                     </figure>
                 </div>
                 <div class="col-lg-10 col-md-7 col-sm-8 col-xs-12">
                     <h1>
                         <small>
-                            <a href="'.$pl['url'].'" class="pixelProduct">'.$pl['title'];
+                            <a href="'.$path.$pl['url'].'" class="pixelProduct">'.$pl['title'];
                 if($pr['new'] == 1){
                     echo '<span class="label label-warning fontSize">Nuevo</span>';
                 }
 
                 if($pr['offer_discount'] > 0){
-                    echo '<span class="label label-warning fontSize">'.$pr['offer_discount'].'%</span>';
+                    echo '<span class="label label-warning fontSize">'.$pl['offer_discount'].'%</span>';
                 }
                 echo '</a>
                         </small>
+                        ';
+            $cart = new AddToCart();
+            $cart->printAddToCart($pl['id'], $cart_id, $page);
+            echo '
                     </h1>
                     <p class="text-muted">'.$pl['short_description'].'</p>
                     <h2>';

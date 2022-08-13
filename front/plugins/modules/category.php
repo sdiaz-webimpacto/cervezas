@@ -1,9 +1,11 @@
 <?php
 
+include_once "views/modules/sections/addToCart.php";
 // PLUGIN WISHLIST CALLS
 include_once "plugins/wishlist/views/WishListViews.php";
 //PLUGIN WISHLIST CALLS END
 
+$page = 'category';
 if(!isset($paths[2]))
 {
     $_SESSION['order'] = 'id';
@@ -14,12 +16,12 @@ if(!isset($paths[2]))
 }
 
 $productsPerPage = 12;
-$page = 1;
+$thispage = 1;
 if(isset($paths[1]))
 {
-    $page = $paths[1];
+    $thispage = $paths[1];
 }
-$findCant = ($page - 1) * $productsPerPage;
+$findCant = ($thispage - 1) * $productsPerPage;
 $id = CategoryController::getCategoryId($paths[0]);
 $cat = CategoryController::getCategory($id);
 $products = CategoryController::getProductsInCategory($id, $_SESSION['order'], $_SESSION['method'], $findCant, $productsPerPage);
@@ -123,13 +125,13 @@ if(!is_array($products))
         echo '
             <li class="col-md-3 col-sm-6 col-xs-12 article">
                 <figure>
-                    <a href="'.$pr['url'].'" class="pixelProduct">
+                    <a href="'.$path.$pr['url'].'" class="pixelProduct">
                         <img src="' . $pathBack . $pr['cover'] . '" class="img-responsive">
                     </a>
                 </figure>
                 <h4>
                 <small>
-                    <a href="'.$pr['url'].'" class="pixelProduct">
+                    <a href="'.$path.$pr['url'].'" class="pixelProduct">
                         ' . $pr['title'];
         echo '<div class="col-12">';
         if($pr['new'] == 1){
@@ -148,6 +150,10 @@ if(!is_array($products))
                     </a>
                 </small>
                 </h4>
+                ';
+        $cart = new AddToCart();
+        $cart->printAddToCart($pr['id'], $cart_id, $page);
+        echo '
                 <div class="col-xs-6 price">
                     <h2>';
         if($pr['offer_price'] != 0)
@@ -174,7 +180,7 @@ if(!is_array($products))
                     echo '
                     <!-- Comentar para deshabilitar el plugins FIN -->
                     <!-- PLUGINS WISHLIST END -->
-                        <a href="'.$pr['url'].'" class="pixelProduct">
+                        <a href="'.$path.$pr['url'].'" class="pixelProduct">
                             <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="Ver producto">
                                 <i class="fa fa-eye" aria-hidden="true"></i>
                             </button>
@@ -191,23 +197,27 @@ if(!is_array($products))
             <li class="col-xs-12">
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
                     <figure>
-                        <a href="'.$pl['url'].'" class="pixelProduct"><img src="'.$pathBack . $pl['cover'].'" class="img-responsive"></a>
+                        <a href="'.$path.$pl['url'].'" class="pixelProduct"><img src="'.$pathBack . $pl['cover'].'" class="img-responsive"></a>
                     </figure>
                 </div>
                 <div class="col-lg-10 col-md-7 col-sm-8 col-xs-12">
                     <h1>
                         <small>
-                            <a href="'.$pl['url'].'" class="pixelProduct">'.$pl['title'];
+                            <a href="'.$path.$pl['url'].'" class="pixelProduct">'.$pl['title'];
         if($pr['new'] == 1){
             echo '<span class="label label-warning fontSize">Nuevo</span>';
         }
 
         if($pr['offer_discount'] > 0){
-            echo '<span class="label label-warning fontSize">'.$pr['offer_discount'].'%</span>';
+            echo '<span class="label label-warning fontSize">'.$pl['offer_discount'].'%</span>';
         }
         echo '</a>
                         </small>
                     </h1>
+                    ';
+        $cart = new AddToCart();
+        $cart->printAddToCart($pl['id'], $cart_id, $page);
+        echo '
                     <p class="text-muted">'.$pl['short_description'].'</p>
                     <h2>';
 
@@ -234,7 +244,7 @@ if(!is_array($products))
                     echo '
                     <!-- Comentar para deshabilitar el plugins FIN -->
                     <!-- PLUGINS WISHLIST END -->
-                        <a href="'.$pl['url'].'" class="pixelProduct">
+                        <a href="'.$path.$pl['url'].'" class="pixelProduct">
                             <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="Ver producto">
                                 <i class="fa fa-eye" aria-hidden="true"></i>
                             </button>
@@ -266,7 +276,7 @@ if(!is_array($products))
             for($i = 1; $i<= $pages; $i++)
             {
                 echo '
-             <li class="page-item '; if($i == $page) {echo 'active';} echo '">
+             <li class="page-item '; if($i == $thispage) {echo 'active';} echo '">
                 <a class="page-link" href="'.$path.$paths[0].'/'.$i.'/'.$_SESSION['order'].'/'.$_SESSION['method'].'">'.$i.'</a>
              </li>
              ';
@@ -274,14 +284,14 @@ if(!is_array($products))
         } elseif ($pages > 4 && $pages <= 8) {
             echo '
          <li class="page-item ';
-            if ($page == 1) {
+            if ($thispage == 1) {
                 echo 'disabled';
             }
             echo '">
             <a class="page-link" ';
-            if($page !== 1)
+            if($thispage !== 1)
             {
-                echo 'href="'.$path.$paths[0].'/'.($page-1).'/'.$_SESSION['order'].'/'.$_SESSION['method'].'"';
+                echo 'href="'.$path.$paths[0].'/'.($thispage-1).'/'.$_SESSION['order'].'/'.$_SESSION['method'].'"';
             }
             echo 'aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
@@ -289,7 +299,7 @@ if(!is_array($products))
          </li>
          ';
 
-            if ($page >= 3) {
+            if ($thispage >= 3) {
                 $start = 2;
                 $end = $pages;
             } else {
@@ -299,7 +309,7 @@ if(!is_array($products))
             for ($i = $start; $i <= $end; $i++) {
                 echo '
              <li class="page-item ';
-                if ($i == $page) {
+                if ($i == $thispage) {
                     echo 'active';
                 }
                 echo '">
@@ -314,9 +324,9 @@ if(!is_array($products))
             }
             echo '">
             <a class="page-link" ';
-            if($page !== $pages)
+            if($thispage !== $pages)
             {
-                echo 'href="'.$path.$paths[0].'/'.($page+1).'/'.$_SESSION['order'].'/'.$_SESSION['method'].'"';
+                echo 'href="'.$path.$paths[0].'/'.($thispage+1).'/'.$_SESSION['order'].'/'.$_SESSION['method'].'"';
             }
             echo 'aria-label="Previous">
                 <span aria-hidden="true">&raquo;</span>
@@ -327,14 +337,14 @@ if(!is_array($products))
         } else {
             echo '
          <li class="page-item ';
-            if ($page == 1) {
+            if ($thispage == 1) {
                 echo 'disabled';
             }
             echo '">
             <a class="page-link" ';
-            if($page !== 1)
+            if($thispage !== 1)
             {
-                echo 'href="'.$path.$paths[0].'/'.($page-1).'/'.$_SESSION['order'].'/'.$_SESSION['method'].'"';
+                echo 'href="'.$path.$paths[0].'/'.($thispage-1).'/'.$_SESSION['order'].'/'.$_SESSION['method'].'"';
             }
             echo 'aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
@@ -342,9 +352,9 @@ if(!is_array($products))
          </li>
          ';
 
-            if($page <= 4)
+            if($thispage <= 4)
             {
-                if ($page >= 3) {
+                if ($thispage >= 3) {
                     $start = 2;
                     $end = 5;
                 } else {
@@ -354,7 +364,7 @@ if(!is_array($products))
                 for ($i = $start; $i <= $end; $i++) {
                     echo '
              <li class="page-item ';
-                    if ($i == $page) {
+                    if ($i == $thispage) {
                         echo 'active';
                     }
                     echo '">
@@ -370,7 +380,7 @@ if(!is_array($products))
                 <a class="page-link" href="'.$path.$paths[0].'/'.$pages.'/'.$_SESSION['order'].'/'.$_SESSION['method'].'">'.$pages.'</a>
              </li>
              ';
-            } elseif ($page >= 5 && $page <= ($pages -4))
+            } elseif ($thispage >= 5 && $thispage <= ($pages -4))
             {
                 echo '
              <li class="page-item">
@@ -380,10 +390,10 @@ if(!is_array($products))
                 <a class="page-link" href="#">...</a>
              </li>
             ';
-                for ($i = ($page - 1); $i <= ($page + 1); $i++) {
+                for ($i = ($thispage - 1); $i <= ($thispage + 1); $i++) {
                     echo '
              <li class="page-item ';
-                    if ($i == $page) {
+                    if ($i == $thispage) {
                         echo 'active';
                     }
                     echo '">
@@ -411,7 +421,7 @@ if(!is_array($products))
                 for ($i = ($pages - 3); $i <= $pages; $i++) {
                     echo '
              <li class="page-item ';
-                    if ($i == $page) {
+                    if ($i == $thispage) {
                         echo 'active';
                     }
                     echo '">
@@ -423,14 +433,14 @@ if(!is_array($products))
 
             echo '
          <li class="page-item ';
-            if ($page == $pages) {
+            if ($thispage == $pages) {
                 echo 'disabled';
             }
             echo '">
             <a class="page-link" ';
-            if($page != $pages)
+            if($thispage != $pages)
             {
-                echo 'href="'.$path.$paths[0].'/'.($page+1).'/'.$_SESSION['order'].'/'.$_SESSION['method'].'"';
+                echo 'href="'.$path.$paths[0].'/'.($thispage+1).'/'.$_SESSION['order'].'/'.$_SESSION['method'].'"';
             }
             echo 'aria-label="Previous">
                 <span aria-hidden="true">&raquo;</span>

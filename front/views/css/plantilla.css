@@ -64,6 +64,9 @@ header{
 .btn-default:hover{
 	border: 2px solid #000000;
 }
+.addToCartButtons .btn-default:hover {
+	border: unset;
+}
 .breadcrumb{
 	background: none;
 	text-transform: lowercase;
@@ -207,6 +210,9 @@ GENÉRICOS
 .width100 {
 	width: 100%;
 }
+.d-flex {
+	display: flex;
+}
 /*=============================================
 ESPÉCIFICOS
 =============================================*/
@@ -218,6 +224,9 @@ li.user a {
 	top: 24px;
 	margin-left: -25px;
 }
+.productLess, .productMore {
+	z-index: 2;
+}
 .itemsInCart {
 	color: var(--main-color-white);
 	background-color: var(--main-color-black);
@@ -228,10 +237,36 @@ li.user a {
 	margin-left: -8px;
 	margin-top: -30px;
 }
+.addToCartBubble {
+	position: fixed;
+	top: 0;
+	right: 0;
+	background-color: var(--main-color-white);
+	z-index: 3;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 25%;
+	float: right;
+	height: fit-content;
+	border-bottom: 3px solid var(--main-color-second);
+	color: var(--main-color-black);
+	padding: 1rem;
+	text-align: center;
+}
+.addToCartBubble > div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.superIcon {
+	color: var(--main-color-base);
+	font-size: 3rem;
+}
 
-/*=============================================
-PAGINATOR
-=============================================*/
+	/*=============================================
+    PAGINATOR
+    =============================================*/
 .pagination li a{
 	color:var(--main-color-black);
 }
@@ -425,5 +460,8 @@ MOVIL (XS revisamos en 320px)
 		position: absolute;
 		margin-left: 35px;
 		margin-top: -7px;
+	}
+	.addToCartBubble {
+		width: 100%;
 	}
 }

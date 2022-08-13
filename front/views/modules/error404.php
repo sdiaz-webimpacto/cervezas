@@ -1,3 +1,8 @@
+<?php
+
+$page = 'error404';
+
+echo '
 <div class="container">
     <div class="row">
         <div class="col-xs-12 text-center error404">
@@ -6,3 +11,4 @@
         </div>
     </div>
 </div>
+';

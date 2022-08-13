@@ -12,18 +12,9 @@ function less()
     let inputId = '#input-'+productId;
     let valSelect = Number($(inputId).val());
 
-    ajaxUpgradeQty('less', cartId, productId, valSelect);
-
-    let valItemsInCart = Number($('.itemsInCart').text());
-    let valItem = Number($('.priceWithOutSign[data-id="'+productId+'"]').text());
-    let valTotalItems = Number($('.totalWithOutSign[data-id="'+productId+'"]').text());
-    let valTotal = Number($('.globalWithOutSign').text());
-
-    $(inputId).val(valSelect - 1);
-
-    $('.itemsInCart').text(valItemsInCart - 1);
-    $('.totalWithOutSign[data-id="'+productId+'"]').text(valTotalItems - valItem);
-    $('.globalWithOutSign').text(valTotal - valItem);
+    if(valSelect >= 2) {
+        ajaxUpgradeQty('less', cartId, productId, valSelect, inputId);
+    }
 }
 
 function more()
@@ -33,17 +24,8 @@ function more()
     let inputId = '#input-'+productId;
     let valSelect = Number($(inputId).val());
 
-    ajaxUpgradeQty('more', cartId, productId, valSelect);
+    ajaxUpgradeQty('more', cartId, productId, valSelect, inputId);
 
-    let valItemsInCart = Number($('.itemsInCart').text());
-    let valItem = Number($('.priceWithOutSign[data-id="'+productId+'"]').text());
-    let valTotalItems = Number($('.totalWithOutSign[data-id="'+productId+'"]').text());
-    let valTotal = Number($('.globalWithOutSign').text());
-
-    $(inputId).val(valSelect + 1);
-    $('.itemsInCart').text(valItemsInCart + 1);
-    $('.totalWithOutSign[data-id="'+productId+'"]').text(valTotalItems + valItem);
-    $('.globalWithOutSign').text(valTotal + valItem);
 }
 
 function productDelete()
@@ -54,9 +36,9 @@ function productDelete()
     window.location = window.location.href;
 }
 
-function ajaxUpgradeQty(operation, cartId, productId, valSelect)
+function ajaxUpgradeQty(operation, cartId, productId, valSelect, inputId)
 {
-    let value;
+    let value = 'hola';
     $.ajax({
         url: "ajax/cart.ajax.php",
         method: "POST",
@@ -70,10 +52,36 @@ function ajaxUpgradeQty(operation, cartId, productId, valSelect)
         success: function(response)
         {
             const data = JSON.parse(response);
-            value = data.result;
+            if(data.result === 'ok')
+            {
+                let valItemsInCart = Number($('.itemsInCart').text());
+                let valItem = Number($('.priceWithOutSign[data-id="'+productId+'"]').text());
+                let valTotalItems = Number($('.totalWithOutSign[data-id="'+productId+'"]').text());
+                let valTotal = Number($('.globalWithOutSign').text());
+
+                if(operation === 'less')
+                {
+                    $(inputId).val(valSelect - 1);
+                    $('.itemsInCart').text(valItemsInCart - 1);
+                    $('.totalWithOutSign[data-id="'+productId+'"]').text(valTotalItems - valItem);
+                    $('.globalWithOutSign').text(valTotal - valItem);
+                } else {
+                    $(inputId).val(valSelect + 1);
+                    $('.itemsInCart').text(valItemsInCart + 1);
+                    $('.totalWithOutSign[data-id="'+productId+'"]').text(valTotalItems + valItem);
+                    $('.globalWithOutSign').text(valTotal + valItem);
+                }
+            } else if(data.result === 'Sin stock') {
+                swal({
+                        title: "¡Lo sentimos!",
+                        text: "Lamentablemente no queda más stock de este producto.",
+                        type: "error",
+                        confirmButtonText: "Cerrar",
+                        closeOnConfirm: true
+                    });
+            }
         }
     });
-    return value;
 }
 
 function ajaxProductDelete(cartId, productId)

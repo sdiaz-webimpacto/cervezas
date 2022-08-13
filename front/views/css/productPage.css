@@ -64,6 +64,10 @@ figure.zoom img {
     margin-left: -25%;
     width: 200%;
 }
+.datasProduct .addToCartButtons {
+    display: flex;
+    align-items: center;
+}
 
 @media (max-width:991px)
 {

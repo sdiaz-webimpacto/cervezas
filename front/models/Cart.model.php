@@ -48,8 +48,8 @@ class CartModel
     {
         $where = 'id_cart = '.$id_cart;
         $result = Conn::select('cart_product', 'sum(qty) as qty', $where);
-        $return = false;
-        if(!empty($result))
+        $return = 0;
+        if(!empty($result['qty']))
         {
             $return = $result['qty'];
         }
