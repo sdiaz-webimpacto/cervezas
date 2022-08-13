@@ -1,5 +1,7 @@
 <?php
 
+$page = 'password';
+
 if(!empty($paths[1]))
 {
     $customer = new CustomerController();

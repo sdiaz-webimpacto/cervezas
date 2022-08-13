@@ -1,4 +1,6 @@
 <?php
+
+$page = 'product';
 $id = ProductController::getProductId($values['url']);
 $product = ProductController::getProduct($id['id']);
 $imgs = explode(',', $product['multimedia']);
@@ -132,7 +134,7 @@ if($product['new'] === 1)
 $info = new MoreInfoProduct();
 $info->selectors($product['detail']);
 $cart = new AddToCart();
-$cart->printAddToCart();
+$cart->printAddToCart($id['id'], $cart_id, $page);
 $info->getMoreInfo($product['description'],$product['detail']);
 include ("plugins/comentsInProducts/views/view.php");
 echo '          </div>

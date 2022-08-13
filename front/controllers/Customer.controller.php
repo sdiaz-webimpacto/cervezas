@@ -115,7 +115,7 @@ class CustomerController
                     'name' => $_POST['customerName'],
                     'surname' => $_POST['customerSurname'],
                     'email' => $_POST['customerEmail'],
-                    'password' => CustomerTools::encryptation($_POST['customerName']),
+                    'password' => CustomerTools::encryptation($_POST['customerPass']),
                     'token' => $mailCrypt
                 );
                 $isRegistered = CustomerModel::isCustomer($data['email']);
