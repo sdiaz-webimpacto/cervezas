@@ -74,4 +74,17 @@ class CartModel
         $result = Conn::update('cart', array('id_customer' => $id_customer), 'id = '.$id_cart);
         return $result;
     }
+
+    public static function insertProductInCart($id_product, $id_cart, $qty)
+    {
+        $html = 'INSERT INTO cart_product (id_product, id_cart, qty) VALUES ('.$id_product.', '.$id_cart.','.$qty.')';
+        $stmt = Conn::connect()->prepare($html);
+        if($stmt->execute())
+        {
+            $insert = 'ok';
+        } else {
+            $insert = 'No se ha podido añadir el producto';
+        }
+        return $insert;
+    }
 }

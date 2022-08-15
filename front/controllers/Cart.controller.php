@@ -58,4 +58,10 @@ class CartController
     {
         $response = CartModel::passGuestToCustomerCart($id_cart, $id_customer);
     }
+
+    public static function insertProductInCart($id_product, $id_cart, $qty)
+    {
+        $response = CartModel::insertProductInCart($id_product, $id_cart, $qty);
+        return $response;
+    }
 }

@@ -79,6 +79,9 @@ if($_SESSION && isset($_SESSION['id']))
     <script src="<?php echo $path;?>views/js/plugins/jquery.min.js"></script>
     <script src="<?php echo $path;?>views/js/plugins/bootstrap.min.js"></script>
     <script src="<?php echo $path;?>views/js/plugins/sweetalert.min.js"></script>
+    <script>
+        const path = "<?php echo $path; ?>";
+    </script>
 
 </head>
 <body>

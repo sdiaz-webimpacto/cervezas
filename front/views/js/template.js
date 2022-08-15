@@ -107,14 +107,25 @@ function qtyAdjust()
 		{
 			variation = + 0;
 		}
-		$(nameInput).val(val+variation);
+
 		if($(nameInput).val() > stock)
 		{
+			$('.addToCartBubble').remove();
+			$('header').after('' +
+				'<div class="container-fluid addToCartBubble">' +
+				'	<div class="col-xs-12 alert alert-danger">' +
+				'Este producto no tiene stock' +
+				'   </div>' +
+				'</div>');
+			setTimeout(function(){
+				$('.addToCartBubble').remove();
+			},3000)
 			button.attr('disabled', 'disabled');
 			button.html(
 				'Sin stock'
 			)
 		} else {
+			$('[name="qty"][id="qty-'+id+'"]').attr('value', val+variation);
 			button.attr('disabled', false);
 			button.html(
 				'Añadir a la cesta <i class="fa fa-shopping-cart"></i>'
@@ -129,7 +140,7 @@ function addToCartProduct()
 	const cart = $(this).attr('data-cart');
 	const qty = $('input#qty-'+product).val();
 	$.ajax({
-		url: 'ajax/cart.ajax.php',
+		url: path+'ajax/cart.ajax.php',
 		method: 'POST',
 		data: {
 			'addToCart': 1,
@@ -144,6 +155,7 @@ function addToCartProduct()
 			const data = JSON.parse(response);
 			if(data.result === 'ok')
 			{
+				$('.addToCartBubble').remove();
 				$('.itemsInCart').text(actualNb + Number(data.qty));
 				$('header').after('' +
 					'<div class="container-fluid addToCartBubble">' +
@@ -152,6 +164,9 @@ function addToCartProduct()
 						data.qty + ' '+ data.productName + '<br>Añadido al carrito' +
 					'   </div>' +
 					'</div>');
+				setTimeout(function(){
+					$('.addToCartBubble').remove();
+				},3000)
 			}
 		},
 	})

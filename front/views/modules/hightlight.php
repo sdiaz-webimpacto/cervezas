@@ -90,6 +90,9 @@ BANNER
                                 echo '</div></a>
                             </small>
                         </h4>
+                        
+                        
+                        
                         <div class="col-xs-6 price">
                         <h2>';
                     if($pr['offer_price'] != 0)
