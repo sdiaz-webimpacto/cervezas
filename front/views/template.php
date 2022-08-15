@@ -69,6 +69,7 @@ FRIENDLY URLS
             include "modules/error404.php";
         }
     } else {
+        // HOME
         include "modules/slide.php";
         if(file_exists("plugins/modules/hightlight.php"))
         {

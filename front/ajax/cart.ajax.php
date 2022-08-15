@@ -5,10 +5,14 @@ if(file_exists('tools/CustomerTools.php'))
     require_once "models/Conn.php";
     require_once "controllers/Stock.controller.php";
     require_once "models/Stock.model.php";
+    require_once "models/Cart.model.php";
+    require_once "controllers/Cart.controller.php";
 } else {
     require_once "../models/Conn.php";
     require_once "../controllers/Stock.controller.php";
     require_once "../models/Stock.model.php";
+    require_once "../models/Cart.model.php";
+    require_once "../controllers/Cart.controller.php";
 }
 
 class AjaxCart
@@ -114,12 +118,7 @@ class AjaxCart
                     $result = 'ok';
                 }
             } else {
-                $insert = array(
-                    "id_product" => $product,
-                    "id_cart" => $cart,
-                    "qty" => $qty
-                );
-                $query = Conn::insert('cart_product', $insert);
+                $query = CartController::insertProductInCart($product, $cart, $qty);
                 $result = "No se pudo añadir el producto a la cesta";
                 if($query == 'ok')
                 {
