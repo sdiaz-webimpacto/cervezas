@@ -9,6 +9,14 @@ $breadcrumb = Breadcrum::printBreadcrum($path, 'cart');
 $productsInCart = $cart->getProductsInCart($cart_id);
 $totalCart = 0;
 
+if(isset($_SESSION['id']))
+{
+    $checkout = 'href="'.$path.'checkout"';
+} else {
+    $checkout = 'onclick="redirectToLogin('."'Debes estar logueado para procesar tu compra'".')"';
+}
+
+
 echo $breadcrumb.'
     <div class="container-fluid cart">
         <div class="container">
@@ -97,7 +105,9 @@ echo $breadcrumb.'
                     </div>      
                     
                     <div class="panel-heading checkoutHeader">
-                        <button class="btn btn-defaiult backColor btn-lg pull-right mb-1">PAGAR</button>
+                        <a '.$checkout.'>
+                            <button class="btn btn-defaiult backColor btn-lg pull-right mb-1">IR AL PAGO</button>
+                        </a>
                     </div>   ';
     } else {
         echo '

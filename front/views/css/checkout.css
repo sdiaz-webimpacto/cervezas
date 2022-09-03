@@ -1,0 +1,23 @@
+.checkoutAddressItem, .checkoutAddressAdd {
+    margin: 1rem;
+    padding: 1rem;
+    border: 1px solid rgba(0,0,0,.1);
+    border-radius: 6px;
+}
+.checkoutAddressItem.active {
+    border: 2px solid var(--main-color-base);
+}
+.checkoutAddressItem .card-header {
+    background-color: rgba(0,0,0,.1);
+    text-align: center;
+    padding: .5rem 0;
+}
+.checkoutAddressItem .card-footer {
+    text-align: center;
+}
+.checkoutAddressAdd .card-body {
+    text-align: center;
+}
+.checkoutSection h3 {
+    border-bottom: 1px solid var(--main-color-black);
+}

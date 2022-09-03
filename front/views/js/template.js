@@ -171,3 +171,56 @@ function addToCartProduct()
 		},
 	})
 }
+
+/**
+ * REdicerct to login
+ */
+function redirectToLogin(text)
+{
+	$("#loginModal .modal-body").prepend("<div id='alertLogin' class='alert alert-info'>"+text+"</div>");
+	$("#loginModal").modal("show");
+	setTimeout(function(){
+		$.when(slideAlertLogin()).then(function(){
+			setTimeout(function(){
+				$("#alertLogin").remove();
+			},1000)
+		});
+	},3000)
+}
+
+function slideAlertLogin()
+{
+	$("#alertLoginWishlist").slideUp();
+}
+
+$('.addressDelete').click(function(e){
+	const id = $(this).next().attr('data-id');
+	swal({
+		title: "Está a punto de eliminar esta dirección",
+		text: "Esta acción es irreversible, ¿desea continuar?",
+		icon: "warning",
+		buttons: ["Cancelar", "Eliminar"],
+		dangerMode: true,
+	})
+		.then((willDelete) => {
+			if (willDelete) {
+				$.ajax({
+					url: path+'ajax/address.ajax.php',
+					method: 'POST',
+					data: {
+						'deleteAddress': id,
+						'dateTime': Date.now()
+					},
+					success: function(response)
+					{
+						const data = JSON.parse(response);
+						console.log(data.result);
+						if(data.result === 'ok')
+						{
+							window.location.reload();
+						}
+					},
+				})
+			}
+		});
+});
