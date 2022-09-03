@@ -20,7 +20,7 @@ class WishlistViews
             $onclick = "ajaxWishList(".$id_product.")";
             $user = "idUser='" . $verify . "'";
         } else {
-            $onclick = "redirectToLogin()";
+            $onclick = "redirectToLogin('Debes estar logueado para poder añadir un producto a tu lista de deseos')";
             $user = '';
             $addClass = '';
         }

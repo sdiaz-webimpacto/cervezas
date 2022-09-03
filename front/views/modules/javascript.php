@@ -9,6 +9,7 @@
 <script src="<?php echo $path;?>views/js/productPage.js"></script>
 <script src="<?php echo $path;?>views/js/customer.js"></script>
 <script src="<?php echo $path;?>views/js/cart.js"></script>
+<script src="<?php echo $path;?>views/js/checkout.js"></script>
 <?php
     include "plugins/pluginsJS.php";
 ?>

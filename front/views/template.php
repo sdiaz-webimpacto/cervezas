@@ -42,7 +42,8 @@ FRIENDLY URLS
         }
         elseif ($paths[0] == 'myAccount'
         || $paths[0] == 'changePassword'
-        || $paths[0] == 'cart')
+        || $paths[0] == 'cart'
+        || $paths[0] == 'checkout')
         {
             if(file_exists("plugins/modules/".$paths[0].".php"))
             {

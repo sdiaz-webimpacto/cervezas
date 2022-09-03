@@ -38,7 +38,6 @@ function productDelete()
 
 function ajaxUpgradeQty(operation, cartId, productId, valSelect, inputId)
 {
-    let value = 'hola';
     $.ajax({
         url: "ajax/cart.ajax.php",
         method: "POST",

@@ -70,6 +70,7 @@ if($_SESSION && isset($_SESSION['id']))
     <link rel="stylesheet" href="<?php echo $path;?>views/css/category.css">
     <link rel="stylesheet" href="<?php echo $path;?>views/css/productPage.css">
     <link rel="stylesheet" href="<?php echo $path;?>views/css/cart.css">
+    <link rel="stylesheet" href="<?php echo $path;?>views/css/checkout.css">
     <?php
         include "plugins/pluginsStyle.php";
     ?>
@@ -79,6 +80,7 @@ if($_SESSION && isset($_SESSION['id']))
     <script src="<?php echo $path;?>views/js/plugins/jquery.min.js"></script>
     <script src="<?php echo $path;?>views/js/plugins/bootstrap.min.js"></script>
     <script src="<?php echo $path;?>views/js/plugins/sweetalert.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
         const path = "<?php echo $path; ?>";
     </script>

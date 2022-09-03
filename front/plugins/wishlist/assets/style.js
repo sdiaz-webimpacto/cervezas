@@ -1,15 +1,4 @@
-function redirectToLogin()
-{
-    $("#loginModal .modal-body").prepend("<div id='alertLoginWishlist' class='alert alert-info'>Debes estar logueado para poder añadir un producto a tu lista de deseos.</div>");
-    $("#loginModal").modal("show");
-    setTimeout(function(){
-        $.when(slideAlertLogin()).then(function(){
-            setTimeout(function(){
-                $("#alertLoginWishlist").remove();
-            },1000)
-        });
-    },3000)
-}
+
 
 function ajaxWishList(element)
 {
@@ -38,7 +27,3 @@ function ajaxWishList(element)
     });
 }
 
-function slideAlertLogin()
-{
-    $("#alertLoginWishlist").slideUp();
-}
