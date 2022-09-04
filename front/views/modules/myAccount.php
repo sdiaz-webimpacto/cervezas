@@ -43,6 +43,9 @@ if(isset($_SESSION['id']))
                 </li>
                 <li>
                     <a data-toggle="tab" href="#datos"><i class="fa fa-user"></i> Mis datos</a>
+                </li>
+                <li>
+                    <a data-toggle="tab" href="#directions"><i class="fa fa-home"></i> Mis direcciones</a>
                 </li>';
     if(file_exists("plugins/wishlist/controllers/WihsList.controller.php"))
     {
@@ -64,6 +67,12 @@ if(isset($_SESSION['id']))
                 <div id="datos" class="tab-pane fade">
                     ';
     include_once 'sections/customer/userDatas.php';
+    echo '
+                </div>';
+    echo '
+                <div id="directions" class="tab-pane fade">
+                ';
+    include_once 'sections/customer/userDirections.php';
     echo '
                 </div>';
     if(file_exists("plugins/wishlist/controllers/WihsList.controller.php"))

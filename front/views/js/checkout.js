@@ -31,10 +31,12 @@ function defaultAddress()
 /**
  * New Address
  */
-$('#submitNewAddress').click(newAddress);
-function newAddress(e)
-{
+$('#submitEditAddress').click(function(e){
     e.preventDefault();
+    newAddress();
+});
+function newAddress()
+{
     let name = $('#addressName').val();
     const address = $('#addressAddress').val();
     const zip = $('#addressZip').val();
@@ -80,13 +82,15 @@ function addressFormValidate()
     $.ajax({
         url: 'ajax/address.ajax.php',
         method: 'POST',
-        data: $('#newAddressForm form').serialize(),
+        data: $('#editAddressForm form').serialize(),
         success: function(response){
             const data = JSON.parse(response);
             console.log(data.result);
             if(data.result === 'ok')
             {
                 window.location.reload();
+            } else {
+                console.log('error al devolver el ajax');
             }
         }
     });
