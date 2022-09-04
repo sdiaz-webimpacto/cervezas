@@ -10,7 +10,7 @@ foreach($directions as $direction) {
     if ($direction['is_default'] === 0) {
         $addressHtml .= '<div class="addressDelete">x</div>';
     }
-    $addressHtml .= '<div class="addressEdit"><i class="fa fa-pencil"></i></div><a href="" class="buttonDfAdd" data-id="' . $direction['id_address'] . '"><div class="card checkoutAddressItem';
+    $addressHtml .= '<div class="addressEdit" data-id="' . $direction['id_address'] . '"><i class="fa fa-pencil"></i></div><a href="" class="buttonDfAdd" data-id="' . $direction['id_address'] . '"><div class="card checkoutAddressItem';
     if ($direction['is_default'] === 1) {
         $addressHtml .= ' active';
     }
@@ -33,7 +33,7 @@ echo $addressHtml;
 echo '                
                 <div class="card checkoutAddressAdd">
                     <div class="card-body">
-                        <a href="#newAddressModal" data-toggle="modal"><button class="btn btn-primary">Añadir dirección</button></a>
+                        <button class="btn btn-primary addressEdit">Añadir dirección</button>
                     </div>
                 </div>
             </div>

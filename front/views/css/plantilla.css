@@ -282,7 +282,7 @@ li.user a {
 	border-radius: 0 50% 50% 0;
 	cursor: pointer;
 }
-.addressEdit {
+div.addressEdit {
 	position: absolute;
 	margin-top: 30px;
 	right: 0.5rem;

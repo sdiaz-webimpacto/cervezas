@@ -83,6 +83,7 @@ if($_SESSION && isset($_SESSION['id']))
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
         const path = "<?php echo $path; ?>";
+        const user = "<?php echo $_SESSION['id'];?>";
     </script>
 
 </head>

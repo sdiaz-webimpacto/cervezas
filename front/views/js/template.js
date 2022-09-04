@@ -193,6 +193,9 @@ function slideAlertLogin()
 	$("#alertLoginWishlist").slideUp();
 }
 
+/**
+ * Eliminamos la dirección
+ */
 $('.addressDelete').click(function(e){
 	const id = $(this).next().attr('data-id');
 	swal({
@@ -224,3 +227,36 @@ $('.addressDelete').click(function(e){
 			}
 		});
 });
+
+/**
+ * actualizar dirección
+ */
+$('.addressEdit').click(function(e){
+	let id;
+	if($(this).next().attr('data-id') === undefined)
+	{
+		id = 'no';
+	} else {
+		id = $(this).next().attr('data-id');
+	}
+	$.ajax({
+		url: path+'ajax/address.ajax.php',
+		method: 'POST',
+		data: {
+			'editAddress':id,
+			'customer': user,
+			'dateTime': Date.now()
+		},
+		success: function(response)
+		{
+			const data = JSON.parse(response);
+			if(data.result === 'ok')
+			{
+				$('body').append(data.datas);
+				$('#editAddressModal').modal('show');
+			} else {
+				console.log('No han llegado los datos del ajax');
+			}
+		}
+	})
+})

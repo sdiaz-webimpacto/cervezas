@@ -29,6 +29,18 @@ class AddressController
         return 'Error al crear la dirección';
     }
 
+    public function updateAddress($array, $id_address)
+    {
+        $country = Conn::select('states', 'country', 'id_state = '.(int)$array['state']);
+        $array['country'] = $country['country'];
+        $return = Conn::update('address', $array, 'id_address = '.(int)$id_address);
+        if($return === 'ok')
+        {
+            return 'ok';
+        }
+        return 'Error al actualizar la dirección';
+    }
+
     public static function getStates()
     {
         return Conn::selectMulti('states', '*', 'id_state > 0');
