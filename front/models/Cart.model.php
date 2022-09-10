@@ -60,7 +60,7 @@ class CartModel
     {
         $table = 'product a LEFT JOIN cart_product b ON (a.id = b.id_product)';
         $where = 'b.id_cart = '.$id_cart;
-        $result = Conn::selectMulti($table, 'a.title, a.cover, a.offer_price, a.offer_discount, a.price, b.qty, b.id_product', $where);
+        $result = Conn::selectMulti($table, 'a.title, a.cover, a.offer_price, a.offer_discount, a.price, b.qty, b.id_product, (a.weight * b.qty) AS productWeight, (a.price * b.qty) AS productPrice', $where);
         $return = false;
         if(!empty($result))
         {

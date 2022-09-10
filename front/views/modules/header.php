@@ -71,6 +71,7 @@ if($_SESSION && isset($_SESSION['id']))
     <link rel="stylesheet" href="<?php echo $path;?>views/css/productPage.css">
     <link rel="stylesheet" href="<?php echo $path;?>views/css/cart.css">
     <link rel="stylesheet" href="<?php echo $path;?>views/css/checkout.css">
+    <link rel="stylesheet" href="<?php echo $path;?>views/css/myaccount.css">
     <?php
         include "plugins/pluginsStyle.php";
     ?>

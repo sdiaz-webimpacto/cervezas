@@ -32,7 +32,7 @@ if(isset($_SESSION['id']))
 {
 
     echo '
-    <div class="container">
+    <div id="'.$page.'" class="container">
         <div class="row mt-2 mb-2">
           <a href="'.Path::getPath().'"><i class="fa fa-home"></i> Home</a>  
         </div>
