@@ -21,3 +21,27 @@
 .checkoutSection h3 {
     border-bottom: 1px solid var(--main-color-black);
 }
+
+#checkout .carrierContent {
+    display: flex;
+    justify-items: center;
+    margin-top: 1rem;
+    border: 1px solid rgba(0,0,0,.1);
+    border-radius: 6px;
+    padding: 1rem 0;
+}
+#checkout .carrierLogo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#checkout .carrierName {
+    font-size: 1.1em;
+    font-weight: 500;
+}
+#checkout .carrierPrice {
+    font-size: .9em;
+    font-weight: 600;
+    text-align: right;
+    color: var(--main-color-base);
+}

@@ -1,0 +1,39 @@
+#myaccount .checkoutAdress {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+#myaccount .addressContent {
+    width: 33%;
+    float: left;
+    position: relative;
+}
+
+#myaccount div.addressDelete, #myaccount div.addressEdit {
+    right: -0.9rem;
+}
+
+#myaccount div.addressDelete {
+    margin-top: 15px;
+}
+
+#myaccount div.addressEdit {
+    margin-top: 40px;
+}
+#myaccount .checkoutAddressAdd {
+    width: 100%;
+}
+@media (max-width: 767px)
+{
+    #myaccount .addressContent {
+        width: 80%;
+    }
+}
+
+@media (min-width: 767px) and (max-width: 991px)
+{
+    #myaccount .addressContent {
+        width: 48%;
+    }
+}
