@@ -95,3 +95,62 @@ function addressFormValidate()
         }
     });
 }
+
+if($('.carrierContent').length)
+{
+ $('.carrierContent').click(carrierUpdate);
+}
+function carrierUpdate()
+{
+    const id_carrier = $(this).attr('data-carrier-id');
+    const id_cart = $('#carrierCartId').val();
+    $.ajax({
+        url: 'ajax/cart.ajax.php',
+        method: 'POST',
+        data: {
+            'carrierUpdate':1,
+            'id_cart':id_cart,
+            'id_carrier':id_carrier
+        },
+        success: function(response){
+            const data = JSON.parse(response);
+            console.log(data.result);
+            if(data.result === 'ok')
+            {
+                window.location.reload();
+            } else {
+                console.log('error al devolver el ajax del carrier');
+            }
+        }
+    });
+}
+
+function payCompleted(id_customer, method)
+{
+    /*const id_cart = $('#carrierCartId').val();
+    alert('se pagó correctamente la cesta: '+id_cart+' con el método '+method);
+    $.ajax({
+        url: 'ajax/checkout.ajax.php',
+        method: 'POST',
+        data: {
+            'orderProcess':1,
+            'id_customer':id_customer,
+            'id_cart':id_cart,
+            'price':,
+            'tax':21,
+            'id_carrier':id_carrier,
+            'id_address':,
+            'method': method
+        },
+        success: function(response){
+            const data = JSON.parse(response);
+            console.log(data.result);
+            if(data.result === 'ok')
+            {
+                window.location.reload();
+            } else {
+                console.log('error al devolver el ajax del carrier');
+            }
+        }
+    });*/
+}

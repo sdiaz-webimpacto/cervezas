@@ -2,6 +2,7 @@
 
 $address = new AddressController();
 $directions = $address->getAllAddress($_SESSION['id']);
+$addressSelected = 0;
 
 $addressHtml = '';
 
@@ -13,6 +14,7 @@ foreach($directions as $direction) {
     $addressHtml .= '<div class="addressEdit" data-id="' . $direction['id_address'] . '"><i class="fa fa-pencil"></i></div><a href="" class="buttonDfAdd" data-id="' . $direction['id_address'] . '"><div class="card checkoutAddressItem';
     if ($direction['is_default'] === 1) {
         $addressHtml .= ' active';
+        $addressSelected = $direction['id_address'];
     }
     $addressHtml .= '" data-id="' . $direction['id_address'] . '">';
     $addressHtml .= '<div class="card-header">

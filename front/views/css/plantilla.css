@@ -150,6 +150,9 @@ GENÉRICOS
 	font-weight: 600;
 	font-size: 1.5em;
 }
+.textBlack {
+	color: var(--main-color-black);
+}
 .textBase {
 	color: var(--main-color-base);
 	text-align: center;
@@ -197,6 +200,9 @@ GENÉRICOS
 }
 .ml-2{
 	margin-left: 2rem;
+}
+.pl-0 {
+	padding-left: 0;
 }
 .padBasic {
 	padding: .23rem .5rem;

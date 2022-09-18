@@ -4,7 +4,7 @@
     border: 1px solid rgba(0,0,0,.1);
     border-radius: 6px;
 }
-.checkoutAddressItem.active {
+.checkoutAddressItem.active, #checkout .carrierContent.active {
     border: 2px solid var(--main-color-base);
 }
 .checkoutAddressItem .card-header {
@@ -29,6 +29,7 @@
     border: 1px solid rgba(0,0,0,.1);
     border-radius: 6px;
     padding: 1rem 0;
+    cursor: pointer;
 }
 #checkout .carrierLogo {
     display: flex;
@@ -44,4 +45,20 @@
     font-weight: 600;
     text-align: right;
     color: var(--main-color-base);
+}
+#checkout .lineProductCheckout div {
+    display: flex;
+    align-items: center;
+}
+#checkout .globalCheckoutPrices {
+    border-top: 2px solid var(--main-color-black);
+    border-bottom: 2px solid var(--main-color-black);
+}
+#checkout .totalToPay {
+    margin-bottom: 5rem;
+}
+#checkout .globalCheckoutPrices .row div,  #checkout .totalToPay .row {
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
 }

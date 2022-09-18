@@ -83,7 +83,6 @@ class AddressAjax
         {
             if($_POST['editAddress'] === 'no')
             {
-                file_put_contents(__DIR__.'/santi.log', date('d-m-Y H:i:s').' - '.var_export('Entro primero', TRUE).PHP_EOL ,FILE_APPEND);
                 $response = array(
                     "datas" => $this->getHtml(false, $_POST['customer']),
                     "result" => 'ok'
