@@ -7,12 +7,14 @@ class CartController
     {
         $field = 'id_guest';
         $value = $id_guest;
+        $id_customer_blank = ' AND id_customer = 0';
         if($id_guest === false)
         {
             $field = 'id_customer';
             $value = $id_customer;
+            $id_customer_blank = '';
         }
-        $where = $field." = ".$value." AND completed = 0";
+        $where = $field." = ".$value." AND completed = 0".$id_customer_blank;
         $response = Conn::select('cart', 'id', $where, ' ORDER BY id DESC');
         if(!empty($response))
         {
@@ -63,5 +65,16 @@ class CartController
     {
         $response = CartModel::insertProductInCart($id_product, $id_cart, $qty);
         return $response;
+    }
+
+    public static function updateCarrier($id_cart, $id_carrier)
+    {
+        $response = CartModel::updateCarrier($id_cart, $id_carrier);
+        return $response;
+    }
+
+    public static function cartCarrier($id_cart)
+    {
+        return Conn::select('cart', 'id_carrier', 'id = '.$id_cart);
     }
 }

@@ -135,9 +135,23 @@ class AjaxCart
             echo json_encode($response);
         }
     }
+
+    public function updateCarrier()
+    {
+        if($_POST && isset($_POST['carrierUpdate']))
+        {
+            $result = CartController::updateCarrier($_POST['id_cart'], $_POST['id_carrier']);
+            $response = array(
+                "result" => $result
+            );
+
+            echo json_encode($response);
+        }
+    }
 }
 
 $object = new AjaxCart();
 $object->ajaxUpdateQty();
 $object->deleteProduct();
 $object->ajaxAddToCart();
+$object->updateCarrier();

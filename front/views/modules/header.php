@@ -40,7 +40,23 @@ if($_SESSION && isset($_SESSION['id']))
     $_SESSION['id_cart'] = $cart_id;
 }
 //End cart options
-
+/**
+ * GLOBAL VARIABLES
+ */
+$path = Path::getPath();
+$pathBack = Path::getPathBack();
+$currency = array(
+    'moneda' => 'EUR',
+    'name' => 'euros',
+    'sign' => '€'
+);
+$international = array(
+        'country' => "España",
+        'tax' => 21,
+        'iso_code' => 'es',
+        'lang' => 'es',
+        'tlf_prefix' => 0034
+)
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -50,11 +66,6 @@ if($_SESSION && isset($_SESSION['id']))
     <meta name="title" content="Cervezas y más">
     <meta name="description" content="cervezas artesanales de todas las partes del mundo">
     <meta name="keyword" content="cerveza,artesanal,mundo">
-
-    <?php
-        $path = Path::getPath();
-        $pathBack = Path::getPathBack();
-    ?>
 
     <title>Cervezas y más</title>
 
@@ -84,7 +95,7 @@ if($_SESSION && isset($_SESSION['id']))
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
         const path = "<?php echo $path; ?>";
-        const user = "<?php echo $_SESSION['id'];?>";
+        const user = "<?php if(isset($_SESSION['id'])){echo $_SESSION['id'];} else {echo 'false';}?>";
     </script>
 
 </head>

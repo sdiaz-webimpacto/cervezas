@@ -87,4 +87,21 @@ class CartModel
         }
         return $insert;
     }
+
+    public static function updateCarrier($id_cart, $id_carrier)
+    {
+        $return = 'No se ha podido actualizar la tabla';
+        $updateFirst = Conn::update('cart', array('id_carrier' => 0), 'id = '.(int)$id_cart);
+        if($updateFirst === 'ok')
+        {
+            $updateSecond = Conn::update('cart', array('id_carrier' => (int)$id_carrier), 'id = '.(int)$id_cart);
+            if($updateSecond === 'ok')
+            {
+                $return = 'ok';
+            } else {
+                $return = 'No se puede asignar el transportista a este carrito';
+            }
+        }
+        return $return;
+    }
 }
